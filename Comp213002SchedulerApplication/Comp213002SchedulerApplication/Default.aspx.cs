@@ -11,7 +11,11 @@ namespace Comp213002SchedulerApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+        }
 
+        protected void onTestButton(object sender, EventArgs e) {
+            Button1.Text += "111";
         }
     }
 }

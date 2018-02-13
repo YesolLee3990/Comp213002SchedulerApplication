@@ -3,8 +3,12 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h1>Test Test!!!!</h1>
+        <h1>Test Test!!!!
+        </h1>
         <p class="lead">Test for Conflict</p>
+        <p class="lead">
+            <asp:Button ID="Button1" runat="server" OnClick="onTestButton" Text="Button" />
+        </p>
         <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
     </div>
 
