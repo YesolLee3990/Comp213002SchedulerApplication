@@ -15,7 +15,7 @@ namespace Comp213002SchedulerApplication
         }
 
         protected void onTestButton(object sender, EventArgs e) {
-            Button1.Text += "111";
+            Button1.Text += "11111";
         }
     }
 }
