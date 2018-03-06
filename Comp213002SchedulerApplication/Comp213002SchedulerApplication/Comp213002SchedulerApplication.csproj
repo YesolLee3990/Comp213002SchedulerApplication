@@ -171,12 +171,21 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="Template\TemplateMain.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\util\DBUtil.cs" />
+    <Compile Include="App_Code\util\MUtil.cs" />
+    <Content Include="App_Code\const\ApplicationConstants.cs" />
+    <Compile Include="App_Code\util\SessionUtil.cs" />
+    <Compile Include="App_Code\controls\login\LoginDAO.cs" />
+    <Compile Include="App_Code\controls\login\LoginController.cs" />
+    <Compile Include="App_Code\controls\template\TmplController.cs" />
+    <Compile Include="App_Code\controls\template\TmplDAO.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -218,6 +227,13 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="Template\TemplateMain.aspx.cs">
+      <DependentUpon>TemplateMain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Template\TemplateMain.aspx.designer.cs">
+      <DependentUpon>TemplateMain.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -227,6 +243,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Code\controls\admin\" />
+    <Folder Include="App_Code\controls\group\" />
+    <Folder Include="App_Code\controls\report\" />
+    <Folder Include="App_Code\controls\scheduler\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
