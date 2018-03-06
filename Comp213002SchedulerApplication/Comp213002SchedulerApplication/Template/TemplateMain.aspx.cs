@@ -12,6 +12,7 @@ namespace Comp213002SchedulerApplication {
         protected void Page_Load(object sender, EventArgs e) {
             tmplList.DataSource = DBUtil.Select("SELECT * FROM USERINFO");
             //DataTable dt = new DataTable();
+            Console.WriteLine("");
 
         }
     }
