@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Comp213002SchedulerApplication.App_Code.controls.types {
+namespace Comp213002SchedulerApplication.App_Code.controls.models {
     public class Task {
         public int Id { get; set; }
         public string UserInfo_Id { get; set; }

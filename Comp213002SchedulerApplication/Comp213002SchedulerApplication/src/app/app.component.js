@@ -17,14 +17,13 @@ var AppComponent = /** @class */ (function () {
         this.title = 'Assign Task';
     }
     AppComponent.prototype.ngOnInit = function () {
-        var _this = this;
         //this.taskService.getInitTask().subscribe(initialTask => { this.task = initialTask.json() as Task })
-        this.taskService.getTask(0).subscribe(function (initialTask) { _this.task = initialTask; });
+        //this.taskService.getTask(0).subscribe(initialTask => { this.task = initialTask as Task });
     };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            templateUrl: './app.component.html',
+            templateUrl: './AssignTask.html',
             styleUrls: ['./app.component.css']
             //template: `<h1>Hello {{name}}</h1>`,
         }),

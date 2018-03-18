@@ -34,20 +34,23 @@ namespace Comp213002SchedulerApplication.App_Code.controls.util {
         }
 
         public static DataRow SelectOne(string query) {
-            if (Select(query).Rows.Count == 0) return null;
-            else return Select(query).Rows[0];
+            DataTable dt = Select(query);
+            if (dt.Rows.Count == 0) return null;
+            else return dt.Rows[0];
         }
 
         public static T SelectOne<T>(string query)
          where T : new() {
             DataRow dataRow = SelectOne(query);
             T item = new T();
-            foreach (DataColumn column in dataRow.Table.Columns) {
-                PropertyInfo property = item.GetType().GetProperty(column.ColumnName);
+            if (dataRow != null) {
+                foreach (DataColumn column in dataRow.Table.Columns) {
+                    PropertyInfo property = item.GetType().GetProperty(column.ColumnName);
 
-                if (property != null && dataRow[column] != DBNull.Value) {
-                    object result = Convert.ChangeType(dataRow[column], property.PropertyType);
-                    property.SetValue(item, result, null);
+                    if (property != null && dataRow[column] != DBNull.Value) {
+                        object result = Convert.ChangeType(dataRow[column], property.PropertyType);
+                        property.SetValue(item, result, null);
+                    }
                 }
             }
 

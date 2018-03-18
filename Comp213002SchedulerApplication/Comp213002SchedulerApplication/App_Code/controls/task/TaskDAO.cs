@@ -1,4 +1,4 @@
-﻿using Comp213002SchedulerApplication.App_Code.controls.types;
+﻿using Comp213002SchedulerApplication.App_Code.controls.models;
 using Comp213002SchedulerApplication.App_Code.controls.util;
 using System;
 using System.Collections.Generic;

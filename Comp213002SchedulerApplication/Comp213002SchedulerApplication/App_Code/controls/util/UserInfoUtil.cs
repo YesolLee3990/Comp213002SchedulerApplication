@@ -1,5 +1,5 @@
 ﻿using Comp213002SchedulerApplication.App_Code.controls.constants;
-using Comp213002SchedulerApplication.App_Code.controls.types;
+using Comp213002SchedulerApplication.App_Code.controls.models;
 
 namespace Comp213002SchedulerApplication.App_Code.controls.util {
     public class UserInfoUtil {
