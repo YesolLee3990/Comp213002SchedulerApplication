@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Comp213002SchedulerApplication.App_Code {
+namespace Comp213002SchedulerApplication.App_Code.controls.util {
     public class MUtil {
         public static string LOGIN_FAIL = "Incorrect information";
         public static string LOGIN_FAIL_3TIMES = "3 times login error. \nAccount will be locked for a while.";

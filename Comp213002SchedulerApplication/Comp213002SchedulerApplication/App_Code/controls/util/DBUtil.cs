@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
+using System.Reflection;
 using System.Web;
 
-namespace Comp213002SchedulerApplication.App_Code {
+namespace Comp213002SchedulerApplication.App_Code.controls.util {
     public class DBUtil {
 
         public static string GetConnectionString() {
@@ -36,6 +36,22 @@ namespace Comp213002SchedulerApplication.App_Code {
         public static DataRow SelectOne(string query) {
             if (Select(query).Rows.Count == 0) return null;
             else return Select(query).Rows[0];
+        }
+
+        public static T SelectOne<T>(string query)
+         where T : new() {
+            DataRow dataRow = SelectOne(query);
+            T item = new T();
+            foreach (DataColumn column in dataRow.Table.Columns) {
+                PropertyInfo property = item.GetType().GetProperty(column.ColumnName);
+
+                if (property != null && dataRow[column] != DBNull.Value) {
+                    object result = Convert.ChangeType(dataRow[column], property.PropertyType);
+                    property.SetValue(item, result, null);
+                }
+            }
+
+            return item;
         }
 
         public static void ExecuteWithTransaction(List<string> sqls) {
