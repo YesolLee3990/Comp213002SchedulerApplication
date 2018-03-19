@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Comp213002SchedulerApplication
 {
-    public partial class Contact : Page
+    public partial class Report : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
