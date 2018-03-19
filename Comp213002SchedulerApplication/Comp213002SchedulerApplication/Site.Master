@@ -13,7 +13,9 @@
     </asp:PlaceHolder>
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:bundlereference runat="server" path="~/Content/DefaultStyle.css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
 
 </head>
 <body>
@@ -41,19 +43,13 @@
 
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" runat="server" href="~/">Application name</a>
-                </div>
+               
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/About">About</a></li>
-                        <li><a runat="server" href="~/Contact">Contact</a></li>
+                        <li><a runat="server" href="~/Report">Contact</a></li>
+                        <li><a runat="server" href="~/Setting">Setting</a></li>
+                        
                     </ul>
                 </div>
             </div>
@@ -62,9 +58,9 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer>
+           <%-- <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
-            </footer>
+            </footer>--%>
         </div>
 
     </form>
