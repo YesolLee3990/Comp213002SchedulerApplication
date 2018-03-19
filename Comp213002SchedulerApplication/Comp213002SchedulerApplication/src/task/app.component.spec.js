@@ -9,12 +9,12 @@ describe('AppComponent', function () {
     var fixture;
     beforeEach(testing_1.async(function () {
         testing_1.TestBed.configureTestingModule({
-            declarations: [app_component_1.AppComponent]
+            declarations: [app_component_1.TaskComponent]
         })
             .compileComponents();
     }));
     beforeEach(function () {
-        fixture = testing_1.TestBed.createComponent(app_component_1.AppComponent);
+        fixture = testing_1.TestBed.createComponent(app_component_1.TaskComponent);
         comp = fixture.componentInstance;
         de = fixture.debugElement.query(platform_browser_1.By.css('h1'));
     });

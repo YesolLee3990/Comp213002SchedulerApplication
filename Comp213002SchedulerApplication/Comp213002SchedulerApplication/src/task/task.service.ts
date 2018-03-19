@@ -10,24 +10,24 @@ export class TaskService {
 
     private taskUrl = 'api/task'; // URL to web api
 
-    //constructor(
-    //    private http: HttpClient,
-    //) { }
+    constructor(
+        private http: HttpClient,
+    ) { }
 
-    //private handleError<T>(operation = 'operation', result?: T) {
-    //    return (error: any): Observable<T> => {
-    //        console.error(error);
-    //        return of(result as T);
-    //    };
-    //}
+    private handleError<T>(operation = 'operation', result?: T) {
+        return (error: any): Observable<T> => {
+            console.error(error);
+            return of(result as T);
+        };
+    }
 
-    //getTask(id: number): Observable<Task> {
-    //    alert('id : ' +  id);
-    //    const url = `${this.taskUrl}/${id}`;
-    //    return this.http.get<Task>(url).pipe(
-    //        catchError(this.handleError<Task>(`getHero id=${id}`))
-    //    );
-    //}
+    getTask(id: number): Observable<Task> {
+        alert('id : ' +  id);
+        const url = `${this.taskUrl}/${id}`;
+        return this.http.get<Task>(url).pipe(
+            catchError(this.handleError<Task>(`getHero id=${id}`))
+        );
+    }
 
 
     //updateTask(hero: Task): Observable<any> {

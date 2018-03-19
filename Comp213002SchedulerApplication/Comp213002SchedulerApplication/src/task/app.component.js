@@ -11,25 +11,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var task_service_1 = require("./task.service");
-var AppComponent = /** @class */ (function () {
-    function AppComponent(taskService) {
+var TaskComponent = /** @class */ (function () {
+    function TaskComponent(taskService) {
         this.taskService = taskService;
         this.title = 'Assign Task';
     }
-    AppComponent.prototype.ngOnInit = function () {
+    TaskComponent.prototype.ngOnInit = function () {
+        var _this = this;
         //this.taskService.getInitTask().subscribe(initialTask => { this.task = initialTask.json() as Task })
-        //this.taskService.getTask(0).subscribe(initialTask => { this.task = initialTask as Task });
+        this.taskService.getTask(0).subscribe(function (initialTask) { _this.task = initialTask; });
     };
-    AppComponent = __decorate([
+    TaskComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            templateUrl: './AssignTask.html',
+            selector: 'task-app',
+            templateUrl: './app.component.html',
             styleUrls: ['./app.component.css']
-            //template: `<h1>Hello {{name}}</h1>`,
         }),
         __metadata("design:paramtypes", [task_service_1.TaskService])
-    ], AppComponent);
-    return AppComponent;
+    ], TaskComponent);
+    return TaskComponent;
 }());
-exports.AppComponent = AppComponent;
+exports.TaskComponent = TaskComponent;
 //# sourceMappingURL=app.component.js.map

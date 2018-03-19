@@ -12,24 +12,24 @@ var task_service_1 = require("./task.service");
 var app_component_1 = require("./app.component");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
-var AppModule = /** @class */ (function () {
-    function AppModule() {
+var TaskModule = /** @class */ (function () {
+    function TaskModule() {
     }
-    AppModule = __decorate([
+    TaskModule = __decorate([
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
                 http_1.HttpModule
             ],
-            declarations: [app_component_1.AppComponent],
-            bootstrap: [app_component_1.AppComponent],
+            declarations: [app_component_1.TaskComponent],
+            bootstrap: [app_component_1.TaskComponent],
             providers: [
                 task_service_1.TaskService
             ]
         })
-    ], AppModule);
-    return AppModule;
+    ], TaskModule);
+    return TaskModule;
 }());
-exports.AppModule = AppModule;
+exports.TaskModule = TaskModule;
 //# sourceMappingURL=app.module.js.map
