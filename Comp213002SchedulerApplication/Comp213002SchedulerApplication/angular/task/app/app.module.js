@@ -8,28 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
-var task_service_1 = require("./task.service");
 var app_component_1 = require("./app.component");
-var forms_1 = require("@angular/forms");
-var http_1 = require("@angular/http");
-var TaskModule = /** @class */ (function () {
-    function TaskModule() {
+var AppModule = /** @class */ (function () {
+    function AppModule() {
     }
-    TaskModule = __decorate([
+    AppModule = __decorate([
         core_1.NgModule({
-            imports: [
-                platform_browser_1.BrowserModule,
-                forms_1.FormsModule,
-                http_1.HttpModule
-            ],
-            declarations: [app_component_1.TaskComponent],
-            bootstrap: [app_component_1.TaskComponent],
-            providers: [
-                task_service_1.TaskService
-            ]
+            imports: [platform_browser_1.BrowserModule],
+            declarations: [app_component_1.AppComponent],
+            bootstrap: [app_component_1.AppComponent]
         })
-    ], TaskModule);
-    return TaskModule;
+    ], AppModule);
+    return AppModule;
 }());
-exports.TaskModule = TaskModule;
+exports.AppModule = AppModule;
 //# sourceMappingURL=app.module.js.map
