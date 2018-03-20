@@ -172,12 +172,21 @@
     <Content Include="angular\task\app\app.component.js" />
     <Content Include="angular\task\app\app.component.spec.js" />
     <Content Include="angular\task\app\app.module.js" />
+    <Content Include="angular\task\app\result.js" />
+    <Content Include="angular\task\app\script.js" />
+    <Content Include="angular\task\app\task.component.css" />
+    <Content Include="angular\task\app\task.component.html" />
+    <Content Include="angular\task\app\task.js" />
+    <Content Include="angular\task\app\task.service.js" />
+    <Content Include="angular\task\app\task.service.spec.js" />
+    <Content Include="angular\task\app\userInfo.js" />
+    <Content Include="angular\task\favicon.ico" />
     <Content Include="angular\task\index.html" />
     <Content Include="angular\task\main.js" />
     <Content Include="angular\task\styles.css" />
     <Content Include="angular\task\systemjs-angular-loader.js" />
     <Content Include="angular\task\systemjs.config.extras.js" />
-    <Content Include="angular\task\systemjs.config.js" />
+    <Content Include="angular\task\systemjs.config2.js" />
     <Content Include="Report.aspx" />
     <Content Include="App_Code\controls\models\Task.cs" />
     <Content Include="App_Code\controls\models\UserInfo.cs" />
@@ -249,6 +258,7 @@
     <Compile Include="App_Code\controls\login\LoginController.cs" />
     <Content Include="App_Code\controls\task\TaskDAO.cs" />
     <Content Include="App_Code\controls\task\TestController.cs" />
+    <Content Include="App_Code\controls\models\Result.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Report.aspx.cs">
       <DependentUpon>Report.aspx</DependentUpon>

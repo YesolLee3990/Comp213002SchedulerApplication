@@ -104,5 +104,40 @@ namespace Comp213002SchedulerApplication.App_Code.controls.util {
             }
             return list;
         }
+
+        private const string comma = ", ";
+
+        public static String BuildInsertQuery(Object obj) {
+            string sql = "INSERT INTO " + obj.GetType().Name + " (";
+            string sqlValues = " VALUES(";
+            PropertyInfo[] props = obj.GetType().GetProperties();
+            foreach(PropertyInfo prop in props){
+                object val = prop.GetValue(obj);
+                if(val != null) {
+                    if (prop.Name.ToUpper().Equals("ID")) continue;
+                    sql += prop.Name + comma;
+                    DateTime dt = DateTime.Now;
+                    if (DateTime.TryParse(val.ToString(), out dt)) {
+                        sqlValues += "'" + GetDTS(dt) + "'" + comma;
+                    } else {
+                        sqlValues += "'" + val + "'" + comma;
+                    }
+                }
+            }
+            sql = any(sql);
+            sqlValues = any(sqlValues);
+
+            return sql + sqlValues;
+        }
+
+        private static string any(String sql) {
+            if (sql.EndsWith(comma)) sql = sql.Substring(0, sql.Length - 2);
+            sql += ") ";
+            return sql;
+        }
+
+        private static string GetDTS(DateTime dt) {
+            return dt.ToString("yyyy-MM-dd HH:mm:ss");
+        }
     }
 }
