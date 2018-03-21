@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Comp213002SchedulerApplication.App_Code.controls.util;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -18,25 +19,27 @@ namespace Comp213002SchedulerApplication
         {
             GetData();
         }
-        private DataSet GetData()
-        {
+        //private DataSet GetData()
+        private DataTable GetData() {
             //string connectionString = "Data Source=serverschedulerapplication.database.windows.net/SQLEXPRESS,1433;Network Library=DBMSSOCN;Initial Catalog=dbase;User ID=comp213;Password=Centennial2018";
-            string connectionString = ConfigurationManager.ConnectionStrings["esmsDbConnectionStr"].ConnectionString;
-            SqlConnection myConnection = new SqlConnection(connectionString);
-            SqlDataAdapter ad = new SqlDataAdapter("SELECT * FROM dbo.task", myConnection);
+            //string connectionString = ConfigurationManager.ConnectionStrings["esmsDbConnectionStr"].ConnectionString;
+            //SqlConnection myConnection = new SqlConnection(connectionString);
+            //SqlDataAdapter ad = new SqlDataAdapter("SELECT * FROM dbo.task", myConnection);
 
-            DataSet ds = new DataSet();
-            ad.Fill(ds);
-            return ds;
+            //DataSet ds = new DataSet();
+            //ad.Fill(ds);
+            //return ds;
+
+            return DBUtil.Select("SELECT * FROM DBO.TASK");
         }
         protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
         {
 
-            DataSet ds = GetData();
+            DataTable dt = GetData();
             string link = "<a href='ScheduleDetails.aspx?ID=";
             string s = e.Day.Date.ToShortDateString();
 
-            foreach (DataRow row in ds.Tables[0].Rows)
+            foreach (DataRow row in dt.Rows)
             {
                 string scheduledDate = Convert.ToDateTime(row["ScheduleStart"]).ToShortDateString();
                 if (scheduledDate.Equals(s))

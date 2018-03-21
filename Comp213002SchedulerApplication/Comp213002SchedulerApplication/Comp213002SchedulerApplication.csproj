@@ -187,14 +187,14 @@
     <Content Include="angular\task\systemjs-angular-loader.js" />
     <Content Include="angular\task\systemjs.config.extras.js" />
     <Content Include="angular\task\systemjs.config2.js" />
+    <Compile Include="App_Code\controls\util\DBUtil.cs" />
+    <Compile Include="App_Code\controls\util\MUtil.cs" />
+    <Compile Include="App_Code\controls\util\SessionUtil.cs" />
+    <Compile Include="App_Code\controls\util\UserInfoUtil.cs" />
     <Content Include="Report.aspx" />
-    <Content Include="App_Code\controls\models\Task.cs" />
-    <Content Include="App_Code\controls\models\UserInfo.cs" />
-    <Content Include="App_Code\controls\task\TaskController.cs" />
-    <Content Include="App_Code\controls\util\DBUtil.cs" />
-    <Content Include="App_Code\controls\util\MUtil.cs" />
-    <Content Include="App_Code\controls\util\SessionUtil.cs" />
-    <Content Include="App_Code\controls\util\UserInfoUtil.cs" />
+    <Compile Include="App_Code\controls\models\Task.cs" />
+    <Compile Include="App_Code\controls\models\UserInfo.cs" />
+    <Compile Include="App_Code\controls\task\TaskController.cs" />
     <Content Include="Setting.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -253,12 +253,12 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Code\controls\constants\ApplicationConstants.cs" />
+    <Compile Include="App_Code\controls\constants\ApplicationConstants.cs" />
     <Compile Include="App_Code\controls\login\LoginDAO.cs" />
     <Compile Include="App_Code\controls\login\LoginController.cs" />
-    <Content Include="App_Code\controls\task\TaskDAO.cs" />
-    <Content Include="App_Code\controls\task\TestController.cs" />
-    <Content Include="App_Code\controls\models\Result.cs" />
+    <Compile Include="App_Code\controls\task\TaskDAO.cs" />
+    <Compile Include="App_Code\controls\task\TestController.cs" />
+    <Compile Include="App_Code\controls\models\Result.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Report.aspx.cs">
       <DependentUpon>Report.aspx</DependentUpon>
