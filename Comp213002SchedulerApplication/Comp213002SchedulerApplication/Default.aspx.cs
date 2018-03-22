@@ -16,7 +16,7 @@ namespace Comp213002SchedulerApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            GetData();
+            //GetData();
         }
         private DataSet GetData()
         {
@@ -33,24 +33,40 @@ namespace Comp213002SchedulerApplication
         {
 
             DataSet ds = GetData();
-            string link = "<a href='ScheduleDetails.aspx?ID=";
+            //string link = "<a href='ScheduleDetails.aspx?ID=";
             string s = e.Day.Date.ToShortDateString();
 
+            int i = 0;
             foreach (DataRow row in ds.Tables[0].Rows)
             {
+                i++;
                 string scheduledDate = Convert.ToDateTime(row["ScheduleStart"]).ToShortDateString();
                 if (scheduledDate.Equals(s))
                 {
                     LinkButton lb = new LinkButton();
-                    lb.Text = "<BR>" + link + (int)row["ID"] + "'>" + row["Subject"] as String + "</a>" + "<BR>";
-                    //lb.BackColor = System.Drawing.Color.Red;
+                    //lb.ID = "lb" + i;
+                    //lb.OnClientClick = "return ShowModalPopup()";
+                    lb.Text = "<BR>" + row["Subject"] as String;
+                    //lb.Text = "<BR>" + link + (int)row["ID"] + "'>" + row["Subject"] as String + "</a>" + "<BR>";
                     lb.Style.Add("color", "red");
                     e.Cell.Controls.Add(lb);
                 }
             }
 
+        }
 
+        protected void Calendar1_VisibleMonthChanged(object sender, MonthChangedEventArgs e)
+        {
 
+        }
+
+        protected void Calendar1_SelectionChanged(object sender, EventArgs e)
+        {
+            this.ModalPopupExtender1.Show();
+            DateTime dt = this.Calendar1.SelectedDate;
+            //send login-information later.
+            Session.Add("selectedDate", dt);
+            
         }
     }
 }
