@@ -15,7 +15,7 @@
         <div id="detailDiv" style="width:auto;height:580px;">
             <asp:Label ID="lbContents" runat="server" Text="Label"></asp:Label>
         </div>
-        <asp:DropDownList ID="ddTaskList" runat="server"></asp:DropDownList>
+        <asp:DropDownList ID="ddTaskList" runat="server" Height="16px" AutoPostBack="True" OnSelectedIndexChanged="ddTaskList_SelectedIndexChanged" Width="207px"></asp:DropDownList>
         
     </div>
     </form>

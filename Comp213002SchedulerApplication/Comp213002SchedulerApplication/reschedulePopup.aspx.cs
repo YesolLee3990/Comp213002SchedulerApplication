@@ -13,11 +13,16 @@ namespace Comp213002SchedulerApplication
     public partial class reschedulePopup : System.Web.UI.Page
     {
 
-        List<dailyTaskHandler> taskList = new List<dailyTaskHandler>();
+        private static List<dailyTaskHandler> taskList = null;
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            Load();
+            
+            if (!IsPostBack)
+            {
+                taskList = new List<dailyTaskHandler>();
+                Load();
+            }
         }
 
         protected void Load()
@@ -48,20 +53,47 @@ namespace Comp213002SchedulerApplication
 
                 taskList.Add(dth);
             }
+            
+            makeDropDownList();
             makeAString();
+
 
             myConnection.Close();
         }
 
+        public void makeDropDownList()
+        {
+            var tempVar = taskList.Select(l_taskName => l_taskName.taskName);
+            List<string> dataSource = tempVar.ToList();
+            dataSource.Add("ALL");
+            this.ddTaskList.DataSource = dataSource;
+            this.ddTaskList.DataBind();
+        }
+
         public void makeAString()
         {
+            string vTaskName;            string vAssignor;
+            string vPriority;            string vStatus;
+            string vStartDate;            string vEndDate;
 
-            string vTaskName = taskList.Select(l_taskName => l_taskName.taskName).Aggregate((current, next) => current + ", " + next);
-            string vAssignor = taskList.Select(l_Assignor => l_Assignor.assignor).Aggregate((current, next) => current + ", " + next);
-            string vPriority = taskList.Select(l_Priority => l_Priority.priority).Aggregate((current, next) => current + ", " + next);
-            string vStatus = taskList.Select(l_status => l_status.status).Aggregate((current, next) => current + ", " + next);
-            string vStartDate = taskList.Select(l_startDate => l_startDate.startDate).Aggregate((current, next) => current + ", " + next);
-            string vEndDate = taskList.Select(l_endDate => l_endDate.endDate).Aggregate((current, next) => current + ", " + next);
+            if (this.ddTaskList.SelectedValue == "ALL")
+            {
+                vTaskName = taskList.Select(l_taskName => l_taskName.taskName).Aggregate((current, next) => current + ", " + next);
+                vAssignor = taskList.Select(l_Assignor => l_Assignor.assignor).Aggregate((current, next) => current + ", " + next);
+                vPriority = taskList.Select(l_Priority => l_Priority.priority).Aggregate((current, next) => current + ", " + next);
+                vStatus = taskList.Select(l_status => l_status.status).Aggregate((current, next) => current + ", " + next);
+                vStartDate = taskList.Select(l_startDate => l_startDate.startDate).Aggregate((current, next) => current + ", " + next);
+                vEndDate = taskList.Select(l_endDate => l_endDate.endDate).Aggregate((current, next) => current + ", " + next);
+            }else{
+                string item = this.ddTaskList.SelectedValue;
+                vTaskName = item;
+                vAssignor = taskList.Where(x => x.taskName == item).Select(s => s.assignor).SingleOrDefault();
+                vPriority = taskList.Where(x => x.taskName == item).Select(s => s.priority).SingleOrDefault();
+                vStatus = taskList.Where(x => x.taskName == item).Select(s => s.status).SingleOrDefault();
+                vStartDate = taskList.Where(x => x.taskName == item).Select(s => s.startDate).SingleOrDefault();
+                vEndDate = taskList.Where(x => x.taskName == item).Select(s => s.endDate).SingleOrDefault();
+            }
+            
 
             this.lbContents.Text = "<br>Task Name : " + vTaskName;
             this.lbContents.Text += "<br>Assignor : " + vAssignor;
@@ -82,6 +114,12 @@ namespace Comp213002SchedulerApplication
             public string startDate { get; set; }
             public string endDate { get; set; }
 
+        }
+
+        protected void ddTaskList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int xxx = 10;
+            makeAString();
         }
     }
 
