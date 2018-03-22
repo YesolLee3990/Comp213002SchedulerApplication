@@ -24,7 +24,7 @@ namespace Comp213002SchedulerApplication
             SqlConnection myConnection = new SqlConnection(connectionString);
             
             DateTime dt = (DateTime)Session["selectedDate"];
-            SqlDataAdapter ad = new SqlDataAdapter("SELECT * FROM dbo.task a, dbo.UserInfo b where a.Assignor = b.id and (ScheduleStart <= @dt and @dt >= ScheduleEnd)", myConnection);
+            SqlDataAdapter ad = new SqlDataAdapter("SELECT * FROM dbo.task a, dbo.UserInfo b where a.Assignor = b.id and (ScheduleStart <= @dt and @dt <= ScheduleEnd)", myConnection);
 
             SqlParameter param_DATE = ad.SelectCommand.Parameters.Add("@dt", System.Data.SqlDbType.DateTime);
             param_DATE.Value = dt;
