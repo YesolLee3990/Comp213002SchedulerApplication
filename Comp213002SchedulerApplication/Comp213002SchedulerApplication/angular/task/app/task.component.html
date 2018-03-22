@@ -1,6 +1,6 @@
 ﻿<h2>{{title}}</h2>
 <div class="container">
-    <form #taskForm="ngForm">
+    <form #taskForm="ngForm" autocomplete="off">
         <div *ngIf="task" class="form-group">
             <table>
                 <tr>
@@ -15,7 +15,7 @@
                 <tr>
                     <td class="titleTd"><h1>Person in charge </h1></td>
                     <td class="contentTd">
-                        <input #searchBox id="search-box" [(ngModel)]="userName" (keyup)="search(searchBox.value)" placeholder="Input name" class="form-control" required [ngModelOptions]="{standalone: true}" autocomplete="off" />
+                        <input #searchBox id="search-box" [(ngModel)]="userName" (keyup)="search(searchBox.value)" placeholder="Input name" class="form-control" required [ngModelOptions]="{standalone: true}" autocomplete="off"  />
                         <div *ngIf="userList$" class="width100">
                             <ul class="tasks">
                                 <li #selectedUser *ngFor="let user of userList$ | async" (click)="setUserInfo(user.Id, user.UserName, user.UserId)">
