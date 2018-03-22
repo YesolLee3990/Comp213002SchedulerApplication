@@ -29,5 +29,9 @@ namespace Comp213002SchedulerApplication.App_Code.controls.util {
         public static bool isNormalUser() {
             return getLoginUser().UserType == 'N';
         }
+
+        public static UserInfo getUserInfo(int key) {
+            return DBUtil.SelectOneById<UserInfo>(key);
+        }
     }
 }
