@@ -73,7 +73,7 @@
        
         <asp:LinkButton ID="x" runat="server"></asp:LinkButton>
         
-        <div id="resPopupDiv"-->
+        <div id="resPopupDiv">
             <cc1:ModalPopupExtender DropShadow="true" BehaviorID="popup1" ID="ModalPopupExtender1" runat="server"
                 CancelControlID="btnClose" PopupControlID="Panel1" TargetControlID="x" BackgroundCssClass="modalBackground" >
             </cc1:ModalPopupExtender>
