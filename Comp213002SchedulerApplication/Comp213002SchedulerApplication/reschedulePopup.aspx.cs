@@ -41,6 +41,7 @@ namespace Comp213002SchedulerApplication
 
             DataSet ds = new DataSet();
             ad.Fill(ds);
+
             foreach (DataRow row in ds.Tables[0].Rows)
             {
                 dailyTaskHandler dth = new dailyTaskHandler();
@@ -76,6 +77,11 @@ namespace Comp213002SchedulerApplication
             string vPriority;            string vStatus;
             string vStartDate;            string vEndDate;
 
+            if (taskList.Count == 0)
+            {
+                this.lbContents.Text = "You do not have any tasks.";
+                return;
+            }
             if (this.ddTaskList.SelectedValue == "ALL")
             {
                 vTaskName = taskList.Select(l_taskName => l_taskName.taskName).Aggregate((current, next) => current + ", " + next);
@@ -118,7 +124,6 @@ namespace Comp213002SchedulerApplication
 
         protected void ddTaskList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int xxx = 10;
             makeAString();
         }
     }

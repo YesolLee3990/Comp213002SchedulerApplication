@@ -190,6 +190,7 @@
     <Content Include="App_Code\controls\util\MUtil.cs" />
     <Content Include="App_Code\controls\util\SessionUtil.cs" />
     <Content Include="App_Code\controls\util\UserInfoUtil.cs" />
+    <Content Include="requestRescheduling.aspx" />
     <Content Include="reschedulePopup.aspx" />
     <Content Include="Setting.aspx" />
     <Content Include="Content\bootstrap.css" />
@@ -267,6 +268,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\RouteConfig2.cs" />
+    <Compile Include="requestRescheduling.aspx.cs">
+      <DependentUpon>requestRescheduling.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="requestRescheduling.aspx.designer.cs">
+      <DependentUpon>requestRescheduling.aspx</DependentUpon>
+    </Compile>
     <Compile Include="reschedulePopup.aspx.cs">
       <DependentUpon>reschedulePopup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
