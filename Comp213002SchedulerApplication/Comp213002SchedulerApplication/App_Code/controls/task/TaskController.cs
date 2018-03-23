@@ -16,12 +16,35 @@ namespace Comp213002SchedulerApplication.App_Code.controls.task {
         [WebMethod(EnableSession = true)]
         [Route("api/task/{id}")]
         [HttpGet]
-        public Task Get() {
-            int id = 0;
-            Task task = dao.GetTask(id);
-            if (id == 0 || task == null) task = new Task() { Id = 1, Assignor = UserInfoUtil.getLoginUser().UserId };
+        public Task Get(string id) {
+            Task task = null;
+            try { 
+                task = dao.GetTask(int.Parse(id));
+            }catch(Exception e) {
+                
+            }
+            if (id == "0" || task == null) {
+                task = new Task() { Id = 1, Assignor = UserInfoUtil.getLoginUser().Id };
+            }
             return task;
         }
+
+        [WebMethod(EnableSession = true)]
+        [Route("api/task/searchUser/{name}")]
+        [HttpGet]
+        public UserInfo[] SearchUser(string name) {
+            return dao.SearchUser(name);
+        }
+        
+
+        [WebMethod(EnableSession = true)]
+        [Route("api/task/save")]
+        [HttpPost]
+        public Result Save(Task task) {
+            return dao.SaveTask(task);
+        }
+
+        
 
         // POST api/<controller>
         public void Post([FromBody]string value) {

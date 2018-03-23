@@ -1,0 +1,74 @@
+﻿<h2>{{title}}</h2>
+<div class="container">
+    <form #taskForm="ngForm" autocomplete="off">
+        <div *ngIf="task" class="form-group">
+            <table>
+                <tr>
+                    <td class="titleTd"><h1>Subject </h1></td>
+                    <td class="contentTd">
+                        <input [(ngModel)]="task.Subject" placeholder="Title of the assignment" #subject="ngModel" id="subject" name="subject" class="form-control" required>
+                        <div *ngIf="subject.invalid && (subject.dirty || subject.touched)" class="alert alert-danger">
+                            <div *ngIf="subject.errors.required">Subject is required.</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="titleTd"><h1>Person in charge </h1></td>
+                    <td class="contentTd">
+                        <input #searchBox id="search-box" [(ngModel)]="userName" (keyup)="search(searchBox.value)" placeholder="Input name" class="form-control" required [ngModelOptions]="{standalone: true}" autocomplete="off"  />
+                        <div *ngIf="userList$" class="width100">
+                            <ul class="tasks">
+                                <li #selectedUser *ngFor="let user of userList$ | async" (click)="setUserInfo(user.Id, user.UserName, user.UserId)">
+                                    {{user.UserName}}/{{user.UserId}}
+                                </li>
+                            </ul>
+                        </div>
+                        <input type="hidden" [(ngModel)]="task.UserInfo_Id" #userInfoId="ngModel" id="userInfoId" name="userInfoId" required>
+                        <div *ngIf="!isValid" class="alert alert-danger">
+                            Search and assign a user.
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="titleTd"><h1>Description</h1></td>
+                    <td class="contentTd">
+                        <textarea [(ngModel)]="task.Description" placeholder="Description" cols="80" rows="10" #description="ngModel" name="description" class="form-control" required></textarea>
+                        <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
+                            <div *ngIf="description.errors.required">Description is required.</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="titleTd"><h1>Priority</h1></td>
+                    <td class="contentTd">
+                        <select [(ngModel)]="task.Priority" #name="ngModel" name="priority" class="form-control" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3" selected>3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="titleTd"><h1>Start date</h1></td>
+                    <td class="contentTd">
+                        <input type="date" [(ngModel)]="task.ScheduleStart" #scheduleStart="ngModel" name="scheduleStart" class="form-control" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="titleTd"><h1>End date</h1></td>
+                    <td class="contentTd"><input type="date" [(ngModel)]="task.ScheduleEnd" #scheduleEnd="ngModel" #name="ngModel" name="scheduleEnd" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="btnArea">
+                            <button class="saveBtn" [disabled]="taskForm.invalid" (click)="saveTask()"><span>Save</span></button>
+                            <button class="button" (click)="cancelTask()">Cancel</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>

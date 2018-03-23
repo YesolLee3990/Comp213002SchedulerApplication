@@ -51,10 +51,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AjaxControlToolkit, Version=1.0.10123.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
-      <HintPath>..\packages\AjaxControlToolkit.dll.1.0.10123\lib\2.0\AjaxControlToolkit.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -176,22 +172,29 @@
     <Content Include="angular\task\app\app.component.js" />
     <Content Include="angular\task\app\app.component.spec.js" />
     <Content Include="angular\task\app\app.module.js" />
+    <Content Include="angular\task\app\result.js" />
+    <Content Include="angular\task\app\script.js" />
+    <Content Include="angular\task\app\task.component.css" />
+    <Content Include="angular\task\app\task.component.html" />
+    <Content Include="angular\task\app\task.js" />
+    <Content Include="angular\task\app\task.service.js" />
+    <Content Include="angular\task\app\task.service.spec.js" />
+    <Content Include="angular\task\app\userInfo.js" />
+    <Content Include="angular\task\favicon.ico" />
     <Content Include="angular\task\index.html" />
     <Content Include="angular\task\main.js" />
     <Content Include="angular\task\styles.css" />
     <Content Include="angular\task\systemjs-angular-loader.js" />
     <Content Include="angular\task\systemjs.config.extras.js" />
-    <Content Include="angular\task\systemjs.config.js" />
+    <Content Include="angular\task\systemjs.config2.js" />
+    <Compile Include="App_Code\controls\util\DBUtil.cs" />
+    <Compile Include="App_Code\controls\util\MUtil.cs" />
+    <Compile Include="App_Code\controls\util\SessionUtil.cs" />
+    <Compile Include="App_Code\controls\util\UserInfoUtil.cs" />
     <Content Include="Report.aspx" />
-    <Content Include="App_Code\controls\models\Task.cs" />
-    <Content Include="App_Code\controls\models\UserInfo.cs" />
-    <Content Include="App_Code\controls\task\TaskController.cs" />
-    <Content Include="App_Code\controls\util\DBUtil.cs" />
-    <Content Include="App_Code\controls\util\MUtil.cs" />
-    <Content Include="App_Code\controls\util\SessionUtil.cs" />
-    <Content Include="App_Code\controls\util\UserInfoUtil.cs" />
-    <Content Include="requestRescheduling.aspx" />
-    <Content Include="reschedulePopup.aspx" />
+    <Compile Include="App_Code\controls\models\Task.cs" />
+    <Compile Include="App_Code\controls\models\UserInfo.cs" />
+    <Compile Include="App_Code\controls\task\TaskController.cs" />
     <Content Include="Setting.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -244,18 +247,18 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
-    <Content Include="test.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Code\controls\constants\ApplicationConstants.cs" />
+    <Compile Include="App_Code\controls\constants\ApplicationConstants.cs" />
     <Compile Include="App_Code\controls\login\LoginDAO.cs" />
     <Compile Include="App_Code\controls\login\LoginController.cs" />
-    <Content Include="App_Code\controls\task\TaskDAO.cs" />
-    <Content Include="App_Code\controls\task\TestController.cs" />
+    <Compile Include="App_Code\controls\task\TaskDAO.cs" />
+    <Compile Include="App_Code\controls\task\TestController.cs" />
+    <Compile Include="App_Code\controls\models\Result.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Report.aspx.cs">
       <DependentUpon>Report.aspx</DependentUpon>
@@ -268,20 +271,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\RouteConfig2.cs" />
-    <Compile Include="requestRescheduling.aspx.cs">
-      <DependentUpon>requestRescheduling.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="requestRescheduling.aspx.designer.cs">
-      <DependentUpon>requestRescheduling.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="reschedulePopup.aspx.cs">
-      <DependentUpon>reschedulePopup.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="reschedulePopup.aspx.designer.cs">
-      <DependentUpon>reschedulePopup.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Setting.aspx.cs">
       <DependentUpon>Setting.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -313,13 +302,6 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
-    </Compile>
-    <Compile Include="test.aspx.cs">
-      <DependentUpon>test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="test.aspx.designer.cs">
-      <DependentUpon>test.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
