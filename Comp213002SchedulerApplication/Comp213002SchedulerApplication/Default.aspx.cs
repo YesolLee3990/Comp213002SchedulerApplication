@@ -1,5 +1,4 @@
-﻿using Comp213002SchedulerApplication.App_Code.controls.util;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -17,43 +16,57 @@ namespace Comp213002SchedulerApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            GetData();
+            //GetData();
         }
-        //private DataSet GetData()
-        private DataTable GetData() {
+        private DataSet GetData()
+        {
             //string connectionString = "Data Source=serverschedulerapplication.database.windows.net/SQLEXPRESS,1433;Network Library=DBMSSOCN;Initial Catalog=dbase;User ID=comp213;Password=Centennial2018";
-            //string connectionString = ConfigurationManager.ConnectionStrings["esmsDbConnectionStr"].ConnectionString;
-            //SqlConnection myConnection = new SqlConnection(connectionString);
-            //SqlDataAdapter ad = new SqlDataAdapter("SELECT * FROM dbo.task", myConnection);
+            string connectionString = ConfigurationManager.ConnectionStrings["esmsDbConnectionStr"].ConnectionString;
+            SqlConnection myConnection = new SqlConnection(connectionString);
+            SqlDataAdapter ad = new SqlDataAdapter("SELECT * FROM dbo.task", myConnection);
 
-            //DataSet ds = new DataSet();
-            //ad.Fill(ds);
-            //return ds;
-
-            return DBUtil.Select("SELECT * FROM DBO.TASK");
+            DataSet ds = new DataSet();
+            ad.Fill(ds);
+            return ds;
         }
         protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
         {
 
-            DataTable dt = GetData();
-            string link = "<a href='ScheduleDetails.aspx?ID=";
+            DataSet ds = GetData();
+            //string link = "<a href='ScheduleDetails.aspx?ID=";
             string s = e.Day.Date.ToShortDateString();
 
-            foreach (DataRow row in dt.Rows)
+            int i = 0;
+            foreach (DataRow row in ds.Tables[0].Rows)
             {
+                i++;
                 string scheduledDate = Convert.ToDateTime(row["ScheduleStart"]).ToShortDateString();
                 if (scheduledDate.Equals(s))
                 {
                     LinkButton lb = new LinkButton();
-                    lb.Text = "<BR>" + link + (int)row["ID"] + "'>" + row["Subject"] as String + "</a>" + "<BR>";
-                    //lb.BackColor = System.Drawing.Color.Red;
+                    //lb.ID = "lb" + i;
+                    //lb.OnClientClick = "return ShowModalPopup()";
+                    lb.Text = "<BR>" + row["Subject"] as String;
+                    //lb.Text = "<BR>" + link + (int)row["ID"] + "'>" + row["Subject"] as String + "</a>" + "<BR>";
                     lb.Style.Add("color", "red");
                     e.Cell.Controls.Add(lb);
                 }
             }
 
+        }
 
+        protected void Calendar1_VisibleMonthChanged(object sender, MonthChangedEventArgs e)
+        {
 
+        }
+
+        protected void Calendar1_SelectionChanged(object sender, EventArgs e)
+        {
+            this.ModalPopupExtender1.Show();
+            DateTime dt = this.Calendar1.SelectedDate;
+            //send login-information later.
+            Session.Add("selectedDate", dt);
+            
         }
     }
 }
