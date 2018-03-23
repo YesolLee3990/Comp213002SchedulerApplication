@@ -25,7 +25,7 @@ namespace Comp213002SchedulerApplication {
                 );
             });
         }
-
+        //
         protected void Application_PostAuthorizeRequest() {
             if (IsWebApiRequest()) {
                 HttpContext.Current.SetSessionStateBehavior(SessionStateBehavior.Required);
