@@ -194,6 +194,7 @@
     <Compile Include="App_Code\controls\util\MUtil.cs" />
     <Compile Include="App_Code\controls\util\SessionUtil.cs" />
     <Compile Include="App_Code\controls\util\UserInfoUtil.cs" />
+    <Content Include="Login.aspx" />
     <Content Include="Report.aspx" />
     <Compile Include="App_Code\controls\models\Task.cs" />
     <Compile Include="App_Code\controls\models\UserInfo.cs" />
@@ -265,6 +266,13 @@
     <Compile Include="App_Code\controls\task\TestController.cs" />
     <Compile Include="App_Code\controls\models\Result.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Report.aspx.cs">
       <DependentUpon>Report.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
