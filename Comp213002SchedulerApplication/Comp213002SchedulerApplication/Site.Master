@@ -49,7 +49,7 @@
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/Report">Contact</a></li>
                         <li><a runat="server" href="~/Setting">Setting</a></li>
-                        
+                        <li><a runat="server" href="~/Login">Test LoginPage</a></li>
                     </ul>
                 </div>
             </div>

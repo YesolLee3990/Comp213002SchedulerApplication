@@ -70,7 +70,7 @@ namespace Comp213002SchedulerApplication
                         FormsAuthentication.SetAuthCookie(username, false);
                         nologin.Visible = false;
                         Session["User"] = loginUsernameTB.Text;
-                        Response.Redirect("~/WebForm1.aspx");
+                        Response.Redirect("~/Default.aspx");
 
                     }
 
