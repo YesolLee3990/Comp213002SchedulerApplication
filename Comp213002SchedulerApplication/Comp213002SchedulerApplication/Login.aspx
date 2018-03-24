@@ -7,16 +7,16 @@
                              <h4 id="LogoName">ESMS</h4></td></tr> 
 
                          <tr><td rowspan="3">
-                             <img src="Asset/MainLogo.jpg" /></td><td class="auto-style2"> 
+                             <img src="img/MainLogo.jpg" /></td><td class="auto-style2"> 
         
                                  <h4>Please Enter your detail to log in</h4>
                                  <div class="col-md-6 divBody heightRegistration" id="loginDiv">
 
-                <div id="Div1" runat="server" visible="false">
+                <div id="nologin" runat="server" visible="false">
                     <h1>Welcome</h1>
                     <p>User : <asp:Label ID="Username" runat="server" Text="Label" BackColor="Red"></asp:Label></p>
                    </div>
-        <div id="Div2" runat="server" visible="true">
+        <div id="login" runat="server" visible="true">
 
                      
         <h2>Login</h2>

@@ -26,14 +26,14 @@ namespace Comp213002SchedulerApplication
 
             if (Session["User"] != null)
             {
-                // nologin.Visible = false;
+                nologin.Visible = false;
                 Username.Text = (string)(Session["User"]);
-                //login.Visible = true;
+                login.Visible = true;
             }
 
             if (isAuthenticated == true)
             {
-                //nologin.Visible = false;
+                nologin.Visible = false;
             }
         }
 
@@ -68,7 +68,7 @@ namespace Comp213002SchedulerApplication
                     if (password != null && String.Equals(password, loginPasswordTB.Text))
                     {
                         FormsAuthentication.SetAuthCookie(username, false);
-                        //nologin.Visible = false;
+                        nologin.Visible = false;
                         Session["User"] = loginUsernameTB.Text;
                         Response.Redirect("~/WebForm1.aspx");
 
