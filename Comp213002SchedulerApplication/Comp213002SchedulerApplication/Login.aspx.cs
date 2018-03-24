@@ -8,6 +8,8 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
+using Comp213002SchedulerApplication.App_Code.controls.util;
+using Comp213002SchedulerApplication.App_Code.controls.models;
 
 namespace Comp213002SchedulerApplication
 {
@@ -69,7 +71,8 @@ namespace Comp213002SchedulerApplication
                     {
                         FormsAuthentication.SetAuthCookie(username, false);
                         nologin.Visible = false;
-                        Session["User"] = loginUsernameTB.Text;
+                        Session["User"] = DBUtil.SelectOne<UserInfo>("SELECT * FROM USERINFO WHERE USERID = '" + loginUsernameTB.Text + "'");
+                        //Session["User"] = loginUsernameTB.Text;
                         Response.Redirect("~/Default.aspx");
 
                     }
