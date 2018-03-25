@@ -29,7 +29,7 @@ namespace Comp213002SchedulerApplication
             if (Session["User"] != null)
             {
                 nologin.Visible = false;
-                Username.Text = (string)(Session["User"]);
+                //Username.Text = (string)(Session["User"]);
                 login.Visible = true;
             }
 

@@ -3,7 +3,7 @@
 
  
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     
      <style>
         .navbar-inverse {
