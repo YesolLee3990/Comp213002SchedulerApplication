@@ -191,16 +191,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="angular\task\app\app.component.js" />
+    <Content Include="angular\task\app\app.component.js.map" />
     <Content Include="angular\task\app\app.component.spec.js" />
+    <Content Include="angular\task\app\app.component.spec.js.map" />
     <Content Include="angular\task\app\app.module.js" />
+    <Content Include="angular\task\app\app.module.js.map" />
     <Content Include="angular\task\app\result.js" />
+    <Content Include="angular\task\app\result.js.map" />
     <Content Include="angular\task\app\script.js" />
     <Content Include="angular\task\app\task.component.css" />
     <Content Include="angular\task\app\task.component.html" />
     <Content Include="angular\task\app\task.js" />
     <Content Include="angular\task\app\task.service.js" />
+    <Content Include="angular\task\app\task.service.js.map" />
     <Content Include="angular\task\app\task.service.spec.js" />
+    <Content Include="angular\task\app\task.service.spec.js.map" />
     <Content Include="angular\task\app\userInfo.js" />
+    <Content Include="angular\task\app\userInfo.js.map" />
     <Content Include="angular\task\favicon.ico" />
     <Content Include="angular\task\index.html" />
     <Content Include="angular\task\main.js" />
