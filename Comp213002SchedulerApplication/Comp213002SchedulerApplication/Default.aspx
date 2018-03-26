@@ -21,15 +21,38 @@
   
     </style>
     <script type="text/javascript">
+        var left = false, right = false;
         function openNav1() {
-            document.getElementById("mySidenav1").style.width = "25%";
-            document.getElementById("main").style.marginLeft = "25%";
+            if (!left){
+                document.getElementById("mySidenav1").style.width = "25%";
+                document.getElementById("main").style.marginLeft = "25%";
+            } else {
+                document.getElementById("mySidenav1").style.width = "0%";
+                document.getElementById("main").style.marginLeft = "0%";
+            }
+            left = !left;
         }
         function openNav2() {
-            document.getElementById("mySidenav2").style.width = "25%";
-            document.getElementById("main").style.marginRight = "25%";
-            document.getElementById("rightMenu").style.marginLeft = "90%";
+            if (!right) {
+                document.getElementById("mySidenav2").style.width = "25%";
+                document.getElementById("main").style.marginRight = "25%";
+                document.getElementById("rightMenu").style.marginLeft = "90%";
+            } else {
+                document.getElementById("mySidenav2").style.width = "0%";
+                document.getElementById("main").style.marginRight = "0%";
+                document.getElementById("rightMenu").style.marginLeft = "100%";
+            }
+            right = !right;
         }
+
+        function assignTask() {
+            window.open('/angular/task/', '', 'width=900,height=600,scrollbars=1,resizable');
+        }
+
+        function refreshPage() {
+            document.location.href = '/Default.aspx';
+        }
+
         function closeNav1() {
             document.getElementById("mySidenav1").style.width = "0";
             document.getElementById("main").style.marginLeft = "0";
@@ -58,8 +81,15 @@
     <div id="main" align="center">
         <img src="img/logo.png" width="40px" />
         <div>
-            <span style="font-size: 30px; cursor: pointer;" onclick="openNav1()">&#9776;</span>
-            <span id="rightMenu" style="font-size: 30px; cursor: pointer; margin-left: 90%;" onclick="openNav2()">&#9776;</span>
+            <table style="width:100%">
+                <tr>
+                    <td><span style="font-size: 30px; cursor: pointer;float:left;" onclick="openNav1()">&#9776;</span></td>
+                    <td>
+                        <span id="rightMenu" style="font-size: 30px; cursor: pointer; float:right" onclick="openNav2()">&#9776;</span>
+                        <input class="btn" style="cursor: pointer; float:right;margin-right:30px;" type="button" onclick="assignTask()" value="Assign Task"/>
+                    </td>
+                </tr>
+            </table>
         </div>
 
         <asp:Calendar OnDayRender="Calendar1_DayRender" ID="Calendar1" DayStyle-HorizontalAlign="right" DayStyle-VerticalAlign="Top" DayStyle-Height="15%" runat="server" BackColor="White" BorderColor="White" Width="100%" Height="600px" OnSelectionChanged="Calendar1_SelectionChanged" OnVisibleMonthChanged="Calendar1_VisibleMonthChanged">
@@ -68,9 +98,6 @@
             <TitleStyle BackColor="#ff9f80" Height="5px" />
             <TodayDayStyle BackColor="#ffdf80" ForeColor="Black" Height="15%" />
         </asp:Calendar>
-
-
-        
        
         <asp:LinkButton ID="x" runat="server"></asp:LinkButton>
         

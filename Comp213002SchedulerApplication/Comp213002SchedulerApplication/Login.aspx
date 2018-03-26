@@ -41,4 +41,9 @@
          
                 </div>
         </div>
+
+    <script>
+        var nav = document.getElementById('navigationBar');
+        nav.style.visibility = 'hidden';
+</script>
 </asp:Content>

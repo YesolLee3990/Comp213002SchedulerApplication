@@ -24,7 +24,7 @@ namespace Comp213002SchedulerApplication.App_Code.controls.task {
                 
             }
             if (id == "0" || task == null) {
-                task = new Task() { Id = 1, Assignor = UserInfoUtil.getLoginUser().Id };
+                task = new Task() { Id = 1, Assignor = UserInfoUtil.getLoginUserId() };
             }
             return task;
         }
@@ -46,8 +46,8 @@ namespace Comp213002SchedulerApplication.App_Code.controls.task {
 
         
 
-        // POST api/<controller>
-        public void Post([FromBody]string value) {
-        }
+        //// POST api/<controller>
+        //public void Post([FromBody]string value) {
+        //}
     }
 }
