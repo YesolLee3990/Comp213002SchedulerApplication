@@ -20,52 +20,70 @@ namespace Comp213002SchedulerApplication
         }
         private DataSet GetData()
         {
-            //string connectionString = "Data Source=serverschedulerapplication.database.windows.net/SQLEXPRESS,1433;Network Library=DBMSSOCN;Initial Catalog=dbase;User ID=comp213;Password=Centennial2018";
-            string connectionString = ConfigurationManager.ConnectionStrings["esmsDbConnectionStr"].ConnectionString;
-            SqlConnection myConnection = new SqlConnection(connectionString);
-            SqlDataAdapter ad = new SqlDataAdapter("SELECT * FROM dbo.task", myConnection);
-
             DataSet ds = new DataSet();
-            ad.Fill(ds);
+            try
+            {
+                //string connectionString = "Data Source=serverschedulerapplication.database.windows.net/SQLEXPRESS,1433;Network Library=DBMSSOCN;Initial Catalog=dbase;User ID=comp213;Password=Centennial2018";
+                string connectionString = ConfigurationManager.ConnectionStrings["esmsDbConnectionStr"].ConnectionString;
+                SqlConnection myConnection = new SqlConnection(connectionString);
+                SqlDataAdapter ad = new SqlDataAdapter("SELECT * FROM dbo.task", myConnection);
+
+                
+                ad.Fill(ds);
+                return ds;
+            }catch(Exception ex)
+            {
+                string x = ex.StackTrace;
+            }
+            
             return ds;
+            
+            
         }
         protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
         {
-
-            DataSet ds = GetData();
-            //string link = "<a href='ScheduleDetails.aspx?ID=";
-            string s = e.Day.Date.ToShortDateString();
-
-            int i = 0;
-            foreach (DataRow row in ds.Tables[0].Rows)
+            try
             {
-                i++;
-                string scheduledDate = Convert.ToDateTime(row["ScheduleStart"]).ToShortDateString();
-                if (scheduledDate.Equals(s))
+                DataSet ds = GetData();
+                //string link = "<a href='ScheduleDetails.aspx?ID=";
+                string s = e.Day.Date.ToShortDateString();
+
+                int i = 0;
+                foreach (DataRow row in ds.Tables[0].Rows)
                 {
-                    LinkButton lb = new LinkButton();
-                    //lb.ID = "lb" + i;
-                    //lb.OnClientClick = "return ShowModalPopup()";
-                    lb.Text = "<BR>" + row["Subject"] as String;
-                    //lb.Text = "<BR>" + link + (int)row["ID"] + "'>" + row["Subject"] as String + "</a>" + "<BR>";
-                    lb.Style.Add("color", "red");
-                    e.Cell.Controls.Add(lb);
+                    i++;
+                    string scheduledDate = Convert.ToDateTime(row["ScheduleStart"]).ToShortDateString();
+                    if (scheduledDate.Equals(s))
+                    {
+                        LinkButton lb = new LinkButton();
+                        //lb.ID = "lb" + i;
+                        //lb.OnClientClick = "return ShowModalPopup()";
+                        lb.Text = "<BR>" + row["Subject"] as String;
+                        //lb.Text = "<BR>" + link + (int)row["ID"] + "'>" + row["Subject"] as String + "</a>" + "<BR>";
+                        lb.Style.Add("color", "red");
+                        e.Cell.Controls.Add(lb);
+                    }
                 }
+            }catch (Exception ex)
+            {
+                string x = ex.StackTrace;
             }
 
         }
 
-        protected void Calendar1_VisibleMonthChanged(object sender, MonthChangedEventArgs e)
-        {
-
-        }
-
+        
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
-            this.ModalPopupExtender1.Show();
-            DateTime dt = this.Calendar1.SelectedDate;
-            //send login-information later.
-            Session.Add("selectedDate", dt);
+            try
+            {
+                this.ModalPopupExtender1.Show();
+                DateTime dt = this.Calendar1.SelectedDate;
+                //send login-information later.
+                Session.Add("selectedDate", dt);
+            }catch(Exception ex)
+            {
+                string x = ex.StackTrace;
+            }
             
         }
     }

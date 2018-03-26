@@ -14,52 +14,68 @@ namespace Comp213002SchedulerApplication
     {
 
         private static List<dailyTaskHandler> taskList = null;
-        
+
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            if (!IsPostBack)
+            try
             {
-                taskList = new List<dailyTaskHandler>();
-                Load();
+                if (!IsPostBack)
+                {
+                    taskList = new List<dailyTaskHandler>();
+                    Load();
+                }
+            }catch(Exception ex)
+            {
+                string xx = ex.StackTrace;
             }
+            
         }
 
         protected void Load()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["esmsDbConnectionStr"].ConnectionString;
-            SqlConnection myConnection = new SqlConnection(connectionString);
-            
-            DateTime dt = (DateTime)Session["selectedDate"];
-            SqlDataAdapter ad = new SqlDataAdapter("SELECT * FROM dbo.task a, dbo.UserInfo b where a.Assignor = b.id and (ScheduleStart <= @dt and @dt <= ScheduleEnd)", myConnection);
-
-            SqlParameter param_DATE = ad.SelectCommand.Parameters.Add("@dt", System.Data.SqlDbType.DateTime);
-            param_DATE.Value = dt;
-
-            myConnection.Open();
-            ad.SelectCommand.ExecuteNonQuery();
-
-            DataSet ds = new DataSet();
-            ad.Fill(ds);
-
-            foreach (DataRow row in ds.Tables[0].Rows)
+            try
             {
-                dailyTaskHandler dth = new dailyTaskHandler();
-                dth.taskName = (string)row["subject"];
-                dth.assignor = (string)row["userName"];
-                dth.priority = (string)row["Priority"];
-                dth.status = (string)row["Status"];
-                dth.startDate = ((System.DateTime)row["ScheduleStart"]).ToLongDateString();
-                dth.endDate = ((System.DateTime)row["ScheduleEnd"]).ToShortDateString();
 
-                taskList.Add(dth);
+
+                string connectionString = ConfigurationManager.ConnectionStrings["esmsDbConnectionStr"].ConnectionString;
+                SqlConnection myConnection = new SqlConnection(connectionString);
+
+                DateTime dt = (DateTime)Session["selectedDate"];
+                SqlDataAdapter ad = new SqlDataAdapter("SELECT * FROM dbo.task a, dbo.UserInfo b where a.Assignor = b.id and (ScheduleStart <= @dt and @dt <= ScheduleEnd)", myConnection);
+
+                SqlParameter param_DATE = ad.SelectCommand.Parameters.Add("@dt", System.Data.SqlDbType.DateTime);
+                param_DATE.Value = dt;
+
+                myConnection.Open();
+                ad.SelectCommand.ExecuteNonQuery();
+
+                DataSet ds = new DataSet();
+                ad.Fill(ds);
+
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    dailyTaskHandler dth = new dailyTaskHandler();
+                    dth.taskName = (string)row["subject"];
+                    dth.assignor = (string)row["userName"];
+                    dth.priority = (string)row["Priority"];
+                    dth.status = (string)row["Status"];
+                    dth.startDate = ((System.DateTime)row["ScheduleStart"]).ToLongDateString();
+                    dth.endDate = ((System.DateTime)row["ScheduleEnd"]).ToShortDateString();
+
+                    taskList.Add(dth);
+                }
+
+                makeDropDownList();
+                makeAString();
+
+
+                myConnection.Close();
+            }catch(Exception ex)
+            {
+                string x = ex.StackTrace;
             }
-            
-            makeDropDownList();
-            makeAString();
-
-
-            myConnection.Close();
         }
 
         public void makeDropDownList()
@@ -105,8 +121,8 @@ namespace Comp213002SchedulerApplication
             this.lbContents.Text += "<br>Assignor : " + vAssignor;
             this.lbContents.Text += "<br>Priority : " + vPriority;
             this.lbContents.Text += "<br>Status : " + vStatus;
-            this.lbContents.Text += "<br>Schedule Start : " + vStartDate;
-            this.lbContents.Text += "<br>Schedule End : " + vEndDate;
+            this.txtSdate.Text= "Schedule Start : " + vStartDate;
+            this.txtEdate.Text = "Schedule End : " + vEndDate;
             this.lbContents.Text += "<br><br>";
         }
 
@@ -124,8 +140,17 @@ namespace Comp213002SchedulerApplication
 
         protected void ddTaskList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            makeAString();
+            try
+            {
+                makeAString();
+            }catch(Exception ex)
+            {
+                string x = ex.StackTrace;
+            }
+            
         }
+
+       
     }
 
 
