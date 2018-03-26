@@ -20,6 +20,7 @@ namespace Comp213002SchedulerApplication
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["esmsDbConnectionStr"].ToString());
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             bool isAuthenticated = (HttpContext.Current.User != null) && HttpContext.Current.User.Identity.IsAuthenticated;
 
             SqlCommand com = new SqlCommand("SELECT * FROM UserInfo", conn);
@@ -28,14 +29,21 @@ namespace Comp213002SchedulerApplication
 
             if (Session["User"] != null)
             {
-                nologin.Visible = false;
+                //nologin.Visible = false;
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert( 'Log In Complete.' ); </script>");
                 //Username.Text = (string)(Session["User"]);
                 login.Visible = true;
-            }
+                
 
+            }
+            
+            
             if (isAuthenticated == true)
             {
-                nologin.Visible = false;
+                //nologin.Visible = false;
+                //ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert( 'Login complete.' );", true);
+                //WarningLblLogin.Text = "User name or Password is incorrect";
+                //WarningLblLogin.Visible = true;
             }
         }
 
@@ -60,6 +68,7 @@ namespace Comp213002SchedulerApplication
 
                 if (username != null && String.Equals(username, loginUsernameTB.Text))
                 {
+                   
                     object returnValue = checkPassword.ExecuteScalar();
                     if (returnValue == null)
                     {
@@ -69,23 +78,28 @@ namespace Comp213002SchedulerApplication
 
                     if (password != null && String.Equals(password, loginPasswordTB.Text))
                     {
-                        FormsAuthentication.SetAuthCookie(username, false);
-                        nologin.Visible = false;
+                        //ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert( 'Login complete.' );", true);
+                        FormsAuthentication.SetAuthCookie(username, false);                       
                         Session["User"] = DBUtil.SelectOne<UserInfo>("SELECT * FROM USERINFO WHERE USERID = '" + loginUsernameTB.Text + "'");
                         //Session["User"] = loginUsernameTB.Text;
+
+
                         Response.Redirect("~/Default.aspx");
 
                     }
+                    
 
                 }
                 else
                 {
-                    WarningLblLogin.Text = "No username was found";
+                    
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert( 'User name or Password is incorrect.' ); </script>");
+                    
                 }
 
             }
             catch (Exception exception)
-            {
+            {                
                 WarningLblLogin.Text = exception.Message.ToString();
             }
             finally
