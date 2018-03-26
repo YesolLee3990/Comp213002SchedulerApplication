@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Comp213002SchedulerApplication._Default" %>
-
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
  
@@ -92,7 +91,7 @@
             </table>
         </div>
 
-        <asp:Calendar OnDayRender="Calendar1_DayRender" ID="Calendar1" DayStyle-HorizontalAlign="right" DayStyle-VerticalAlign="Top" DayStyle-Height="15%" runat="server" BackColor="White" BorderColor="White" Width="100%" Height="600px" OnSelectionChanged="Calendar1_SelectionChanged" OnVisibleMonthChanged="Calendar1_VisibleMonthChanged">
+        <asp:Calendar OnDayRender="Calendar1_DayRender" ID="Calendar1" DayStyle-HorizontalAlign="right" DayStyle-VerticalAlign="Top" DayStyle-Height="15%" runat="server" BackColor="White" BorderColor="White" Width="100%" Height="600px" OnSelectionChanged="Calendar1_SelectionChanged">
             <DayHeaderStyle BackColor="#ffbf80" Height="5px" />
             <SelectedDayStyle BackColor="#ffff80" Height="15%" ForeColor="black" HorizontalAlign="Right" VerticalAlign="Top" />
             <TitleStyle BackColor="#ff9f80" Height="5px" />
