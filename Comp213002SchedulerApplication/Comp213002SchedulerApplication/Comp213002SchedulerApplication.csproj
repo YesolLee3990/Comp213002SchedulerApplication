@@ -202,6 +202,7 @@
     <Content Include="angular\task\app\task.component.css" />
     <Content Include="angular\task\app\task.component.html" />
     <Content Include="angular\task\app\task.js" />
+    <Content Include="angular\task\app\task.js.map" />
     <Content Include="angular\task\app\task.service.js" />
     <Content Include="angular\task\app\task.service.js.map" />
     <Content Include="angular\task\app\task.service.spec.js" />
@@ -219,6 +220,7 @@
     <Compile Include="App_Code\controls\util\MUtil.cs" />
     <Compile Include="App_Code\controls\util\SessionUtil.cs" />
     <Compile Include="App_Code\controls\util\UserInfoUtil.cs" />
+    <Content Include="angular\task\tsconfig.json" />
     <Content Include="Http404ErrorPage.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Report.aspx" />
