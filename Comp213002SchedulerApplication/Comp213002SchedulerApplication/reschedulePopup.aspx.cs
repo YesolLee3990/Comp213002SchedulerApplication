@@ -33,7 +33,7 @@ namespace Comp213002SchedulerApplication
             
         }
 
-        protected void Load()
+        protected new void Load()
         {
             try
             {
@@ -72,7 +72,8 @@ namespace Comp213002SchedulerApplication
 
 
                 myConnection.Close();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 string x = ex.StackTrace;
             }

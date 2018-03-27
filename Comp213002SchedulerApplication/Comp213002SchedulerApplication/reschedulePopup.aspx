@@ -24,8 +24,7 @@
             <asp:Label ID="labelEdate" runat="server" Text="End Date : "></asp:Label>&nbsp<asp:TextBox ID="txtEdate" runat="server"></asp:TextBox>
             
 
-            <cc1:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="txtSdate"></cc1:CalendarExtender>
-            <cc1:CalendarExtender ID="CalendarExtender2" runat="server" TargetControlID="txtEdate"></cc1:CalendarExtender>
+            
         </div>
         <asp:DropDownList ID="ddTaskList" runat="server" Height="16px" AutoPostBack="True" OnSelectedIndexChanged="ddTaskList_SelectedIndexChanged" Width="207px"></asp:DropDownList>
         
