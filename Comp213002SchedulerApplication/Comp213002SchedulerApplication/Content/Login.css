@@ -3,7 +3,7 @@
     margin-left: auto;
     width: 960px;
     text-align: center;
-    background-image: url(Asset/Background1.jpg)
+    background-image: url(../img/Background1.jpg)
 }
 
 #tbl1 {
@@ -64,3 +64,4 @@
         position: relative;
         top: 1px;
     }
+

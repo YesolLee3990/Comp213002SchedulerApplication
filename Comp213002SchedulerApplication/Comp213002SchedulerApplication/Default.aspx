@@ -1,8 +1,6 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Comp213002SchedulerApplication._Default" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
- 
-
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     
      <style>
@@ -35,11 +33,9 @@
             if (!right) {
                 document.getElementById("mySidenav2").style.width = "25%";
                 document.getElementById("main").style.marginRight = "25%";
-                document.getElementById("rightMenu").style.marginLeft = "90%";
             } else {
                 document.getElementById("mySidenav2").style.width = "0%";
                 document.getElementById("main").style.marginRight = "0%";
-                document.getElementById("rightMenu").style.marginLeft = "100%";
             }
             right = !right;
         }
@@ -77,15 +73,21 @@
     </div>
 
 
-    <div id="main" align="center">
-        <img src="img/logo.png" width="40px" />
+    <div id="main" style="margin:auto;">
+        <div style="float:right">
+            <asp:Label ID="loginInfoLabel" runat="server"></asp:Label>
+            <asp:Button ID="logoutBtn" runat="server" Text="Logout" BorderStyle="None" BorderWidth="0px" CausesValidation="False"/>
+        </div>
+        <div style="margin:auto">
+            <img src="img/logo.png" width="40" />
+        </div>
         <div>
             <table style="width:100%">
                 <tr>
                     <td><span style="font-size: 30px; cursor: pointer;float:left;" onclick="openNav1()">&#9776;</span></td>
                     <td>
-                        <span id="rightMenu" style="font-size: 30px; cursor: pointer; float:right" onclick="openNav2()">&#9776;</span>
-                        <input class="btn" style="cursor: pointer; float:right;margin-right:30px;" type="button" onclick="assignTask()" value="Assign Task"/>
+                        <span id="rightMenu" style="font-size: 30px; cursor: pointer; float:right;width:30px;" onclick="openNav2()">&#9776;</span>
+                        <asp:Button id="assignTaskBtn" CssClass="assignBtn" OnClientClick="assignTask()" Text="Assign Task" runat="server" UseSubmitBehavior="false"/>
                     </td>
                 </tr>
             </table>
@@ -124,7 +126,4 @@
         <div style="background-color: #fff9e6; border-radius: 10px; margin: 10px; padding: 5px; height: 30%">Date</div>
         <div style="background-color: #fff9e6; border-radius: 10px; margin: 10px; padding: 5px; height: 20%">Date</div>
     </div>
-
-    
-
 </asp:Content>

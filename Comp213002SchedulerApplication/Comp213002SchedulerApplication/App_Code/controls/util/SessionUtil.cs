@@ -13,6 +13,19 @@ namespace Comp213002SchedulerApplication.App_Code.controls.util {
             return System.Web.HttpContext.Current.Session[key];
         }
 
+        public static bool expireSession() {
+            bool result = true;
+            try {
+                System.Web.HttpContext.Current.Session.Abandon();
+                System.Web.HttpContext.Current.Session.Clear();
+            }
+            catch(Exception e) {
+                return false;
+            }
+
+            return result;
+        }
+
         public static Result putSessionInfo(string key, object value) {
             Result result = new Result();
             try {

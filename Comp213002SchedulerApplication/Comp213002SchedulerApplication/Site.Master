@@ -14,8 +14,8 @@
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <webopt:bundlereference runat="server" path="~/Content/DefaultStyle.css" />
+    <webopt:bundlereference runat="server" path="~/Content/Login.css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link rel="stylesheet" href="Login.css" type="text/css" media="screen" /> 
 
 
 </head>

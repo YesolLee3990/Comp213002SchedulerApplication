@@ -1,4 +1,5 @@
-﻿using Comp213002SchedulerApplication.App_Code.controls.util;
+﻿using Comp213002SchedulerApplication.App_Code.controls.models;
+using Comp213002SchedulerApplication.App_Code.controls.util;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -20,7 +21,26 @@ namespace Comp213002SchedulerApplication
         protected void Page_Load(object sender, EventArgs e)
         {
             ds = GetData();
+            AuthProcess();
         }
+
+        private void AuthProcess() {
+            // Assign Button Setting
+            if (!UserInfoUtil.isManager()) {
+                assignTaskBtn.Visible = false;
+            }
+
+            UserInfo loginUser = (UserInfo)UserInfoUtil.getLoginUser();
+            loginInfoLabel.Text = loginUser.UserName + "(" + loginUser.UserId + ")";
+            logoutBtn.Click += LogOut;
+        }
+
+        private void LogOut(object sender, EventArgs e) {
+            SessionUtil.expireSession();
+            Response.Cookies.Clear();
+            Response.Redirect("~/Login.aspx");
+        }
+
         private DataSet GetData()
         {
             //string connectionString = "Data Source=serverschedulerapplication.database.windows.net/SQLEXPRESS,1433;Network Library=DBMSSOCN;Initial Catalog=dbase;User ID=comp213;Password=Centennial2018";

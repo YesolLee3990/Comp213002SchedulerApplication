@@ -22,15 +22,15 @@ namespace Comp213002SchedulerApplication.App_Code.controls.util {
         }
 
         public static bool isManager() {
-            return (char)SessionUtil.getSessionInfo(ApplicationConstants.LOGIN_USER_NAME) == 'M';
+            return (char)SessionUtil.getSessionInfo(ApplicationConstants.LOGIN_USER_TYPE) == 'M';
         }
 
         public static bool isAdmin() {
-            return (char)SessionUtil.getSessionInfo(ApplicationConstants.LOGIN_USER_NAME) == 'A';
+            return (char)SessionUtil.getSessionInfo(ApplicationConstants.LOGIN_USER_TYPE) == 'A';
         }
 
         public static bool isNormalUser() {
-            return (char)SessionUtil.getSessionInfo(ApplicationConstants.LOGIN_USER_NAME) == 'N';
+            return (char)SessionUtil.getSessionInfo(ApplicationConstants.LOGIN_USER_TYPE) == 'N';
         }
 
         public static UserInfo getUserInfo(int key) {
