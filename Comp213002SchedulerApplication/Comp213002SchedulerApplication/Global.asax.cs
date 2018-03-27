@@ -67,9 +67,9 @@ namespace Comp213002SchedulerApplication {
         }
 
         void Application_PreRequestHandlerExecute(object sender, EventArgs e) {
-            if (!SessionUtil.isLogin() && Request.Url.ToString().IndexOf("Login") < 0) {
+            if (!SessionUtil.isLogin() && Request.Url.ToString().IndexOf("Login.aspx") < 0) {
                 Session["SessionExpire"] = true;
-                Response.Redirect("~/Login.aspx", false);
+                Response.Redirect("~/Login.aspx");
             }
         }
     }
