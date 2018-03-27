@@ -220,7 +220,6 @@
     <Compile Include="App_Code\controls\util\MUtil.cs" />
     <Compile Include="App_Code\controls\util\SessionUtil.cs" />
     <Compile Include="App_Code\controls\util\UserInfoUtil.cs" />
-    <Content Include="angular\task\tsconfig.json" />
     <Content Include="Http404ErrorPage.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Report.aspx" />
