@@ -13,9 +13,10 @@ namespace Comp213002SchedulerApplication {
     public class Global : HttpApplication {
         void Application_Start(object sender, EventArgs e) {
             // Code that runs on application startup
+            RouteTable.Routes.Ignore("{resource}.axd/{*pathInfo}");
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            
+
             GlobalConfiguration.Configure(config => {
                 config.MapHttpAttributeRoutes();
                 config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
