@@ -1,5 +1,4 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Comp213002SchedulerApplication.SiteMaster" %>
-<!DOCTYPE html>
 <html lang="en">
 <head runat="server">
     <meta charset="utf-8" />
