@@ -26,7 +26,7 @@ namespace Comp213002SchedulerApplication.App_Code.controls.task {
             return result;
         }
 
-        internal UserInfo[] SearchUser(string name) {
+        public UserInfo[] SearchUser(string name) {
             DataTable dt = DBUtil.Select("SELECT * FROM USERINFO WHERE USERNAME LIKE '%" + name + "%'");
             if (dt.Rows.Count >= 0) {
                 UserInfo[] users = new UserInfo[dt.Rows.Count];
