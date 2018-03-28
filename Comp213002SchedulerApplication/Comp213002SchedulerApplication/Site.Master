@@ -1,7 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Comp213002SchedulerApplication.SiteMaster" %>
-
 <!DOCTYPE html>
-
 <html lang="en">
 <head runat="server">
     <meta charset="utf-8" />
@@ -14,14 +12,14 @@
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <webopt:bundlereference runat="server" path="~/Content/DefaultStyle.css" />
+    <webopt:bundlereference runat="server" path="~/Content/Login.css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link rel="stylesheet" href="Login.css" type="text/css" media="screen" /> 
 
 
 </head>
 <body>
     <form runat="server">
-        <asp:ScriptManager runat="server">
+        <asp:ScriptManager runat="server" EnableCdn="true">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
                 <%--Framework Scripts--%>
@@ -42,9 +40,8 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div id="navigationBar" class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
-               
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
@@ -57,14 +54,12 @@
         </div>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
-                
             </asp:ContentPlaceHolder>
             <hr />
            <%-- <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
             </footer>--%>
         </div>
-
     </form>
 </body>
 </html>

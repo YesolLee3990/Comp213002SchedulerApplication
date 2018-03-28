@@ -74,11 +74,6 @@ var AppComponent = /** @class */ (function () {
             window.open('', '_self').close();
         }
     };
-    Object.defineProperty(AppComponent.prototype, "diagnostic", {
-        get: function () { return JSON.stringify(this.task); },
-        enumerable: true,
-        configurable: true
-    });
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Comp213002SchedulerApplication.App_Code.controls.util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,12 +13,13 @@ namespace Comp213002SchedulerApplication {
     public class Global : HttpApplication {
         void Application_Start(object sender, EventArgs e) {
             // Code that runs on application startup
+            RouteTable.Routes.Ignore("{resource}.axd/{*pathInfo}");
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             GlobalConfiguration.Configure(config => {
                 config.MapHttpAttributeRoutes();
-
+                config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
                 config.Routes.MapHttpRoute(
                     name: "DefaultApi",
                     routeTemplate: "api/{controller}/{id}",
@@ -27,13 +29,7 @@ namespace Comp213002SchedulerApplication {
         }
         //
         protected void Application_PostAuthorizeRequest() {
-            if (IsWebApiRequest()) {
-                HttpContext.Current.SetSessionStateBehavior(SessionStateBehavior.Required);
-            }
-        }
-
-        private bool IsWebApiRequest() {
-            return HttpContext.Current.Request.AppRelativeCurrentExecutionFilePath.StartsWith("~/api");
+            HttpContext.Current.SetSessionStateBehavior(SessionStateBehavior.Required);
         }
 
         void Application_Error(object sender, EventArgs e) {
@@ -70,6 +66,14 @@ namespace Comp213002SchedulerApplication {
 
             // Clear the error from the server
             Server.ClearError();
+        }
+
+        void Application_PreRequestHandlerExecute(object sender, EventArgs e) {
+            string url = Request.Url.ToString();
+            if (!SessionUtil.isLogin() && (url.IndexOf("Login") < 0 && url.EndsWith(".aspx"))) {
+                Session["SessionExpire"] = true;
+                Response.Redirect("~/Login.aspx");
+            }
         }
     }
 }

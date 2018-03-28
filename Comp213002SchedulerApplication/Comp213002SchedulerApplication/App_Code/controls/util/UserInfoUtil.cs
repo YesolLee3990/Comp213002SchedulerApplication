@@ -4,7 +4,6 @@ using Comp213002SchedulerApplication.App_Code.controls.models;
 namespace Comp213002SchedulerApplication.App_Code.controls.util {
     public class UserInfoUtil {
         public static UserInfo getLoginUser() {
-            Task a = new Task();
             UserInfo user = (UserInfo)SessionUtil.getSessionInfo(ApplicationConstants.LOGIN_SESSION_KEY);
 
             // temporary Code
@@ -18,16 +17,20 @@ namespace Comp213002SchedulerApplication.App_Code.controls.util {
             return user;
         }
 
+        public static int getLoginUserId() {
+            return (int)SessionUtil.getSessionInfo(ApplicationConstants.LOGIN_ID);
+        }
+
         public static bool isManager() {
-            return getLoginUser().UserType == 'M';
+            return (char)SessionUtil.getSessionInfo(ApplicationConstants.LOGIN_USER_TYPE) == 'M';
         }
 
         public static bool isAdmin() {
-            return getLoginUser().UserType == 'A';
+            return (char)SessionUtil.getSessionInfo(ApplicationConstants.LOGIN_USER_TYPE) == 'A';
         }
 
         public static bool isNormalUser() {
-            return getLoginUser().UserType == 'N';
+            return (char)SessionUtil.getSessionInfo(ApplicationConstants.LOGIN_USER_TYPE) == 'N';
         }
 
         public static UserInfo getUserInfo(int key) {

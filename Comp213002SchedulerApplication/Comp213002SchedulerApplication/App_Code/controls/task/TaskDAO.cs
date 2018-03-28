@@ -8,7 +8,6 @@ using System.Web;
 
 namespace Comp213002SchedulerApplication.App_Code.controls.task {
     public class TaskDAO{
-        string columns = "ID, USERINFO_ID, ASSIGNOR";
         public Task GetTask(int id) {
             return DBUtil.SelectOne<Task>("SELECT * FROM TASK WHERE ID = '" + id + "'");
         }
@@ -27,7 +26,7 @@ namespace Comp213002SchedulerApplication.App_Code.controls.task {
             return result;
         }
 
-        internal UserInfo[] SearchUser(string name) {
+        public UserInfo[] SearchUser(string name) {
             DataTable dt = DBUtil.Select("SELECT * FROM USERINFO WHERE USERNAME LIKE '%" + name + "%'");
             if (dt.Rows.Count >= 0) {
                 UserInfo[] users = new UserInfo[dt.Rows.Count];

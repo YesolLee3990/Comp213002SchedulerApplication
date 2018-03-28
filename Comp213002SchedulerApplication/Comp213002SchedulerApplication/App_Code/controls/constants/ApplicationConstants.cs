@@ -8,5 +8,13 @@ namespace Comp213002SchedulerApplication.App_Code.controls.constants {
         public static String MAIN = "MAIN";
         public static string REGISTER = "REGISTER";
         public static string LOGIN_SESSION_KEY = "loginUserInfo";
+
+        // Do use user information in session for webservice & common pages
+        public static string LOGIN_USER_ID = "loginUserId";
+        public static string LOGIN_ID = "loginId";
+        public static string LOGIN_USER_NAME = "loginUserName";
+        public static string LOGIN_USER_TYPE = "loginUserType";
+        public static string LOGIN_USER_EMP_STATUS = "loginUserEmpStatus";
+        public static string LOGIN_USER_EMAIL = "loginUserEamil";
     }
 }
