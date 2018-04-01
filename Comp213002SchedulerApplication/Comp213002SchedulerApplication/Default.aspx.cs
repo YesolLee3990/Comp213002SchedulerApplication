@@ -27,19 +27,19 @@ namespace Comp213002SchedulerApplication
 
         private void AuthProcess() {
             // Assign Button Setting
-            if (!UserInfoUtil.isManager()) {
-                assignTaskBtn.Visible = false;
-            }
+            //if (!UserInfoUtil.isManager()) {
+            //    assignTaskBtn.Visible = false;
+            //}
 
-            UserInfo loginUser = (UserInfo)UserInfoUtil.getLoginUser();
-            loginInfoLabel.Text = loginUser.UserName + "(" + loginUser.UserId + ")";
-            logoutBtn.Click += LogOut;
+            //UserInfo loginUser = (UserInfo)UserInfoUtil.getLoginUser();
+            //loginInfoLabel.Text = loginUser.UserName + "(" + loginUser.UserId + ")";
+            //logoutBtn.Click += LogOut;
         }
 
         private void LogOut(object sender, EventArgs e) {
-            SessionUtil.expireSession();
-            Response.Cookies.Clear();
-            Response.Redirect("~/Login.aspx");
+            //SessionUtil.expireSession();
+            //Response.Cookies.Clear();
+            //Response.Redirect("~/Login.aspx");
         }
 
         private DataSet GetData()
