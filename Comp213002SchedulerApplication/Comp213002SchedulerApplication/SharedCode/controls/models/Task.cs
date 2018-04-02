@@ -1,12 +1,13 @@
 ﻿using System;
 
-namespace Comp213002SchedulerApplication.App_Code.controls.models {
+namespace Comp213002SchedulerApplication.AppCode.controls.models {
     public class Task {
         public int Id { get; set; } = 0;
         public int UserInfo_Id { get; set; } = 0;
         public int Assignor { get; set; } = 0;
         public string Subject { get; set; } = "";
         public string Description { get; set; } = "";
+        public string Result { get; set; } = "";
         public char Priority { get; set; } = '3';
         public char Status { get; set; } = 'S';
         public DateTime ScheduleStart { get; set; } = DateTime.Now;

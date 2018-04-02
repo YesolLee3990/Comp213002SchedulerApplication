@@ -1,13 +1,14 @@
-﻿using Comp213002SchedulerApplication.App_Code.controls.models;
+﻿using Comp213002SchedulerApplication.AppCode.controls.models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Reflection;
 using System.Web;
 
-namespace Comp213002SchedulerApplication.App_Code.controls.util {
+namespace Comp213002SchedulerApplication.AppCode.controls.util {
     public class DBUtil {
 
         public static string GetConnectionString() {
@@ -46,7 +47,7 @@ namespace Comp213002SchedulerApplication.App_Code.controls.util {
             T item = new T();
             if (dataRow != null) {
                 foreach (DataColumn column in dataRow.Table.Columns) {
-                    PropertyInfo property = item.GetType().GetProperty(column.ColumnName);
+                    PropertyInfo property = item.GetType().GetProperty(column.ColumnName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
 
                     if (property != null && dataRow[column] != DBNull.Value) {
                         object result = Convert.ChangeType(dataRow[column], property.PropertyType);
@@ -108,6 +109,22 @@ namespace Comp213002SchedulerApplication.App_Code.controls.util {
 
         private const string comma = ", ";
 
+        public static String BuildUpdateQuery(Object obj, String[] colnames) {
+            string sql = "UPDATE " + obj.GetType().Name + " SET ";
+            PropertyInfo[] props = obj.GetType().GetProperties();
+            foreach (string col in colnames) {
+                foreach (PropertyInfo prop in props.Where(prop => prop.Name.ToUpper() == col.ToUpper())) {
+                    object val = prop.GetValue(obj);
+                    sql += col + " = '" + val + "', ";
+                }
+            }
+            sql = removeComma(sql);
+
+            int id = (int)obj.GetType().GetProperty("ID", BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance).GetValue(obj);
+            sql += " WHERE ID = '" + id + "'";
+
+            return sql;
+        }
         public static String BuildInsertQuery(Object obj) {
             string sql = "INSERT INTO " + obj.GetType().Name + " (";
             string sqlValues = " VALUES(";
@@ -132,8 +149,14 @@ namespace Comp213002SchedulerApplication.App_Code.controls.util {
         }
 
         private static string any(String sql) {
-            if (sql.EndsWith(comma)) sql = sql.Substring(0, sql.Length - 2);
+            sql = removeComma(sql);
             sql += ") ";
+            return sql;
+        }
+
+        private static string removeComma(String sql) {
+            sql = sql.Trim();
+            if(sql.EndsWith(",")) sql = sql.Substring(0, sql.Length - 1);
             return sql;
         }
 
@@ -142,7 +165,7 @@ namespace Comp213002SchedulerApplication.App_Code.controls.util {
         }
 
         public static T SelectOneById<T>(int key) where T : new() {
-            return SelectOne<T>("SELECT * FROM " + default(T).GetType().Name + " WHERE ID = '" + key + "'");
+            return SelectOne<T>("SELECT * FROM " + typeof(T).Name + " WHERE ID = '" + key + "'");
         }
     }
 }

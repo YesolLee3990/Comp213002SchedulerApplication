@@ -1,10 +1,10 @@
-﻿using Comp213002SchedulerApplication.App_Code.controls.constants;
-using Comp213002SchedulerApplication.App_Code.controls.models;
+﻿using Comp213002SchedulerApplication.AppCode.controls.constants;
+using Comp213002SchedulerApplication.AppCode.controls.models;
 using System;
 using System.Web.Services;
-using static Comp213002SchedulerApplication.App_Code.controls.constants.ApplicationConstants;
+using static Comp213002SchedulerApplication.AppCode.controls.constants.ApplicationConstants;
 
-namespace Comp213002SchedulerApplication.App_Code.controls.util {
+namespace Comp213002SchedulerApplication.AppCode.controls.util {
     public class SessionUtil{
         public static bool isLogin() {
             return (UserInfo)getSessionInfo(LOGIN_SESSION_KEY) != null;

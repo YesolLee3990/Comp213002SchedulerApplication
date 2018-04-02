@@ -1,7 +1,7 @@
-﻿using Comp213002SchedulerApplication.App_Code.controls.constants;
-using Comp213002SchedulerApplication.App_Code.controls.models;
+﻿using Comp213002SchedulerApplication.AppCode.controls.constants;
+using Comp213002SchedulerApplication.AppCode.controls.models;
 
-namespace Comp213002SchedulerApplication.App_Code.controls.util {
+namespace Comp213002SchedulerApplication.AppCode.controls.util {
     public class UserInfoUtil {
         public static UserInfo getLoginUser() {
             UserInfo user = (UserInfo)SessionUtil.getSessionInfo(ApplicationConstants.LOGIN_SESSION_KEY);
@@ -18,19 +18,27 @@ namespace Comp213002SchedulerApplication.App_Code.controls.util {
         }
 
         public static int getLoginUserId() {
-            return (int)SessionUtil.getSessionInfo(ApplicationConstants.LOGIN_ID);
+            object obj = SessionUtil.getSessionInfo(ApplicationConstants.LOGIN_ID);
+            if (obj == null) return 0;
+            return (int)obj;
         }
 
         public static bool isManager() {
-            return (char)SessionUtil.getSessionInfo(ApplicationConstants.LOGIN_USER_TYPE) == 'M';
+            return GetLoginUserType() == 'M';
         }
 
         public static bool isAdmin() {
-            return (char)SessionUtil.getSessionInfo(ApplicationConstants.LOGIN_USER_TYPE) == 'A';
+            return GetLoginUserType() == 'A';
         }
 
         public static bool isNormalUser() {
-            return (char)SessionUtil.getSessionInfo(ApplicationConstants.LOGIN_USER_TYPE) == 'N';
+            return GetLoginUserType() == 'N';
+        }
+
+        private static char GetLoginUserType() {
+            object obj = SessionUtil.getSessionInfo(ApplicationConstants.LOGIN_USER_TYPE);
+            if (obj == null) return '\0';
+            else return (char)obj;
         }
 
         public static UserInfo getUserInfo(int key) {

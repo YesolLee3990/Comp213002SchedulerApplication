@@ -40,6 +40,7 @@
     <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
     <Prefer32Bit>false</Prefer32Bit>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -196,30 +197,36 @@
     <Content Include="angular\task\app\app.component.spec.js.map" />
     <Content Include="angular\task\app\app.module.js" />
     <Content Include="angular\task\app\app.module.js.map" />
-    <Content Include="angular\task\app\result.js" />
-    <Content Include="angular\task\app\result.js.map" />
     <Content Include="angular\task\app\script.js" />
-    <Content Include="angular\task\app\task.component.css" />
+    <Content Include="angular\css\task.component.css" />
     <Content Include="angular\task\app\task.component.html" />
-    <Content Include="angular\task\app\task.js" />
-    <Content Include="angular\task\app\task.js.map" />
     <Content Include="angular\task\app\task.service.js" />
     <Content Include="angular\task\app\task.service.js.map" />
     <Content Include="angular\task\app\task.service.spec.js" />
     <Content Include="angular\task\app\task.service.spec.js.map" />
-    <Content Include="angular\task\app\userInfo.js" />
-    <Content Include="angular\task\app\userInfo.js.map" />
     <Content Include="angular\task\favicon.ico" />
     <Content Include="angular\task\index.html" />
     <Content Include="angular\task\main.js" />
-    <Content Include="angular\task\styles.css" />
+    <Content Include="angular\css\styles.css" />
     <Content Include="angular\task\systemjs-angular-loader.js" />
     <Content Include="angular\task\systemjs.config.extras.js" />
     <Content Include="angular\task\systemjs.config2.js" />
-    <Compile Include="App_Code\controls\util\DBUtil.cs" />
-    <Compile Include="App_Code\controls\util\MUtil.cs" />
-    <Compile Include="App_Code\controls\util\SessionUtil.cs" />
-    <Compile Include="App_Code\controls\util\UserInfoUtil.cs" />
+    <Content Include="angular\update-task\app\app.component.js" />
+    <Content Include="angular\update-task\app\app.component.spec.js" />
+    <Content Include="angular\update-task\app\app.module.js" />
+    <Content Include="angular\update-task\app\update-task-service.service.js" />
+    <Content Include="angular\update-task\app\update-task-service.service.spec.js" />
+    <Content Include="angular\update-task\app\updateTask.component.html" />
+    <Content Include="angular\update-task\index.html" />
+    <Content Include="angular\update-task\main.js" />
+    <Content Include="angular\update-task\systemjs-angular-loader.js" />
+    <Content Include="angular\update-task\systemjs.config.extras.js" />
+    <Content Include="angular\update-task\systemjs.config2.js" />
+    <Content Include="App_Code\controls\task\TaskController.cs" />
+    <Compile Include="SharedCode\controls\util\DBUtil.cs" />
+    <Compile Include="SharedCode\controls\util\MUtil.cs" />
+    <Compile Include="SharedCode\controls\util\SessionUtil.cs" />
+    <Compile Include="SharedCode\controls\util\UserInfoUtil.cs" />
     <Content Include="Content\Login.css" />
     <Content Include="Http404ErrorPage.aspx" />
     <Content Include="img\Background1.jpg" />
@@ -227,13 +234,12 @@
     <Content Include="img\SmallLogo.png" />
     <Content Include="Login.aspx" />
     <Content Include="Report.aspx" />
-    <Compile Include="App_Code\controls\models\Task.cs">
+    <Compile Include="SharedCode\controls\models\Task.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="App_Code\controls\models\UserInfo.cs">
+    <Compile Include="SharedCode\controls\models\UserInfo.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Content Include="App_Code\controls\task\TaskController.cs" />
     <Content Include="requestRescheduling.aspx" />
     <Content Include="reschedulePopup.aspx" />
     <Content Include="Setting.aspx" />
@@ -255,6 +261,14 @@
     <Content Include="package.json" />
     <Content Include="package-lock.json" />
     <Content Include="angular\task\main.js.map" />
+    <Content Include="angular\task\tsconfig.json" />
+    <Content Include="angular\update-task\tsconfig.json" />
+    <Content Include="angular\update-task\main.js.map" />
+    <Content Include="angular\update-task\app\app.component.js.map" />
+    <Content Include="angular\update-task\app\app.component.spec.js.map" />
+    <Content Include="angular\update-task\app\app.module.js.map" />
+    <Content Include="angular\update-task\app\update-task-service.service.js.map" />
+    <Content Include="angular\update-task\app\update-task-service.service.spec.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -297,12 +311,9 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Code\controls\constants\ApplicationConstants.cs" />
-    <Compile Include="App_Code\controls\login\LoginDAO.cs" />
-    <Compile Include="App_Code\controls\login\LoginController.cs" />
-    <Compile Include="App_Code\controls\task\TaskDAO.cs" />
-    <Compile Include="App_Code\controls\task\TestController.cs" />
-    <Compile Include="App_Code\controls\models\Result.cs">
+    <Compile Include="SharedCode\controls\constants\ApplicationConstants.cs" />
+    <Content Include="App_Code\controls\task\TaskDAO.cs" />
+    <Compile Include="SharedCode\controls\models\Result.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -393,13 +404,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Code\controls\admin\" />
-    <Folder Include="App_Code\controls\group\" />
-    <Folder Include="App_Code\controls\report\" />
-    <Folder Include="App_Code\controls\scheduler\" />
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+    <Folder Include="SharedCode\controls\admin\" />
+    <Folder Include="SharedCode\controls\group\" />
+    <Folder Include="SharedCode\controls\report\" />
+    <Folder Include="SharedCode\controls\scheduler\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
@@ -418,6 +429,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="angular\domain\result.ts" />
+    <TypeScriptCompile Include="angular\domain\task.ts" />
+    <TypeScriptCompile Include="angular\domain\userInfo.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

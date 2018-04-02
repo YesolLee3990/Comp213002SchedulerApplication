@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Comp213002SchedulerApplication.Login" %>
-
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <webopt:bundlereference runat="server" path="~/Content/Login.css" />
     <div>
         <div>
             <table id="tbl1">

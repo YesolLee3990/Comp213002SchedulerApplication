@@ -10,57 +10,43 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var task_service_1 = require("./task.service");
-var Subject_1 = require("rxjs/Subject");
-var operators_1 = require("rxjs/operators");
+var update_task_service_service_1 = require("./update-task-service.service");
 var AppComponent = /** @class */ (function () {
-    function AppComponent(taskService) {
-        this.taskService = taskService;
-        this.title = 'Assign Task';
-        this.isValid = true;
-        this.searchTerms = new Subject_1.Subject();
+    function AppComponent(updateTaskService) {
+        this.updateTaskService = updateTaskService;
     }
-    AppComponent.prototype.search = function (term) {
-        this.task.UserInfo_Id = 0;
-        this.isValid = false;
-        if (term && term.indexOf("/") < 0) {
-            this.searchTerms.next(term);
-        }
-    };
     AppComponent.prototype.ngOnInit = function () {
         this.getInitTask();
-        this.initUserList();
-    };
-    AppComponent.prototype.initUserList = function () {
-        var _this = this;
-        this.userList$ = this.searchTerms.pipe(
-        // wait 300ms after each keystroke before considering the term
-        operators_1.debounceTime(300), 
-        // ignore new term if same as previous term
-        operators_1.distinctUntilChanged(), 
-        // switch to new search observable each time the term changes
-        operators_1.switchMap(function (term) { return _this.taskService.getUserList(term); }));
     };
     AppComponent.prototype.getInitTask = function () {
         var _this = this;
-        this.taskService.getTask().subscribe(function (initialTask) {
-            //alert("initialTask : " + initialTask);
-            //alert("initialTask.Subject : " + initialTask.Subject);
-            _this.task = initialTask;
+        var taskId = this.getUrlParameter('taskId');
+        if (taskId) {
+            this.updateTaskService.getTask(taskId).subscribe(function (initialTask) {
+                _this.task = initialTask;
+                _this.getAssignorInfo();
+            });
+        }
+        else {
+            alert('Give url path is wrong. ');
+            window.open('', '_self').close();
+        }
+    };
+    AppComponent.prototype.getAssignorInfo = function () {
+        var _this = this;
+        this.updateTaskService.getAssignerUserInfo(this.task).subscribe(function (assignorInfo) {
+            _this.assignor = assignorInfo.UserName + '(' + assignorInfo.UserId + ')';
         });
     };
-    AppComponent.prototype.setUserInfo = function (id, userName, userId) {
-        this.task.UserInfo_Id = id;
-        this.userName = userName + ' / ' + userId;
-        this.initUserList();
-        if (this.task.UserInfo_Id != 0)
-            this.isValid = true;
-    };
     AppComponent.prototype.saveTask = function () {
+        var _this = this;
         if (confirm('Do you want to save?')) {
-            this.taskService.saveTask(this.task).subscribe(function (result) {
+            this.updateTaskService.saveTask(this.task).subscribe(function (result) {
                 if (result.Success) {
                     alert('Saved successfully');
+                    if (opener && opener.refreshPage) {
+                        opener.refreshPage(_this.task.ScheduleStart);
+                    }
                     window.open('', '_self').close();
                 }
                 else {
@@ -74,13 +60,17 @@ var AppComponent = /** @class */ (function () {
             window.open('', '_self').close();
         }
     };
+    AppComponent.prototype.getUrlParameter = function (key) {
+        var url = new URL(window.location.href);
+        return url.searchParams.get(key);
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            templateUrl: './task.component.html',
+            templateUrl: './updateTask.component.html',
             styleUrls: ['../../../css/task.component.css']
         }),
-        __metadata("design:paramtypes", [task_service_1.TaskService])
+        __metadata("design:paramtypes", [update_task_service_service_1.UpdateTaskService])
     ], AppComponent);
     return AppComponent;
 }());

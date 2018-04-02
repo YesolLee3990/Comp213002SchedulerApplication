@@ -1,5 +1,5 @@
-﻿using Comp213002SchedulerApplication.App_Code.controls.models;
-using Comp213002SchedulerApplication.App_Code.controls.util;
+﻿using Comp213002SchedulerApplication.AppCode.controls.models;
+using Comp213002SchedulerApplication.AppCode.controls.util;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,13 +16,20 @@ namespace Comp213002SchedulerApplication
 {
     public partial class _Default : Page
     {
-        DataSet ds = null;
+        DataTable dt = null;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //
-            ds = GetData();
+            dt = GetData();
             AuthProcess();
+            SetCalendarDate();
+        }
+
+        private void SetCalendarDate() {
+            var date = Request.QueryString["date"];
+            if(!String.IsNullOrEmpty(date)) {
+                Calendar1.TodaysDate = DateTime.ParseExact(date.Substring(0, 10), "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture); ;
+            }
         }
 
         private void AuthProcess() {
@@ -42,41 +49,54 @@ namespace Comp213002SchedulerApplication
             Response.Redirect("~/Login.aspx");
         }
 
-        private DataSet GetData()
+        private DataTable GetData()
         {
-            //string connectionString = "Data Source=serverschedulerapplication.database.windows.net/SQLEXPRESS,1433;Network Library=DBMSSOCN;Initial Catalog=dbase;User ID=comp213;Password=Centennial2018";
-            string connectionString = ConfigurationManager.ConnectionStrings["esmsDbConnectionStr"].ConnectionString;
-            SqlConnection myConnection = new SqlConnection(connectionString);
-            SqlDataAdapter ad = new SqlDataAdapter("SELECT * FROM dbo.task where userinfo_id = '" + UserInfoUtil.getLoginUser().Id + "'", myConnection);
-
-            DataSet ds = new DataSet();
-            ad.Fill(ds);
-            return ds;
+            return DBUtil.Select("SELECT * FROM dbo.task where userinfo_id = '" + UserInfoUtil.getLoginUser().Id + "'");
         }
+
+        /**
+         * Add task (linkbutton) on the calendar
+         */
         protected void Calendar1_DayRender(object sender, DayRenderEventArgs e) {
             //string link = "<a href='ScheduleDetails.aspx?ID=";
             string s = e.Day.Date.ToShortDateString();
             e.Cell.Attributes.Add("onmouseover", "this.style.cursor='pointer'");
 
             int i = 0;
-            foreach (DataRow row in ds.Tables[0].Rows) {
+            foreach (DataRow row in dt.Rows) {
                 i++;
                 string scheduledDate = Convert.ToDateTime(row["ScheduleStart"]).ToShortDateString();
                 if (scheduledDate.Equals(s)) {
-                    LinkButton lb = new LinkButton();
-                    //lb.ID = "lb" + i;
-                    //lb.OnClientClick = "return ShowModalPopup()";
-                    lb.Text = "<BR>" + row["Subject"] as String;
-                    //lb.Text = "<BR>" + link + (int)row["ID"] + "'>" + row["Subject"] as String + "</a>" + "<BR>";
-                    lb.Style.Add("color", "red");
-                    e.Cell.Controls.Add(lb);
+                    AddTaskButtonOnCalendar(e, row);
                 }
             }
         }
 
-        protected void Calendar1_VisibleMonthChanged(object sender, MonthChangedEventArgs e)
-        {
+        private static void AddTaskButtonOnCalendar(DayRenderEventArgs e, DataRow row) {
+            LinkButton lb = new LinkButton();
+            lb.Text = "<BR>" + row["Subject"] as String;
+            lb.Attributes.Add("onclick", "showUpdateStatus('" + row["ID"] + "');");
 
+            if ((string)row["STATUS"] == "F") {
+                lb.Style.Add("color", "black");
+            } else {
+                // normal
+                if (((DateTime)row["ScheduleEnd"]).CompareTo(DateTime.Now) > 0) {
+                    switch ((string)row["STATUS"]) {
+                        case "S":
+                            lb.Style.Add("color", "green");
+                            break;
+                        default:
+                        lb.Style.Add("color", "blue");
+                            break;
+                    }
+                    // delayed
+                } else {
+                    lb.Style.Add("color", "red");
+                }
+            }
+            
+            e.Cell.Controls.Add(lb);
         }
 
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)

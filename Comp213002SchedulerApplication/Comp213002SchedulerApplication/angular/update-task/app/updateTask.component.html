@@ -1,0 +1,66 @@
+<h2>{{title}}</h2>
+<div class="container">
+    <form #taskForm="ngForm" autocomplete="off">
+        <div *ngIf="task" class="form-group">
+            <table>
+                <tr>
+                    <td class="titleTd"><h1>Subject </h1></td>
+                    <td class="contentTd">
+                        <span>{{task.Subject}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="titleTd"><h1>Assigner </h1></td>
+                    <td class="contentTd">
+                        <span>{{assignor}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="titleTd"><h1>Description</h1></td>
+                    <td class="contentTd">
+                        <span>{{task.Description}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="titleTd"><h1>Priority</h1></td>
+                    <td class="contentTd">
+                        <span>{{task.Priority}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="titleTd"><h1>Scheduled Date</h1></td>
+                    <td class="contentTd">
+                        <span>{{task.ScheduleStart | date:'mediumDate'}} ~ {{task.ScheduleEnd | date:'mediumDate'}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="titleTd"><h1>Result</h1></td>
+                    <td class="contentTd">
+                        <textarea [(ngModel)]="task.Result" placeholder="Result" cols="80" rows="10" #result="ngModel" name="result" class="form-control" required></textarea>
+                        <div *ngIf="result.invalid && (result.dirty || result.touched)" class="alert alert-danger">
+                            <div *ngIf="result.errors.required">Result is required.</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="titleTd"><h1>Status</h1></td>
+                    <td class="contentTd">
+                        <select [(ngModel)]="task.Status" #name="ngModel" name="status" class="form-control" required>
+                            <option value="S">Scheduled</option>
+                            <option value="W">Working</option>
+                            <option value="F">Finished</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="btnArea">
+                            <button class="saveBtn" [disabled]="taskForm.invalid" (click)="saveTask()"><span>Save</span></button>
+                            <button class="button" (click)="cancelTask()">Cancel</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>

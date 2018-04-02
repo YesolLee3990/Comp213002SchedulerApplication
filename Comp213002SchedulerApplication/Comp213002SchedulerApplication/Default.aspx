@@ -40,14 +40,6 @@
             right = !right;
         }
 
-        function assignTask() {
-            window.open('/angular/task/', '', 'width=900,height=600,scrollbars=1,resizable');
-        }
-
-        function refreshPage() {
-            document.location.href = '/Default.aspx';
-        }
-
         function closeNav1() {
             document.getElementById("mySidenav1").style.width = "0";
             document.getElementById("main").style.marginLeft = "0";
@@ -65,6 +57,18 @@
             return false;
         }
 
+        function showUpdateStatus(id) {
+            window.open('/angular/update-task?taskId=' + id, '', 'width=900,height=600,scrollbars=1,resizable');
+        }
+
+        function assignTask() {
+            window.open('/angular/task/', '', 'width=900,height=600,scrollbars=1,resizable');
+        }
+
+        function refreshPage(date) {
+            document.location.href = '/Default.aspx?date=' + date;
+        }
+
     </script>
     <div id="mySidenav1" class="sidenav1">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav1()">&times;</a>
@@ -74,20 +78,23 @@
 
 
     <div id="main" style="margin:auto;">
-        <div style="float:right">
-            <asp:Label ID="loginInfoLabel" runat="server"></asp:Label>
-            <asp:Button ID="logoutBtn" runat="server" Text="Logout" BorderStyle="None" BorderWidth="0px" CausesValidation="False"/>
+        <div style="float:right;position:relative;top:-25px;">
+            Welcome <asp:Label ID="loginInfoLabel" runat="server"></asp:Label>
+            <asp:Button ID="logoutBtn" runat="server" Text="Logout" BorderStyle="None" BorderWidth="0px" CausesValidation="False" CssClas="assignBtn"/>
         </div>
-        <div style="margin:auto">
-            <img src="img/logo.png" width="40" />
-        </div>
+        <%--<div style="margin:auto;position:absolute;left:0px;right:0px;">
+            <img src="img/logo.png" width="40" style="margin:auto;position:absolute;left:0px;right:0px;"/>
+        </div>--%>
         <div>
             <table style="width:100%">
                 <tr>
-                    <td><span style="font-size: 30px; cursor: pointer;float:left;" onclick="openNav1()">&#9776;</span></td>
-                    <td>
+                    <td style="width:50%;">
+                        <span style="font-size: 30px; cursor: pointer;float:left;" onclick="openNav1()">&#9776;</span>
+                        <img src="img/logo.png" width="40" style="float:right;margin-right:-20px;"/>
+                    </td>
+                    <td style="width:50%;">
                         <span id="rightMenu" style="font-size: 30px; cursor: pointer; float:right;width:30px;" onclick="openNav2()">&#9776;</span>
-                        <asp:Button id="assignTaskBtn" CssClass="assignBtn" OnClientClick="assignTask()" Text="Assign Task" runat="server" UseSubmitBehavior="false"/>
+                        <asp:Button id="assignTaskBtn" CssClass="assignBtn" BorderStyle="None" OnClientClick="assignTask()" Text="Assign Task" runat="server" UseSubmitBehavior="false"/>
                     </td>
                 </tr>
             </table>

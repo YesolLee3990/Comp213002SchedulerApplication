@@ -1,12 +1,12 @@
-﻿using Comp213002SchedulerApplication.App_Code.controls.models;
-using Comp213002SchedulerApplication.App_Code.controls.util;
+﻿using Comp213002SchedulerApplication.AppCode.controls.models;
+using Comp213002SchedulerApplication.AppCode.controls.util;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Reflection;
 using System.Web;
 
-namespace Comp213002SchedulerApplication.App_Code.controls.task {
+namespace Comp213002SchedulerApplication.AppCode.controls.task {
     public class TaskDAO{
         public Task GetTask(int id) {
             return DBUtil.SelectOne<Task>("SELECT * FROM TASK WHERE ID = '" + id + "'");
@@ -15,7 +15,10 @@ namespace Comp213002SchedulerApplication.App_Code.controls.task {
         public Result SaveTask(Task task) {
             Result result = new Result();
             try {
-                string sql = DBUtil.BuildInsertQuery(task);
+                string sql = "";
+                if (task.Id != 0) sql = DBUtil.BuildUpdateQuery(task, new String[]{"RESULT", "STATUS"});
+                else sql = DBUtil.BuildInsertQuery(task);
+                
                 int cnt = DBUtil.Execute(sql);
                 result.Success = cnt > 0;
             }
@@ -37,6 +40,10 @@ namespace Comp213002SchedulerApplication.App_Code.controls.task {
                 return users;
             }
             return null;
+        }
+
+        public UserInfo getAssignerInfo(Task task) {
+            return (UserInfo)DBUtil.SelectOneById<UserInfo>(task.Assignor);
         }
     }
 }

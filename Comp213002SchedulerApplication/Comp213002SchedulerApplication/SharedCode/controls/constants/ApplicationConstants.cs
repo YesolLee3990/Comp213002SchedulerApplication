@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Web;
 
-namespace Comp213002SchedulerApplication.App_Code.controls.constants {
+namespace Comp213002SchedulerApplication.AppCode.controls.constants {
     public class ApplicationConstants {
         public static int userLockTime = 3; // minutes
         public static String MAIN = "MAIN";

@@ -1,5 +1,5 @@
-﻿using Comp213002SchedulerApplication.App_Code.controls.models;
-using Comp213002SchedulerApplication.App_Code.controls.util;
+﻿using Comp213002SchedulerApplication.AppCode.controls.models;
+using Comp213002SchedulerApplication.AppCode.controls.util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Services;
 
-namespace Comp213002SchedulerApplication.App_Code.controls.task {
+namespace Comp213002SchedulerApplication.AppCode.controls.task {
     
     public class TaskController : ApiController {
         TaskDAO dao = new TaskDAO();
@@ -44,7 +44,12 @@ namespace Comp213002SchedulerApplication.App_Code.controls.task {
             return dao.SaveTask(task);
         }
 
-        
+        [WebMethod(EnableSession =true)]
+        [Route("api/task/getAssginerInfo")]
+        [HttpPost]
+        public UserInfo GetAssginerInfo(Task task) {
+            return dao.getAssignerInfo(task);
+        }
 
         //// POST api/<controller>
         //public void Post([FromBody]string value) {

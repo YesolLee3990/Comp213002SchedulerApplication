@@ -8,9 +8,9 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
-using Comp213002SchedulerApplication.App_Code.controls.util;
-using Comp213002SchedulerApplication.App_Code.controls.models;
-using Comp213002SchedulerApplication.App_Code.controls.constants;
+using Comp213002SchedulerApplication.AppCode.controls.util;
+using Comp213002SchedulerApplication.AppCode.controls.models;
+using Comp213002SchedulerApplication.AppCode.controls.constants;
 
 namespace Comp213002SchedulerApplication {
     public partial class Login : System.Web.UI.Page {
