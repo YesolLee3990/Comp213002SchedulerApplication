@@ -211,6 +211,7 @@
     <Content Include="angular\task\systemjs-angular-loader.js" />
     <Content Include="angular\task\systemjs.config.extras.js" />
     <Content Include="angular\task\systemjs.config2.js" />
+    <Content Include="angular\task\tsconfig.json" />
     <Content Include="angular\update-task\app\app.component.js" />
     <Content Include="angular\update-task\app\app.component.spec.js" />
     <Content Include="angular\update-task\app\app.module.js" />
@@ -222,6 +223,7 @@
     <Content Include="angular\update-task\systemjs-angular-loader.js" />
     <Content Include="angular\update-task\systemjs.config.extras.js" />
     <Content Include="angular\update-task\systemjs.config2.js" />
+    <Content Include="angular\update-task\tsconfig.json" />
     <Content Include="App_Code\controls\task\TaskController.cs" />
     <Compile Include="SharedCode\controls\util\DBUtil.cs" />
     <Compile Include="SharedCode\controls\util\MUtil.cs" />
@@ -261,8 +263,6 @@
     <Content Include="package.json" />
     <Content Include="package-lock.json" />
     <Content Include="angular\task\main.js.map" />
-    <Content Include="angular\task\tsconfig.json" />
-    <Content Include="angular\update-task\tsconfig.json" />
     <Content Include="angular\update-task\main.js.map" />
     <Content Include="angular\update-task\app\app.component.js.map" />
     <Content Include="angular\update-task\app\app.component.spec.js.map" />
