@@ -1,12 +1,42 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Comp213002SchedulerApplication.Login" %>
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <webopt:bundlereference runat="server" path="~/Content/Login.css" />
-    <div>
+    <style>
+        body {
+            font-family: Dubai;
+            margin-left: auto;
+            width: 960px;
+        }
+
+        h3, h4 {
+            font-family: Dubai;
+        }
+
+        #tbl1 {
+            margin-right: auto;
+            margin-left: auto;
+            vertical-align: central;
+        }
+
+        #LogoName {
+            background-color: white;
+        }
+
+        .auto-style1 {
+            width: 300px;
+            height: 263px;
+        }
+
+        .auto-style2 {
+            width: 309px;
+        }
+    </style>
+    <div style="box-shadow: 1px 0px 10px grey; width: 70%;">
         <div>
-            <table id="tbl1">
+            <table id="tbl1" style="font-family: Consolas;">
                 <tr>
                     <td colspan="2">
-                        <h4 id="LogoName">ESMS</h4>
+                        <%-- <h4 id="LogoName">ESMS</h4>--%>
                     </td>
                 </tr>
 
@@ -23,7 +53,7 @@
                                     <tr>
                                         <td>Username:</td>
                                         <td>
-                                            <asp:TextBox runat="server" ID="loginUsernameTB"></asp:TextBox>
+                                            <asp:TextBox Text="test1" runat="server" ID="loginUsernameTB"></asp:TextBox>
                                             <asp:RequiredFieldValidator runat="server" ControlToValidate="loginUsernameTB" Display="Dynamic" ValidationGroup="login" ErrorMessage="Username is Required."></asp:RequiredFieldValidator>
                                         </td>
                                     </tr>
@@ -31,13 +61,13 @@
                                     <tr>
                                         <td>Password:</td>
                                         <td>
-                                            <asp:TextBox runat="server" ID="loginPasswordTB" TextMode="Password"></asp:TextBox>
+                                            <asp:TextBox Text="test1" runat="server" ID="loginPasswordTB"></asp:TextBox>
                                             <asp:RequiredFieldValidator runat="server" ControlToValidate="loginPasswordTB" Display="Dynamic" ValidationGroup="login" ErrorMessage="Password is Required."></asp:RequiredFieldValidator>
                                         </td>
                                     </tr>
                                 </table>
                                 <br />
-                                <asp:Button CssClass="btn" runat="server" Text="Login" ID="btnLogin" OnClick="Login_Click" />
+                                <asp:Button CssClass="btn btn-success" runat="server" Text="Login" ID="btnLogin" OnClick="Login_Click" />
                                 <asp:Label runat="server" ID="WarningLblLogin" Visible="False" />
                             </div>
                         </div>

@@ -1,31 +1,6 @@
-﻿body {
-    margin-right: auto;
-    margin-left: auto;
-    width: 960px;
-    text-align: center;
-    background-image: url(../img/Background1.jpg)
-}
+﻿
 
-#tbl1 {
-    margin-right: auto;
-    margin-left: auto;
-    vertical-align: central;
-}
-
-#LogoName {
-    background-color: brown;
-}
-
-.auto-style1 {
-    width: 300px;
-    height: 263px;
-}
-
-.auto-style2 {
-    width: 309px;
-}
-
-.btn {
+/*.btn {
     -moz-box-shadow: 0px 0px 0px 2px #9fb4f2;
     -webkit-box-shadow: 0px 0px 0px 2px #9fb4f2;
     box-shadow: 0px 0px 0px 2px #9fb4f2;
@@ -65,3 +40,4 @@
         top: 1px;
     }
 
+*/
