@@ -20,6 +20,7 @@ namespace Comp213002SchedulerApplication.AppCode.controls.util {
                 System.Web.HttpContext.Current.Session.Clear();
             }
             catch(Exception e) {
+                Console.WriteLine("e.Message " + e.Message);
                 return false;
             }
 
