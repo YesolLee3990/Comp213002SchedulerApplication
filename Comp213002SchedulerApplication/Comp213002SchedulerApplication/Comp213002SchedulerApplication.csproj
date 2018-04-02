@@ -191,6 +191,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="angular\domain\result.js" />
+    <Content Include="angular\domain\task.js" />
+    <Content Include="angular\domain\userInfo.js" />
     <Content Include="angular\task\app\app.component.js" />
     <Content Include="angular\task\app\app.component.js.map" />
     <Content Include="angular\task\app\app.component.spec.js" />
@@ -267,6 +270,9 @@
     <Content Include="angular\update-task\app\app.module.js.map" />
     <Content Include="angular\update-task\app\update-task-service.service.js.map" />
     <Content Include="angular\update-task\app\update-task-service.service.spec.js.map" />
+    <Content Include="angular\domain\result.js.map" />
+    <Content Include="angular\domain\task.js.map" />
+    <Content Include="angular\domain\userInfo.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -427,11 +433,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="angular\domain\result.ts" />
-    <TypeScriptCompile Include="angular\domain\task.ts" />
-    <TypeScriptCompile Include="angular\domain\userInfo.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
