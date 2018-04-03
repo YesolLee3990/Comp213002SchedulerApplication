@@ -23,6 +23,28 @@ namespace Comp213002SchedulerApplication
             dt = GetData();
             AuthProcess();
             SetCalendarDate();
+            SetDailyTasks();
+        }
+
+        private void SetDailyTasks() {
+            DataTable results = DBUtil.Select("SELECT ID, CONVERT(VARCHAR, ROW_NUMBER() OVER(ORDER BY SUBJECT)) +'. ' + SUBJECT AS NUM FROM TASK WHERE UserInfo_ID = 1 AND CONVERT(DATETIME, '" + DateTime.Now.ToString("yyyy-MM-dd") + "', 102) BETWEEN SCHEDULESTART AND SCHEDULEEND ");
+            GridView1.DataSource = results;
+            GridView1.ShowHeader = false;
+            GridView1.ShowFooter = false;
+            
+            GridView1.GridLines = GridLines.None;
+            GridView1.BorderStyle = BorderStyle.None;
+            GridView1.RowDataBound += GridView1_RowDataBound;
+            GridView1.DataBind();
+        }
+
+        private void GridView1_RowDataBound(object sender, GridViewRowEventArgs e) {
+            if (e.Row.RowType == DataControlRowType.DataRow) {
+                e.Row.Attributes["onmouseover"] = "this.originalstyle=this.style.backgroundColor;this.style.cursor='pointer';this.style.backgroundColor='#ffccff';";
+                e.Row.Attributes["onmouseout"] = "this.style.textDecoration='none';this.style.backgroundColor=this.originalstyle;";
+                e.Row.Cells[0].Visible = false;
+                e.Row.Attributes["onclick"] = "javascript:showUpdateStatus('" + e.Row.Cells[0].Text + "');";
+            }
         }
 
         private void SetCalendarDate() {
