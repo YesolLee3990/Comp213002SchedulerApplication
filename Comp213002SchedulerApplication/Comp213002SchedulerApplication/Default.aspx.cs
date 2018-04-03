@@ -31,7 +31,7 @@ namespace Comp213002SchedulerApplication
             GridView1.DataSource = results;
             GridView1.ShowHeader = false;
             GridView1.ShowFooter = false;
-            
+            GridView1.Style["TABLE-LAYOUT"] = "fixed";
             GridView1.GridLines = GridLines.None;
             GridView1.BorderStyle = BorderStyle.None;
             GridView1.RowDataBound += GridView1_RowDataBound;
@@ -43,6 +43,10 @@ namespace Comp213002SchedulerApplication
                 e.Row.Attributes["onmouseover"] = "this.originalstyle=this.style.backgroundColor;this.style.cursor='pointer';this.style.backgroundColor='#ffccff';";
                 e.Row.Attributes["onmouseout"] = "this.style.textDecoration='none';this.style.backgroundColor=this.originalstyle;";
                 e.Row.Cells[0].Visible = false;
+                e.Row.Cells[1].Wrap = false;
+                e.Row.Cells[1].Style["overflow"] = "hidden";
+                e.Row.Cells[1].Style["text-overflow"] = "ellipsis";
+                e.Row.Cells[1].ToolTip = e.Row.Cells[1].Text;
                 e.Row.Attributes["onclick"] = "javascript:showUpdateStatus('" + e.Row.Cells[0].Text + "');";
             }
         }
