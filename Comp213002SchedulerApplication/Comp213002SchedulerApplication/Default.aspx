@@ -68,6 +68,10 @@
         function refreshPage(date) {
             document.location.href = '/Default.aspx?date=' + date;
         }
+
+        function showManageTask() {
+            window.open('/ManageTasks.aspx', 'width=900,height=600,scrollbars=1,resizable');
+        }
     </script>
     <div id="mySidenav1" class="sidenav1">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav1()">&times;</a>
@@ -75,7 +79,7 @@
         <%
         if (Comp213002SchedulerApplication.AppCode.controls.util.UserInfoUtil.isManager()) {
         %>
-        <a href="/ManageTasks.aspx" target="_blank">Manage Tasks</a>
+        <a href="#" target="_blank" onclick="javascript:showManageTask();">Manage Tasks</a>
         <%
         }
         %>

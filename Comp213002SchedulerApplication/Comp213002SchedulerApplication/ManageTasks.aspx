@@ -21,7 +21,7 @@
                     <td>Actor : <input type="text" name="actorName"/></td>
                 </tr>
                 <tr>
-                    <td>Status : <select><option value="S">Scheduled</option><option value="W">Working</option><option value="F">Finished</option></select></td>
+                    <td>Status : <select name="status"><option value="S">Scheduled</option><option value="W">Working</option><option value="F">Finished</option></select></td>
                     <td><input type="button" value="Search" onclick="javascript: search();"/></td>
                 </tr>
             </table>
