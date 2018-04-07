@@ -63,9 +63,9 @@
                 <tr>
                     <td colspan="2">
                         <div class="btnArea">
-                            <span *ngif="managerUpdate">
+                            <div *ngif="managerUpdate">
                                 <button class="saveBtn" [disabled]="taskForm.invalid" (click)="deleteTask()"><span>Delete</span></button>
-                            </span>
+                            </div>
                             <button class="saveBtn" [disabled]="taskForm.invalid" (click)="saveTask()"><span>Save</span></button>
                             <button class="button" (click)="cancelTask()">Cancel</button>
                         </div>
