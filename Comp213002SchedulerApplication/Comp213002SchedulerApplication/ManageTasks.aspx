@@ -11,44 +11,29 @@
         <div>
             Task Management<br />
             <div id="searchConditionBox">
-                <table>
-                    <tr>
-                        <td>Subject :
-                            <input type="text" name="subject" /></td>
-                        <td>Description :
-                            <input type="text" name="description" /></td>
-                    </tr>
-                    <tr>
-                        <td>Date :
-                            <input type="date" name="scheduleStart" />
-                            ~
-                            <input type="date" name="scheduleEnd" /></td>
-                        <td>Actor :
-                            <input type="text" name="actorName" /></td>
-                    </tr>
-                    <tr>
-                        <td>Status :
-                            <select name="status">
-                                <option value="S">Scheduled</option>
-                                <option value="W">Working</option>
-                                <option value="F">Finished</option>
-                            </select></td>
-                        <td>
-                            <input type="button" value="Search" onclick="javascript: search();" /></td>
-                    </tr>
-                </table>
-
+                <span>Subject :<input type="text" name="subject" /></span>
+                <span>Description : <input type="text" name="description" /></span><br />
+                <span>Date : <input type="date" name="scheduleStart" /> ~ <input type="date" name="scheduleEnd" /></span>
+                <span>Actor : <input type="text" name="actorName" /></span><br />
+                <span>Status :
+                    <select name="status">
+                        <option value="S">Scheduled</option>
+                        <option value="W">Working</option>
+                        <option value="F">Finished</option>
+                    </select>
+                </span>
+                <span><input type="button" value="Search" onclick="javascript: search();" /></span>
             </div>
 
-            <table id="Content">
-                <thead class="tds">
-                    <tr class="trc">
-                        <th class="tds tdh">ID</th>
-                        <th class="tds tdh">Subject</th>
-                        <th class="tds tdh">Actor</th>
-                        <th class="tds tdh">Date</th>
-                        <th class="tds tdh">Description</th>
-                        <th class="tds tdh">Status</th>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Subject</th>
+                        <th>Actor</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <%
@@ -58,13 +43,13 @@
                         else if (status == "F") status = "Finished";
                         else status = "Working";
                 %>
-                <tr class="trc">
-                    <td class="tds"><%=dr["ID"] %></td>
-                    <td class="tds"><%=dr["SUBJECT"] %></td>
-                    <td class="tds"><%=dr["USERNAME"] %></td>
-                    <td class="tds"><%=dr["SCHEDULESTART"] %>~<%=dr["SCHEDULEEND"] %></td>
-                    <td class="tds"><%=dr["DESCRIPTION"] %></td>
-                    <td class="tds"><%=status %></td>
+                <tr>
+                    <td><%=dr["ID"] %></td>
+                    <td><%=dr["SUBJECT"] %></td>
+                    <td><%=dr["USERNAME"] %></td>
+                    <td><%=dr["SCHEDULESTART"] %>~<%=dr["SCHEDULEEND"] %></td>
+                    <td><%=dr["DESCRIPTION"] %></td>
+                    <td><%=status %></td>
                 </tr>
                 <%
                     }
