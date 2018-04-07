@@ -12,12 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var task_service_1 = require("./task.service");
 var Subject_1 = require("rxjs/Subject");
-var router_1 = require("@angular/router");
 var operators_1 = require("rxjs/operators");
 var AppComponent = /** @class */ (function () {
-    function AppComponent(taskService, activatedRoute) {
+    function AppComponent(taskService) {
         this.taskService = taskService;
-        this.activatedRoute = activatedRoute;
         this.title = 'Assign Task';
         this.isValid = true;
         this.searchTerms = new Subject_1.Subject();
@@ -45,19 +43,21 @@ var AppComponent = /** @class */ (function () {
     };
     AppComponent.prototype.getInitTask = function () {
         var _this = this;
-        this.activatedRoute.params.subscribe(function (params) {
-            if (params['id'])
-                _this.taskId = params['id'];
-            else
-                _this.taskId = '0';
-            alert(_this.taskId);
-        });
+        this.taskId = this.getUrlParameter('id');
+        alert('this.taskId : ' + this.taskId);
         this.taskService.getTask(this.taskId).subscribe(function (initialTask) {
             //alert("initialTask : " + initialTask);
             //alert("initialTask.Subject : " + initialTask.Subject);
             _this.task = initialTask;
         });
     };
+    AppComponent.prototype.getUrlParameter = function (name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    };
+    ;
     AppComponent.prototype.setUserInfo = function (id, userName, userId) {
         this.task.UserInfo_Id = id;
         this.userName = userName + ' / ' + userId;
@@ -89,7 +89,7 @@ var AppComponent = /** @class */ (function () {
             templateUrl: './task.component.html',
             styleUrls: ['../../../css/task.component.css']
         }),
-        __metadata("design:paramtypes", [task_service_1.TaskService, router_1.ActivatedRoute])
+        __metadata("design:paramtypes", [task_service_1.TaskService])
     ], AppComponent);
     return AppComponent;
 }());
