@@ -25,7 +25,7 @@
                 <div class="searchRightCol"><input type="button" class="button" value="Search" onclick="javascript: search();" /></div>
             </div>
             <br />
-            <table>
+            <table id="contentTable">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -68,5 +68,9 @@
     function showTaskInfo(id) {
         window.open('/angular/task/' + id, '', 'width=900,height=600,scrollbars=1,resizable');
     }
+
+    $('#contentTable td').each(function () {
+        $(this).prop('title', $(this).html());
+    });
 </script>
 </html>
