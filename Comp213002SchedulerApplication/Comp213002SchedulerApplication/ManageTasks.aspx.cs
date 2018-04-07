@@ -40,7 +40,7 @@ namespace Comp213002SchedulerApplication {
             string sql = "select B.USERNAME, A.ID, A.SUBJECT, A.DESCRIPTION, CONVERT(VARCHAR(10), A.SCHEDULESTART,120) AS 'SCHEDULESTART'"
                 + ", CONVERT(VARCHAR(10), A.SCHEDULEEND,120) AS 'SCHEDULEEND', A.STATUS from task A, USERINFO B "
                 + "WHERE A.assignor = '" + UserInfoUtil.getLoginUserId()
-                + "' AND A.USERINFO_ID = B.ID " + conditions + " order by A.schedulestart desc";
+                + "' AND A.USERINFO_ID = B.ID " + conditions + " AND A.DELETEFLAG = 0 order by A.schedulestart desc";
 
             return sql;
         }

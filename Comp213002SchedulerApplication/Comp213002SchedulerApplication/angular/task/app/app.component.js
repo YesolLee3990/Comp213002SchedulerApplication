@@ -76,6 +76,20 @@ var AppComponent = /** @class */ (function () {
             });
         }
     };
+    AppComponent.prototype.deleteTask = function () {
+        if (confirm('Do you want to delete?')) {
+            this.task.DeleteFlag = true;
+            this.taskService.saveTask(this.task).subscribe(function (result) {
+                if (result.Success) {
+                    alert('Delete successfully');
+                    window.open('', '_self').close();
+                }
+                else {
+                    alert(result.ErrMsg);
+                }
+            });
+        }
+    };
     AppComponent.prototype.cancelTask = function () {
         if (confirm('Do you want to close the window without saving?')) {
             window.open('', '_self').close();
