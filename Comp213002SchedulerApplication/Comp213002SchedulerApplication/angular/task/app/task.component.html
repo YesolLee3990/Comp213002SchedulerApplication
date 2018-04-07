@@ -6,7 +6,7 @@
                 <tr>
                     <td class="titleTd"><h1>Subject </h1></td>
                     <td class="contentTd">
-                        <input [(ngModel)]="task.Subject" placeholder="Title of the assignment" #subject="ngModel" id="subject" name="subject" class="form-control" required>
+                        <input [(ngModel)]="task.Subject" value="{{task.Subject}}" placeholder="Title of the assignment" #subject="ngModel" id="subject" name="subject" class="form-control" required>
                         <div *ngIf="subject.invalid && (subject.dirty || subject.touched)" class="alert alert-danger">
                             <div *ngIf="subject.errors.required">Subject is required.</div>
                         </div>
