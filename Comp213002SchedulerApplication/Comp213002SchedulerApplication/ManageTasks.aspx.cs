@@ -30,7 +30,7 @@ namespace Comp213002SchedulerApplication {
             if (!String.IsNullOrEmpty(scheduleStart)) conditions += " AND A.SCHEDULESTART >= '" + scheduleStart + "' ";
             if (!String.IsNullOrEmpty(scheduleEnd)) conditions += " AND A.SCHEDULEEND <= '" + scheduleEnd + "' ";
             if (!String.IsNullOrEmpty(actorName)) conditions += " AND B.USERNAME LIKE '%" + actorName + "%' ";
-            if (!String.IsNullOrEmpty(status)) conditions += " AND A.STATUS = '" + status + "' ";
+            //if (!String.IsNullOrEmpty(status)) conditions += " AND A.STATUS = '" + status + "' ";
 
             string sql = "select B.USERNAME, A.* from task A, USERINFO B "
                 + "WHERE A.assignor = '" + UserInfoUtil.getLoginUserId()
