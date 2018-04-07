@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            Task Management<br />
+            <h3>Task Management</h3><br />
             <div id="searchConditionBox">
                 <span>Subject :<input type="text" name="subject" /></span>
                 <span>Description : <input type="text" name="description" /></span><br />
@@ -24,7 +24,7 @@
                 </span>
                 <span><input type="button" value="Search" onclick="javascript: search();" /></span>
             </div>
-
+            <br /><br /><br />
             <table>
                 <thead>
                     <tr>
@@ -43,12 +43,12 @@
                         else if (status == "F") status = "Finished";
                         else status = "Working";
                 %>
-                <tr>
+                <tr onclick="javascript:showTaskInfo('<%=dr["ID"] %>');">
                     <td><%=dr["ID"] %></td>
                     <td><%=dr["SUBJECT"] %></td>
                     <td><%=dr["USERNAME"] %></td>
                     <td><%=dr["SCHEDULESTART"] %>~<%=dr["SCHEDULEEND"] %></td>
-                    <td><%=dr["DESCRIPTION"] %></td>
+                    <td style="width:200px"><%=dr["DESCRIPTION"] %></td>
                     <td><%=status %></td>
                 </tr>
                 <%
@@ -63,6 +63,10 @@
     function search() {
         form1.action = 'ManageTasks.aspx';
         form1.submit();
+    }
+
+    function showTaskInfo(id) {
+        window.open('/angular/task/' + id, '', 'width=900,height=600,scrollbars=1,resizable');
     }
 </script>
 </html>
