@@ -9,7 +9,7 @@ using System.Web;
 namespace Comp213002SchedulerApplication.AppCode.controls.task {
     public class TaskDAO{
         public Task GetTask(int id) {
-            return DBUtil.SelectOne<Task>("SELECT * FROM TASK WHERE ID = '" + id + "'");
+            return DBUtil.SelectOne<Task>("SELECT B.USERNAME, A.* FROM TASK A, USERINFO B WHERE ID = '" + id + "' AND A.USERINFO_ID = B.ID");
         }
 
         public Result SaveTask(Task task) {

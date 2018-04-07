@@ -3,6 +3,7 @@
 namespace Comp213002SchedulerApplication.AppCode.controls.models {
     public class Task {
         public int Id { get; set; } = 0;
+        public string UserName { get; set; }
         public int UserInfo_Id { get; set; } = 0;
         public int Assignor { get; set; } = 0;
         public string Subject { get; set; } = "";
