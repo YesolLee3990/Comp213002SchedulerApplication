@@ -13,7 +13,7 @@ namespace Comp213002SchedulerApplication {
         public DataTable dt;
         protected void Page_Load(object sender, EventArgs e) {
             string sql = BuildSearchSql();
-            //dt = DBUtil.Select(sql);
+            dt = DBUtil.Select(sql);
         }
 
         private string BuildSearchSql() {
