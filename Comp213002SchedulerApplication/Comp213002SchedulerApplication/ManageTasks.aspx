@@ -30,7 +30,7 @@
 
         <table>
             <%
-                if (dt != null || dt.Rows.Count == 0) {
+                if (dt != null && dt.Rows.Count != 0) {
                     foreach (System.Data.DataRow dr in dt.Rows) {
                         string status = (string)dr["STATUS"];
                         if (status == "S") status = "Scheduled";
