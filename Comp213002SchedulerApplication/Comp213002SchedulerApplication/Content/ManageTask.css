@@ -30,9 +30,27 @@ td {
     max-width:150px;
 }
 #searchConditionBox{
-    background-color:honeydew;
-    width:700px;
+    background-color:goldenrod;
+    width:800px;
     margin:auto;
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px 1px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+.button:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 /* Cells in even rows (2,4,6...) are one color */        
@@ -42,4 +60,5 @@ tr:nth-child(even) td { background: #F1F1F1; }
 tr:nth-child(odd) td { background: #FEFEFE; }  
 
 tr:hover { background: #666; border:0; cursor:pointer; }  
+td:hover { background: #666; border:0; cursor:pointer; }  
 /* Hover cell effect! */
