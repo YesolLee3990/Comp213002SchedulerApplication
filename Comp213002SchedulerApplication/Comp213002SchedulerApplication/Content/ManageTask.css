@@ -1,14 +1,6 @@
 ﻿body {
 }
-
-.col {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-
-table {  
+#Content {  
     color: #333;
     font-family: Helvetica, Arial, sans-serif;
     width: 640px; 
@@ -16,27 +8,26 @@ table {
     collapse; border-spacing: 0; 
 }
 
-td, thead {  
+#tds {  
     border: 1px solid transparent; /* No more visible border */
     height: 30px; 
     transition: all 0.3s;  /* Simple transition for hover effect */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: #FAFAFA;
 }
 
-thead {  
+#tdh {  
     background: #DFDFDF;  /* Darken header a bit */
     font-weight: bold;
 }
 
-td {  
-    background: #FAFAFA;
-    text-align: center;
-}
-
 /* Cells in even rows (2,4,6...) are one color */        
-tr:nth-child(even) td { background: #F1F1F1; }   
+#trc:nth-child(even) td { background: #F1F1F1; }   
 
 /* Cells in odd rows (1,3,5...) are another (excludes header cells)  */        
-tr:nth-child(odd) td { background: #FEFEFE; }  
+#trc:nth-child(odd) td { background: #FEFEFE; }  
 
-tr td:hover { background: #666; color: #FFF; }  
+#trc:hover { background: #666; color: #FFF; }  
 /* Hover cell effect! */

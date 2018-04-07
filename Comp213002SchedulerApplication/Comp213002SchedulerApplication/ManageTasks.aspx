@@ -40,15 +40,15 @@
 
             </div>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Subject</th>
-                        <th>Actor</th>
-                        <th>Date</th>
-                        <th>Description</th>
-                        <th>Status</th>
+            <table id="Content">
+                <thead class="tds">
+                    <tr class="trc">
+                        <th class="tds tdh">ID</th>
+                        <th class="tds tdh">Subject</th>
+                        <th class="tds tdh">Actor</th>
+                        <th class="tds tdh">Date</th>
+                        <th class="tds tdh">Description</th>
+                        <th class="tds tdh">Status</th>
                     </tr>
                 </thead>
                 <%
@@ -58,13 +58,13 @@
                         else if (status == "F") status = "Finished";
                         else status = "Working";
                 %>
-                <tr>
-                    <td class="col"><%=dr["ID"] %></td>
-                    <td><%=dr["SUBJECT"] %></td>
-                    <td><%=dr["USERNAME"] %></td>
-                    <td><%=dr["SCHEDULESTART"] %>~<%=dr["SCHEDULEEND"] %></td>
-                    <td><%=dr["DESCRIPTION"] %></td>
-                    <td><%=status %></td>
+                <tr class="trc">
+                    <td class="tds"><%=dr["ID"] %></td>
+                    <td class="tds"><%=dr["SUBJECT"] %></td>
+                    <td class="tds"><%=dr["USERNAME"] %></td>
+                    <td class="tds"><%=dr["SCHEDULESTART"] %>~<%=dr["SCHEDULEEND"] %></td>
+                    <td class="tds"><%=dr["DESCRIPTION"] %></td>
+                    <td class="tds"><%=status %></td>
                 </tr>
                 <%
                     }
