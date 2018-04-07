@@ -25,16 +25,15 @@
                 </div>
                 <div class="searchRightCol"><input type="button" class="button" value="Search" onclick="javascript: search();" /></div>
             </div>
-            <br />
             <table id="contentTable">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th style="width:50px;">ID</th>
                         <th>Subject</th>
                         <th>Actor</th>
                         <th>Date</th>
-                        <th>Description</th>
-                        <th>Status</th>
+                        <th style="width:200px">Description</th>
+                        <th style="width:100px">Status</th>
                     </tr>
                 </thead>
                 <%
@@ -45,11 +44,11 @@
                         else status = "Working";
                 %>
                 <tr onclick="javascript:showTaskInfo('<%=dr["ID"] %>');">
-                    <td style="width:50px;"><%=dr["ID"] %></td>
+                    <td><%=dr["ID"] %></td>
                     <td><%=dr["SUBJECT"] %></td>
                     <td><%=dr["USERNAME"] %></td>
                     <td><%=dr["SCHEDULESTART"] %>~<%=dr["SCHEDULEEND"] %></td>
-                    <td style="width:200px"><%=dr["DESCRIPTION"] %></td>
+                    <td><%=dr["DESCRIPTION"] %></td>
                     <td><%=status %></td>
                 </tr>
                 <%

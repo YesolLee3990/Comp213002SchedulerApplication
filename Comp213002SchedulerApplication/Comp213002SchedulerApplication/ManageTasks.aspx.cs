@@ -34,7 +34,8 @@ namespace Comp213002SchedulerApplication {
             if (!String.IsNullOrEmpty(actorName)) conditions += " AND B.USERNAME LIKE '%" + actorName.Trim() + "%' ";
             if (!String.IsNullOrEmpty(status)) conditions += " AND A.STATUS = '" + status + "' ";
 
-            string sql = "select B.USERNAME, A.* from task A, USERINFO B "
+            string sql = "select B.USERNAME, A.ID, A.SUBJECT, A.DESCRIPTION, CONVERT(VARCHAR(10), A.SCHEDULESTART,120) AS 'SCHEDULESTART'"
+                + ", CONVERT(VARCHAR(10), A.SCHEDULEEND,120) AS 'SCHEDULEEND' from task A, USERINFO B "
                 + "WHERE A.assignor = '" + UserInfoUtil.getLoginUserId()
                 + "' AND A.USERINFO_ID = B.ID order " + conditions + " by A.schedulestart desc";
 
