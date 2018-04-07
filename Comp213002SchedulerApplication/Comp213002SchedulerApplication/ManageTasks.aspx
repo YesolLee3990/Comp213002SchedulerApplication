@@ -45,7 +45,7 @@
                         else status = "Working";
                 %>
                 <tr onclick="javascript:showTaskInfo('<%=dr["ID"] %>');">
-                    <td><%=dr["ID"] %></td>
+                    <td style="width=50px;"><%=dr["ID"] %></td>
                     <td><%=dr["SUBJECT"] %></td>
                     <td><%=dr["USERNAME"] %></td>
                     <td><%=dr["SCHEDULESTART"] %>~<%=dr["SCHEDULEEND"] %></td>
@@ -67,7 +67,7 @@
     }
 
     function showTaskInfo(id) {
-        window.open('/angular/task/' + id, '', 'width=900,height=600,scrollbars=1,resizable');
+        window.open('/angular/task?id=' + id, '', 'width=900,height=600,scrollbars=1,resizable');
     }
 
     $('#contentTable td').each(function () {
