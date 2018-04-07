@@ -18,19 +18,19 @@ namespace Comp213002SchedulerApplication {
 
         private string BuildSearchSql() {
             string subject = Request["subject"].Trim();
-            string description = Request["description"].Trim();
-            string scheduleStart = Request["scheduleStart"].Trim();
-            string scheduleEnd = Request["scheduleEnd"].Trim();
-            string actorName = Request["actorName"].Trim();
-            string status = Request["status"].Trim();
+            string description = Request["description"];
+            string scheduleStart = Request["scheduleStart"];
+            string scheduleEnd = Request["scheduleEnd"];
+            string actorName = Request["actorName"];
+            string status = Request["status"];
             string conditions = "";
 
-            if (!String.IsNullOrEmpty(subject)) conditions += " AND A.SUBJECT LIKE '%" + subject + "%' ";
-            if (!String.IsNullOrEmpty(description)) conditions += " AND A.DESCRIPTION LIKE '%" + description + "%' ";
+            if (!String.IsNullOrEmpty(subject)) conditions += " AND A.SUBJECT LIKE '%" + subject.Trim() + "%' ";
+            if (!String.IsNullOrEmpty(description)) conditions += " AND A.DESCRIPTION LIKE '%" + description.Trim() + "%' ";
             if (!String.IsNullOrEmpty(scheduleStart)) conditions += " AND A.SCHEDULESTART >= '" + scheduleStart + "' ";
             if (!String.IsNullOrEmpty(scheduleEnd)) conditions += " AND A.SCHEDULEEND <= '" + scheduleEnd + "' ";
-            if (!String.IsNullOrEmpty(actorName)) conditions += " AND B.USERNAME LIKE '%" + actorName + "%' ";
-            //if (!String.IsNullOrEmpty(status)) conditions += " AND A.STATUS = '" + status + "' ";
+            if (!String.IsNullOrEmpty(actorName)) conditions += " AND B.USERNAME LIKE '%" + actorName.Trim() + "%' ";
+            if (!String.IsNullOrEmpty(status)) conditions += " AND A.STATUS = '" + status + "' ";
 
             string sql = "select B.USERNAME, A.* from task A, USERINFO B "
                 + "WHERE A.assignor = '" + UserInfoUtil.getLoginUserId()
