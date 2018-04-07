@@ -16,6 +16,7 @@ namespace Comp213002SchedulerApplication {
         protected void Page_Load(object sender, EventArgs e) {
             string sql = BuildSearchSql();
             dt = DBUtil.Select(sql);
+            //dt = new DataTable();
         }
 
         private string BuildSearchSql() {
@@ -34,7 +35,7 @@ namespace Comp213002SchedulerApplication {
             if (!String.IsNullOrEmpty(scheduleStart)) conditions += " AND A.SCHEDULESTART >= '" + scheduleStart + "' ";
             if (!String.IsNullOrEmpty(scheduleEnd)) conditions += " AND A.SCHEDULEEND <= '" + scheduleEnd + "' ";
             if (!String.IsNullOrEmpty(actorName)) conditions += " AND B.USERNAME LIKE '%" + actorName.Trim() + "%' ";
-            if (!String.IsNullOrEmpty(status) || "A" != status) conditions += " AND A.STATUS = '" + status + "' ";
+            if (!String.IsNullOrEmpty(status) && "A" != status) conditions += " AND A.STATUS = '" + status + "' ";
 
             string sql = "select B.USERNAME, A.ID, A.SUBJECT, A.DESCRIPTION, CONVERT(VARCHAR(10), A.SCHEDULESTART,120) AS 'SCHEDULESTART'"
                 + ", CONVERT(VARCHAR(10), A.SCHEDULEEND,120) AS 'SCHEDULEEND', A.STATUS from task A, USERINFO B "

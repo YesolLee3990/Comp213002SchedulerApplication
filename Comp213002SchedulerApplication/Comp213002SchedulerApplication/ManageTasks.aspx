@@ -19,7 +19,7 @@
             String status = (qs["status"]==null?"":qs["status"]);
         %>
         <div>
-            <h3>Task Management</h3><br />
+            <h3>Task Management</h3>
             <div id="searchConditionBox">
                 <div class="searchLeftCol">Subject :<input type="text" name="subject" value="<%=subject %>"/></div>
                 <div class="searchRightCol">Description : <input type="text" name="description"  value="<%=description %>"/></div>
@@ -36,7 +36,6 @@
                 </div>
                 <div class="searchRightCol"><input type="button" class="button" value="Search" onclick="javascript: search();" /></div>
             </div>
-            <br />
             <table id="contentTable">
                 <thead>
                     <tr>
