@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ManageTasks.aspx.cs" Inherits="Comp213002SchedulerApplication.ManageTasks" %>
 
 <!DOCTYPE html>
-
+<link href="Content/ManageTask.css" rel="stylesheet" />
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
@@ -9,6 +9,25 @@
 <body>
     <form id="form1" runat="server">
     <div>
+        Task Management<br />
+        <div id="searchConditionBox">
+            <table>
+                <tr>
+                    <td>Subject : <input type="text" name="subject"/></td>
+                    <td>Description : <input type="text" name="description"/></td>
+                </tr>
+                <tr>
+                    <td>Date : <input type="date" name="scheduleStart"/> ~ <input type="date" name="scheduleEnd"/></td>
+                    <td>Actor : <input type="text" name="actorName"/></td>
+                </tr>
+                <tr>
+                    <td>Status : <select><option value="S">Scheduled</option><option value="W">Working</option><option value="F">Finished</option></select></td>
+                    <td><input type="button" value="Search" onclick="javascript: search();"/></td>
+                </tr>
+            </table>
+            
+        </div>
+
         <table>
             <%
                 foreach(System.Data.DataRow dr in dt.Rows) {
@@ -18,7 +37,7 @@
                     else status = "Working";
             %>
             <tr>
-                <td><%=dr["ID"] %></td>
+                <td class="col"><%=dr["ID"] %></td>
                 <td><%=dr["SUBJECT"] %></td>
                 <td><%=dr["USERNAME"] %></td>
                 <td><%=dr["SCHEDULESTART"] %>~<%=dr["SCHEDULEEND"] %></td>
@@ -32,4 +51,10 @@
     </div>
     </form>
 </body>
+    <Script>
+        function search() {
+            form1.action = 'ManageTasks.aspx';
+            form1.submit();
+        }
+    </Script>
 </html>

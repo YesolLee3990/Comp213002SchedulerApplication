@@ -233,6 +233,7 @@
     <Compile Include="SharedCode\controls\util\SessionUtil.cs" />
     <Compile Include="SharedCode\controls\util\UserInfoUtil.cs" />
     <Content Include="Content\Login.css" />
+    <Content Include="Content\ManageTask.css" />
     <Content Include="Http404ErrorPage.aspx" />
     <Content Include="img\Background1.jpg" />
     <Content Include="img\MainLogo.jpg" />
