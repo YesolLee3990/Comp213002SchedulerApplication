@@ -8,23 +8,35 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" method="get" action="ManageTasks.aspx">
+        <%
+            NameValueCollection qs = (NameValueCollection)Comp213002SchedulerApplication.AppCode.controls.util.SessionUtil.getSessionInfo("searchCondition");
+            String subject = (qs["subject"]==null?"":qs["subject"]);
+            String description = (qs["description"]==null?"":qs["description"]);
+            String scheduleStart = (qs["scheduleStart"]==null?"":qs["scheduleStart"]);
+            String scheduleEnd = (qs["scheduleEnd"]==null?"":qs["scheduleEnd"]);
+            String actorName = (qs["actorName"]==null?"":qs["actorName"]);
+            String status = (qs["status"]==null?"":qs["status"]);
+        %>
         <div>
             <h3>Task Management</h3><br />
             <div id="searchConditionBox">
-                <div class="searchLeftCol">Subject :<input type="text" name="subject" /></div>
-                <div class="searchRightCol">Description : <input type="text" name="description" /></div>
-                <div class="searchLeftCol">Date : <input type="date" name="scheduleStart" /> ~ <input type="date" name="scheduleEnd" /></div>
-                <div class="searchRightCol">Actor : <input type="text" name="actorName" /></div>
+                <div class="searchLeftCol">Subject :<input type="text" name="subject" value="<%=subject %>"/></div>
+                <div class="searchRightCol">Description : <input type="text" name="description"  value="<%=description %>"/></div>
+                <div class="searchLeftCol">Date : <input type="date" name="scheduleStart" value="<%=scheduleStart %>"/> 
+                    ~ <input type="date" name="scheduleEnd"  value="<%=scheduleEnd %>"/></div>
+                <div class="searchRightCol">Actor : <input type="text" name="actorName"  value="<%=actorName %>"/></div>
                 <div class="searchLeftCol" style="float:none;">Status :
                     <select name="status">
-                        <option value="S">Scheduled</option>
-                        <option value="W">Working</option>
-                        <option value="F">Finished</option>
+                        <option value="A" <%if ("A" == status) Response.Write("selected"); %> >All</option>
+                        <option value="S" <%if ("S" == status) Response.Write("selected"); %> >Scheduled</option>
+                        <option value="W" <%if ("W" == status) Response.Write("selected"); %> >Working</option>
+                        <option value="F" <%if ("F" == status) Response.Write("selected"); %> >Finished</option>
                     </select>
                 </div>
                 <div class="searchRightCol"><input type="button" class="button" value="Search" onclick="javascript: search();" /></div>
             </div>
+            <br />
             <table id="contentTable">
                 <thead>
                     <tr>
@@ -38,10 +50,10 @@
                 </thead>
                 <%
                     foreach (System.Data.DataRow dr in dt.Rows) {
-                        string status = (string)dr["STATUS"];
-                        if (status == "S") status = "Scheduled";
-                        else if (status == "F") status = "Finished";
-                        else status = "Working";
+                        string statusz = (string)dr["STATUS"];
+                        if (statusz == "S") statusz = "Scheduled";
+                        else if (statusz == "F") statusz = "Finished";
+                        else statusz = "Working";
                 %>
                 <tr onclick="javascript:showTaskInfo('<%=dr["ID"] %>');">
                     <td><%=dr["ID"] %></td>
@@ -49,7 +61,7 @@
                     <td><%=dr["USERNAME"] %></td>
                     <td><%=dr["SCHEDULESTART"] %>~<%=dr["SCHEDULEEND"] %></td>
                     <td><%=dr["DESCRIPTION"] %></td>
-                    <td><%=status %></td>
+                    <td><%=statusz %></td>
                 </tr>
                 <%
                     }

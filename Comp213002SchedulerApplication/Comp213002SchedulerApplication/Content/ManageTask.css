@@ -27,6 +27,7 @@ td {
     overflow: hidden;
     text-overflow: ellipsis;
     max-width:150px;
+    font-size:13px;
 }
 #searchConditionBox{
     background-color:lightblue;
