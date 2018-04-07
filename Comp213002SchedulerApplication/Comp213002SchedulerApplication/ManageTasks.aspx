@@ -11,20 +11,20 @@
         <div>
             <h3>Task Management</h3><br />
             <div id="searchConditionBox">
-                <span style="width:200px;">Subject :<input type="text" name="subject" /></span>
-                <span>Description : <input type="text" name="description" /></span><br />
-                <span style="width:200px;">Date : <input type="date" name="scheduleStart" /> ~ <input type="date" name="scheduleEnd" /></span>
-                <span>Actor : <input type="text" name="actorName" /></span><br />
-                <span style="width:200px;">Status :
+                <div class="searchLeftCol">Subject :<input type="text" name="subject" /></div>
+                <div class="searchRightCol">Description : <input type="text" name="description" /></div>
+                <div class="searchLeftCol">Date : <input type="date" name="scheduleStart" /> ~ <input type="date" name="scheduleEnd" /></div>
+                <div class="searchRightCol">Actor : <input type="text" name="actorName" /></div>
+                <div class="searchLeftCol">Status :
                     <select name="status">
                         <option value="S">Scheduled</option>
                         <option value="W">Working</option>
                         <option value="F">Finished</option>
                     </select>
-                </span>
-                <span><input type="button" class="button" value="Search" onclick="javascript: search();" /></span>
+                </div>
+                <div class="searchRightCol"><input type="button" class="button" value="Search" onclick="javascript: search();" /></div>
             </div>
-            <br /><br />
+            <br />
             <table>
                 <thead>
                     <tr>

@@ -30,13 +30,13 @@ td {
     max-width:150px;
 }
 #searchConditionBox{
-    background-color:goldenrod;
+    background-color:lightblue;
     width:800px;
     margin:auto;
 }
 
 .button {
-    background-color: #4CAF50; /* Green */
+    background-color: midnightblue; /* Green */
     border: none;
     color: white;
     padding: 10px 15px;
@@ -46,11 +46,22 @@ td {
     font-size: 14px;
     margin: 2px 1px;
     cursor: pointer;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2s;
+    float:right;
 }
 .button:hover{
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.searchLeftCol{
+    width:370px;
+    float:left;
+    margin:10px 0px 10px 5px;
+}
+.searchRightCol{
+    width:370px;
+    margin:10px 0px 10px 5px;
 }
 
 /* Cells in even rows (2,4,6...) are one color */        
