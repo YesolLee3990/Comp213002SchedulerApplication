@@ -44,6 +44,7 @@ var AppComponent = /** @class */ (function () {
     AppComponent.prototype.getInitTask = function () {
         var _this = this;
         this.taskId = this.getUrlParameter('id');
+        this.mode = this.getUrlParameter('mode');
         this.taskService.getTask(this.taskId).subscribe(function (initialTask) {
             _this.task = initialTask;
         });

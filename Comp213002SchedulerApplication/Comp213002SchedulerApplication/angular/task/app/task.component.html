@@ -63,7 +63,7 @@
                 <tr>
                     <td colspan="2">
                         <div class="btnArea">
-                            <button class="saveBtn" *ngIf="managerUpdate" [disabled]="taskForm.invalid" (click)="deleteTask()"><span>Delete</span></button>
+                            <button class="saveBtn" *ngIf="mode == 'managerUpdate'" [disabled]="taskForm.invalid" (click)="deleteTask()"><span>Delete</span></button>
                             <button class="saveBtn" [disabled]="taskForm.invalid" (click)="saveTask()"><span>Save</span></button>
                             <button class="button" (click)="cancelTask()">Cancel</button>
                         </div>
