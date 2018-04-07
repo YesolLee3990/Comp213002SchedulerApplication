@@ -9,7 +9,26 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:ListView ID="ListView1" runat="server"></asp:ListView>
+        <table>
+            <%
+                foreach(System.Data.DataRow dr in dt.Rows) {
+                    string status = (string)dr["STATUS"];
+                    if (status == "S") status = "Scheduled";
+                    else if (status == "F") status = "Finished";
+                    else status = "Working";
+            %>
+            <tr>
+                <td><%=dr["ID"] %></td>
+                <td><%=dr["SUBJECT"] %></td>
+                <td><%=dr["USERNAME"] %></td>
+                <td><%=dr["SCHEDULESTART"] %>~<%=dr["SCHEDULEEND"] %></td>
+                <td><%=dr["DESCRIPTION"] %></td>
+                <td><%=status %></td>
+            </tr>
+            <%
+                }
+            %>
+        </table>
     </div>
     </form>
 </body>

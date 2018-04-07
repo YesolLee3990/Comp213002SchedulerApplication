@@ -9,9 +9,10 @@ using System.Web.UI.WebControls;
 
 namespace Comp213002SchedulerApplication {
     public partial class ManageTasks : System.Web.UI.Page {
+
+        public DataTable dt;
         protected void Page_Load(object sender, EventArgs e) {
-            ListView1.DataSource = DBUtil.Select("select * from task where assignor = '" + UserInfoUtil.getLoginUserId() + "' order by schedulestart desc");
-            ListView1.DataBind();
+            dt = DBUtil.Select("select B.USERNAME, A.* from task A, USERINFO B where A.assignor = '" + UserInfoUtil.getLoginUserId() + "' AND A.USERINFO_ID = B.ID order by A.schedulestart desc");
         }
     }
 }
