@@ -68,11 +68,17 @@
         function refreshPage(date) {
             document.location.href = '/Default.aspx?date=' + date;
         }
-
     </script>
     <div id="mySidenav1" class="sidenav1">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav1()">&times;</a>
         <a href="/Report.aspx">Report</a>
+        <%
+        if (Comp213002SchedulerApplication.AppCode.controls.util.UserInfoUtil.isManager()) {
+        %>
+        <a href="/ManageTasks.aspx" target="_blank">Manage Tasks</a>
+        <%
+        }
+        %>
         <a href="/Setting.aspx">Setting</a>
     </div>
 

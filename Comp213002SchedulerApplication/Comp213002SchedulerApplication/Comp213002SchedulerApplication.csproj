@@ -221,6 +221,13 @@
     <Content Include="angular\update-task\systemjs.config.extras.js" />
     <Content Include="angular\update-task\systemjs.config2.js" />
     <Content Include="App_Code\controls\task\TaskController.cs" />
+    <Compile Include="ManageTasks.aspx.cs">
+      <DependentUpon>ManageTasks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageTasks.aspx.designer.cs">
+      <DependentUpon>ManageTasks.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SharedCode\controls\util\DBUtil.cs" />
     <Compile Include="SharedCode\controls\util\MUtil.cs" />
     <Compile Include="SharedCode\controls\util\SessionUtil.cs" />
@@ -231,6 +238,7 @@
     <Content Include="img\MainLogo.jpg" />
     <Content Include="img\SmallLogo.png" />
     <Content Include="Login.aspx" />
+    <Content Include="ManageTasks.aspx" />
     <Content Include="Report.aspx" />
     <Compile Include="SharedCode\controls\models\Task.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
