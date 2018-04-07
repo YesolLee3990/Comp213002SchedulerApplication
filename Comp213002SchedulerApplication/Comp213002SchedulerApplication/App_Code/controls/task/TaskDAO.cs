@@ -16,7 +16,7 @@ namespace Comp213002SchedulerApplication.AppCode.controls.task {
             Result result = new Result();
             try {
                 string sql = "";
-                if (task.Id != 1) sql = DBUtil.BuildUpdateQuery(task, new String[]{"RESULT", "STATUS"});
+                if (task.Id != 1) sql = DBUtil.BuildUpdateQuery(task, new String[]{"SUBJECT", "ASSIGNOR", "DESCRIPTION", "PRIRORITY", "SCHEDULESTART", "SCHEDULEEND", "RESULT", "STATUS"});
                 else sql = DBUtil.BuildInsertQuery(task);
                 
                 int cnt = DBUtil.Execute(sql);

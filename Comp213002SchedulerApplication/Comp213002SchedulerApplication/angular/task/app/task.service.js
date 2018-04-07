@@ -21,13 +21,13 @@ var httpOptions = {
 var TaskService = /** @class */ (function () {
     function TaskService(http) {
         this.http = http;
-        this.getTaskUrl = '/api/task/0';
+        this.getTaskUrl = '/api/task/';
         this.postTaskUrl = '/api/task/save';
         this.searchUserUrl = '/api/task/searchUser';
     }
-    TaskService.prototype.getTask = function () {
-        //var test = this.http.get<Task>(this.getTaskUrl);
-        return this.http.get(this.getTaskUrl);
+    TaskService.prototype.getTask = function (taskId) {
+        alert('taskId : ' + taskId);
+        return this.http.get(this.getTaskUrl + taskId);
     };
     TaskService.prototype.getUserList = function (name) {
         return this.http.get(this.searchUserUrl + "/" + name);
