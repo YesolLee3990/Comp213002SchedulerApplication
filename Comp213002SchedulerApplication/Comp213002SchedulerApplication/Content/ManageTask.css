@@ -32,6 +32,7 @@ td {
     background-color:lightblue;
     width:800px;
     margin:auto;
+    height:100px;
 }
 
 .button {
@@ -48,13 +49,16 @@ td {
     -webkit-transition-duration: 0.2s; /* Safari */
     transition-duration: 0.2s;
     float:right;
+    position:relative;
+    top:-40px;
+    right:10px;
 }
 .button:hover{
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .searchLeftCol{
-    width:370px;
+    width:360px;
     float:left;
     padding:10px 0px 0px 5px;
 }

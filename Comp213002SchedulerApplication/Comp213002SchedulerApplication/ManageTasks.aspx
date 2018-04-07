@@ -16,7 +16,7 @@
                 <div class="searchRightCol">Description : <input type="text" name="description" /></div>
                 <div class="searchLeftCol">Date : <input type="date" name="scheduleStart" /> ~ <input type="date" name="scheduleEnd" /></div>
                 <div class="searchRightCol">Actor : <input type="text" name="actorName" /></div>
-                <div class="searchLeftCol">Status :
+                <div class="searchLeftCol" style="float:none;">Status :
                     <select name="status">
                         <option value="S">Scheduled</option>
                         <option value="W">Working</option>
@@ -45,7 +45,7 @@
                         else status = "Working";
                 %>
                 <tr onclick="javascript:showTaskInfo('<%=dr["ID"] %>');">
-                    <td style="width=50px;"><%=dr["ID"] %></td>
+                    <td style="width:50px;"><%=dr["ID"] %></td>
                     <td><%=dr["SUBJECT"] %></td>
                     <td><%=dr["USERNAME"] %></td>
                     <td><%=dr["SCHEDULESTART"] %>~<%=dr["SCHEDULEEND"] %></td>
