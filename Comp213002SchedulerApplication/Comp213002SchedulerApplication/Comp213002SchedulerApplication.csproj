@@ -209,7 +209,6 @@
     <Content Include="angular\task\systemjs-angular-loader.js" />
     <Content Include="angular\task\systemjs.config.extras.js" />
     <Content Include="angular\task\systemjs.config2.js" />
-    <Content Include="angular\task\tsconfig.json" />
     <Content Include="angular\update-task\app\app.component.js" />
     <Content Include="angular\update-task\app\app.component.spec.js" />
     <Content Include="angular\update-task\app\app.module.js" />
@@ -436,9 +435,6 @@
     <TypeScriptCompile Include="angular\task\app\app.component.spec.ts" />
     <TypeScriptCompile Include="angular\task\app\app.component.ts" />
     <TypeScriptCompile Include="angular\task\app\app.module.ts" />
-    <TypeScriptCompile Include="angular\task\app\task.service.spec.ts" />
-    <TypeScriptCompile Include="angular\task\app\task.service.ts" />
-    <TypeScriptCompile Include="angular\task\main.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
