@@ -14,12 +14,11 @@ namespace Comp213002SchedulerApplication {
         public string pagingHtml = "";
 
         protected void Page_Load(object sender, EventArgs e) {
-            bool noCondition = false;
-            string sql = BuildSearchSql(out noCondition);
-            if(!noCondition) dt = DBUtil.Select(sql);
+            string sql = BuildSearchSql();
+            dt = DBUtil.Select(sql);
         }
 
-        private string BuildSearchSql(out bool noCondition) {
+        private string BuildSearchSql() {
             string subject = Request["subject"];
             string description = Request["description"];
             string scheduleStart = Request["scheduleStart"];
@@ -34,9 +33,6 @@ namespace Comp213002SchedulerApplication {
             if (!String.IsNullOrEmpty(scheduleEnd)) conditions += " AND A.SCHEDULEEND <= '" + scheduleEnd + "' ";
             if (!String.IsNullOrEmpty(actorName)) conditions += " AND B.USERNAME LIKE '%" + actorName.Trim() + "%' ";
             if (!String.IsNullOrEmpty(status)) conditions += " AND A.STATUS = '" + status + "' ";
-
-            if (conditions == "") noCondition = true;
-            else noCondition = false;
 
             string sql = "select B.USERNAME, A.* from task A, USERINFO B "
                 + "WHERE A.assignor = '" + UserInfoUtil.getLoginUserId()
