@@ -12,6 +12,7 @@ var task_service_1 = require("./task.service");
 var http_1 = require("@angular/common/http");
 var app_component_1 = require("./app.component");
 var forms_1 = require("@angular/forms");
+var router_1 = require("@angular/router");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -20,7 +21,7 @@ var AppModule = /** @class */ (function () {
             imports: [platform_browser_1.BrowserModule, http_1.HttpClientModule, forms_1.FormsModule, forms_1.ReactiveFormsModule],
             declarations: [app_component_1.AppComponent],
             bootstrap: [app_component_1.AppComponent],
-            providers: [task_service_1.TaskService, http_1.HttpClient]
+            providers: [task_service_1.TaskService, http_1.HttpClient, router_1.ActivatedRoute]
         })
     ], AppModule);
     return AppModule;
