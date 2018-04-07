@@ -79,7 +79,7 @@
         <%
         if (Comp213002SchedulerApplication.AppCode.controls.util.UserInfoUtil.isManager()) {
         %>
-        <a href="#" target="_blank" onclick="javascript:showManageTask();">Manage Tasks</a>
+        <a href="#" onclick="javascript:showManageTask();">Manage Tasks</a>
         <%
         }
         %>

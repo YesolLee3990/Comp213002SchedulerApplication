@@ -46,7 +46,6 @@ var AppComponent = /** @class */ (function () {
         this.taskId = this.getUrlParameter('id');
         this.taskService.getTask(this.taskId).subscribe(function (initialTask) {
             _this.task = initialTask;
-            alert('task : ' + _this.task);
         });
     };
     AppComponent.prototype.getUrlParameter = function (name) {
