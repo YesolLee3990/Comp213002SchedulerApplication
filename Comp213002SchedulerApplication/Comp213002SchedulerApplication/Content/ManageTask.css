@@ -57,11 +57,10 @@ td {
 .searchLeftCol{
     width:370px;
     float:left;
-    margin:10px 0px 10px 5px;
+    padding:10px 0px 0px 5px;
 }
 .searchRightCol{
-    width:370px;
-    margin:10px 0px 10px 5px;
+    padding:10px 0px 0px 5px;
 }
 
 /* Cells in even rows (2,4,6...) are one color */        
