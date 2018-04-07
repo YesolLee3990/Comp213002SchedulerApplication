@@ -6,7 +6,6 @@
                 <tr>
                     <td class="titleTd"><h1>Subject </h1></td>
                     <td class="contentTd">
-                        {{task.Subject}}
                         <input [(ngModel)]="task.Subject" placeholder="Title of the assignment" #subject="ngModel" id="subject" name="subject" class="form-control" required>
                         <div *ngIf="subject.invalid && (subject.dirty || subject.touched)" class="alert alert-danger">
                             <div *ngIf="subject.errors.required">Subject is required.</div>
@@ -64,6 +63,7 @@
                 <tr>
                     <td colspan="2">
                         <div class="btnArea">
+                            <button *ngif="managerUpdate" class="saveBtn" [disabled]="taskForm.invalid" (click)="deleteTask()"><span>Delete</span></button>
                             <button class="saveBtn" [disabled]="taskForm.invalid" (click)="saveTask()"><span>Save</span></button>
                             <button class="button" (click)="cancelTask()">Cancel</button>
                         </div>
