@@ -30,11 +30,12 @@
 
         <table>
             <%
-                foreach(System.Data.DataRow dr in dt.Rows) {
-                    string status = (string)dr["STATUS"];
-                    if (status == "S") status = "Scheduled";
-                    else if (status == "F") status = "Finished";
-                    else status = "Working";
+                if (dt != null || dt.Rows.Count == 0) {
+                    foreach (System.Data.DataRow dr in dt.Rows) {
+                        string status = (string)dr["STATUS"];
+                        if (status == "S") status = "Scheduled";
+                        else if (status == "F") status = "Finished";
+                        else status = "Working";
             %>
             <tr>
                 <td class="col"><%=dr["ID"] %></td>
@@ -45,9 +46,15 @@
                 <td><%=status %></td>
             </tr>
             <%
+                    }
+                }else {
+            %>
+                No data or input search conditions.
+            <%
                 }
             %>
         </table>
+        <%=pagingHtml %>
     </div>
     </form>
 </body>
