@@ -44,11 +44,9 @@ var AppComponent = /** @class */ (function () {
     AppComponent.prototype.getInitTask = function () {
         var _this = this;
         this.taskId = this.getUrlParameter('id');
-        alert('this.taskId : ' + this.taskId);
         this.taskService.getTask(this.taskId).subscribe(function (initialTask) {
-            //alert("initialTask : " + initialTask);
-            //alert("initialTask.Subject : " + initialTask.Subject);
             _this.task = initialTask;
+            alert('task : ' + _this.task);
         });
     };
     AppComponent.prototype.getUrlParameter = function (name) {

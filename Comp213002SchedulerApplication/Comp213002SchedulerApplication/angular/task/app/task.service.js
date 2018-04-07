@@ -26,7 +26,6 @@ var TaskService = /** @class */ (function () {
         this.searchUserUrl = '/api/task/searchUser';
     }
     TaskService.prototype.getTask = function (taskId) {
-        alert('taskId : ' + taskId);
         return this.http.get(this.getTaskUrl + taskId);
     };
     TaskService.prototype.getUserList = function (name) {
