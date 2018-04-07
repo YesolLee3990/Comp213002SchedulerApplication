@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <link href="Content/ManageTask.css" rel="stylesheet" />
 <html xmlns="http://www.w3.org/1999/xhtml">
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <head runat="server">
     <title></title>
 </head>
