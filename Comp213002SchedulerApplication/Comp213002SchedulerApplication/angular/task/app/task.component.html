@@ -50,6 +50,16 @@
                         </select>
                     </td>
                 </tr>
+                <tr *ngIf="mode == 'managerUpdate'" >
+                    <td class="titleTd"><h1>Status</h1></td>
+                    <td class="contentTd">
+                        <select [(ngModel)]="task.Status" #name="ngModel" name="status" class="form-control" required>
+                            <option value="S">Scheduled</option>
+                            <option value="W">Working</option>
+                            <option value="F">Finished</option>
+                        </select>
+                    </td>
+                </tr>
                 <tr>
                     <td class="titleTd"><h1>Start date</h1></td>
                     <td class="contentTd">
@@ -58,7 +68,9 @@
                 </tr>
                 <tr>
                     <td class="titleTd"><h1>End date</h1></td>
-                    <td class="contentTd"><input type="date" [(ngModel)]="task.ScheduleEnd" #scheduleEnd="ngModel" #name="ngModel" name="scheduleEnd" class="form-control"></td>
+                    <td class="contentTd">
+                        <input type="date" [(ngModel)]="task.ScheduleEnd" #scheduleEnd="ngModel" name="scheduleEnd" class="form-control" required>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">

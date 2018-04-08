@@ -115,7 +115,13 @@ namespace Comp213002SchedulerApplication.AppCode.controls.util {
             foreach (string col in colnames) {
                 foreach (PropertyInfo prop in props.Where(prop => prop.Name.ToUpper() == col.ToUpper())) {
                     object val = prop.GetValue(obj);
-                    sql += col + " = '" + val + "', ";
+
+                    DateTime dt = DateTime.Now;
+                    if (DateTime.TryParse(val.ToString(), out dt)) {
+                        sql += col + " = '" + GetDTS(dt) + "', ";
+                    } else {
+                        sql += col + " = '" + val + "', ";
+                    }
                 }
             }
             sql = removeComma(sql);

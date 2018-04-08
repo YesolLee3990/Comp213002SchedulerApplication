@@ -47,6 +47,9 @@ var AppComponent = /** @class */ (function () {
         this.mode = this.getUrlParameter('mode');
         this.taskService.getTask(this.taskId).subscribe(function (initialTask) {
             _this.task = initialTask;
+            _this.userName = _this.task.UserName;
+            _this.task.ScheduleStart = new Date(_this.task.ScheduleStart).toISOString().slice(0, 10);
+            _this.task.ScheduleEnd = new Date(_this.task.ScheduleEnd).toISOString().slice(0, 10);
         });
     };
     AppComponent.prototype.getUrlParameter = function (name) {
@@ -78,7 +81,7 @@ var AppComponent = /** @class */ (function () {
     };
     AppComponent.prototype.deleteTask = function () {
         if (confirm('Do you want to delete?')) {
-            this.task.DeleteFlag = true;
+            this.task.DeleteFlag = '1';
             this.taskService.saveTask(this.task).subscribe(function (result) {
                 if (result.Success) {
                     alert('Delete successfully');
