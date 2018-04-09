@@ -18,7 +18,7 @@
           buttonImage: "img/calendar.gif",
           buttonImageOnly: true,
           buttonText: "Select Start date",
-          dateFormat: "yy-mm-dd",
+          dateFormat: "yy/mm/dd",
           showOtherMonths: true,
           selectOtherMonths: true
           });
@@ -30,7 +30,7 @@
           buttonImage: "img/calendar.gif",
           buttonImageOnly: true,
           buttonText: "Select End date",
-          dateFormat: "yy-mm-dd",
+          dateFormat: "yy/mm/dd",
           showOtherMonths: true,
           selectOtherMonths: true
           });
