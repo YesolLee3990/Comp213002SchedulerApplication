@@ -16,7 +16,6 @@ namespace Comp213002SchedulerApplication {
         protected void Page_Load(object sender, EventArgs e) {
             string sql = BuildSearchSql();
             dt = DBUtil.Select(sql);
-            //dt = new DataTable();
         }
 
         private string BuildSearchSql() {

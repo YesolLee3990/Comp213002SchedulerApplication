@@ -53,7 +53,7 @@
                                     <tr>
                                         <td>Username:</td>
                                         <td>
-                                            <asp:TextBox Text="test1" runat="server" ID="loginUsernameTB"></asp:TextBox>
+                                            <asp:TextBox Text="manager1" runat="server" ID="loginUsernameTB"></asp:TextBox>
                                             <asp:RequiredFieldValidator runat="server" ControlToValidate="loginUsernameTB" Display="Dynamic" ValidationGroup="login" ErrorMessage="Username is Required."></asp:RequiredFieldValidator>
                                         </td>
                                     </tr>
@@ -61,7 +61,7 @@
                                     <tr>
                                         <td>Password:</td>
                                         <td>
-                                            <asp:TextBox Text="test1" runat="server" ID="loginPasswordTB"></asp:TextBox>
+                                            <asp:TextBox Text="manager1" runat="server" ID="loginPasswordTB"></asp:TextBox>
                                             <asp:RequiredFieldValidator runat="server" ControlToValidate="loginPasswordTB" Display="Dynamic" ValidationGroup="login" ErrorMessage="Password is Required."></asp:RequiredFieldValidator>
                                         </td>
                                     </tr>

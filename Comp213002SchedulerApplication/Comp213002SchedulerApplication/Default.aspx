@@ -70,7 +70,7 @@
         }
 
         function showManageTask() {
-            window.open('/ManageTasks.aspx', '', 'width=900,height=600,scrollbars=1,resizable');
+            window.open('/ManageTasks.aspx', 'mt', 'width=900,height=600,scrollbars=1,resizable');
         }
     </script>
     <div id="mySidenav1" class="sidenav1">

@@ -9,14 +9,14 @@ using System.Web;
 namespace Comp213002SchedulerApplication.AppCode.controls.task {
     public class TaskDAO{
         public Task GetTask(int id) {
-            return DBUtil.SelectOne<Task>("SELECT B.USERNAME, A.* FROM TASK A, USERINFO B WHERE ID = '" + id + "' AND A.USERINFO_ID = B.ID");
+            return DBUtil.SelectOne<Task>("SELECT B.USERNAME + '/' + CAST( B.ID as varchar ) AS USERNAME, A.* FROM TASK A, USERINFO B WHERE A.ID = '" + id + "' AND A.USERINFO_ID = B.ID");
         }
 
         public Result SaveTask(Task task) {
             Result result = new Result();
             try {
                 string sql = "";
-                if (task.Id != 1) sql = DBUtil.BuildUpdateQuery(task, new String[]{"SUBJECT", "ASSIGNOR", "DESCRIPTION", "PRIRORITY", "SCHEDULESTART", "SCHEDULEEND", "RESULT", "STATUS", "DELETEFLAG"});
+                if (task.Id != 1) sql = DBUtil.BuildUpdateQuery(task, new String[]{"SUBJECT", "ASSIGNOR", "DESCRIPTION", "PRIORITY", "SCHEDULESTART", "SCHEDULEEND", "RESULT", "STATUS", "DELETEFLAG", "USERINFO_ID"});
                 else sql = DBUtil.BuildInsertQuery(task);
                 
                 int cnt = DBUtil.Execute(sql);

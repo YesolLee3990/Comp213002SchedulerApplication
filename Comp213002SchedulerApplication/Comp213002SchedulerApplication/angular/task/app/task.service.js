@@ -41,6 +41,7 @@ var TaskService = /** @class */ (function () {
         };
     };
     TaskService.prototype.saveTask = function (task) {
+        console.log('this.postTaskUrl : ' + this.postTaskUrl);
         return this.http.post(this.postTaskUrl, task, httpOptions);
     };
     TaskService = __decorate([
