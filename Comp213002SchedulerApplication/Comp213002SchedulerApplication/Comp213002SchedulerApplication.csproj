@@ -232,10 +232,13 @@
     <Compile Include="SharedCode\controls\util\MUtil.cs" />
     <Compile Include="SharedCode\controls\util\SessionUtil.cs" />
     <Compile Include="SharedCode\controls\util\UserInfoUtil.cs" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\jquery-ui.theme.css" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\ManageTask.css" />
     <Content Include="Http404ErrorPage.aspx" />
     <Content Include="img\Background1.jpg" />
+    <Content Include="img\calendar.gif" />
     <Content Include="img\MainLogo.jpg" />
     <Content Include="img\SmallLogo.png" />
     <Content Include="Login.aspx" />
@@ -249,6 +252,7 @@
     </Compile>
     <Content Include="requestRescheduling.aspx" />
     <Content Include="reschedulePopup.aspx" />
+    <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Setting.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />

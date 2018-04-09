@@ -31,6 +31,15 @@ namespace Comp213002SchedulerApplication {
         protected global::System.Web.UI.WebControls.Label lbHeader;
         
         /// <summary>
+        /// ddTaskList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddTaskList;
+        
+        /// <summary>
         /// lbContents control.
         /// </summary>
         /// <remarks>
@@ -49,13 +58,13 @@ namespace Comp213002SchedulerApplication {
         protected global::System.Web.UI.WebControls.Label labelSdate;
         
         /// <summary>
-        /// txtSdate control.
+        /// txtSdateValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSdate;
+        protected global::System.Web.UI.WebControls.TextBox txtSdateValue;
         
         /// <summary>
         /// labelEdate control.
@@ -67,21 +76,48 @@ namespace Comp213002SchedulerApplication {
         protected global::System.Web.UI.WebControls.Label labelEdate;
         
         /// <summary>
-        /// txtEdate control.
+        /// txtEdateValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEdate;
+        protected global::System.Web.UI.WebControls.TextBox txtEdateValue;
         
         /// <summary>
-        /// ddTaskList control.
+        /// txtComment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddTaskList;
+        protected global::System.Web.UI.WebControls.TextBox txtComment;
+        
+        /// <summary>
+        /// cBoxDayOff control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cBoxDayOff;
+        
+        /// <summary>
+        /// Button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
+        
+        /// <summary>
+        /// lbErrorMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbErrorMsg;
     }
 }

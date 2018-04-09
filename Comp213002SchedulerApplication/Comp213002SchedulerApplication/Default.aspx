@@ -129,8 +129,8 @@
                 <object style="width:550px;height:650px;" type="text/html" data="./reschedulePopup.aspx">
                 </object>
                 
-                <asp:Button ID="btnRequest" runat="server" Text="Request" />
-                <asp:Button ID="btnClose" runat="server" Text="Cancel" />
+                &nbsp<asp:Button ID="btnRequest" Visible="false" runat="server" Text="Request" />
+                &nbsp<asp:Button ID="btnClose" runat="server" Text="Close" />
             </div>
             </asp:panel>   
         </div>
