@@ -69,7 +69,6 @@ namespace Comp213002SchedulerApplication
                     dth.status = (string)row["Status"];
                     dth.startDate = ((System.DateTime)row["ScheduleStart"]).ToString("yyyy/MM/dd").Replace('-', '/');
                     dth.endDate = ((System.DateTime)row["ScheduleEnd"]).ToString("yyyy/MM/dd").Replace('-', '/');
-                    //dth.endDate = ((System.DateTime)row["ScheduleEnd"]).ToShortDateString();
 
                     taskList.Add(dth);
                 }
@@ -173,7 +172,7 @@ namespace Comp213002SchedulerApplication
             {
                 if (this.cBoxDayOff.Checked)
                 {
-                    this.lbErrorMsg.Text = "Category ALL but day-off request";
+                    this.lbErrorMsg.Text = "Category 'ALL' but day-off request";
                 }else
                 {
                     this.lbErrorMsg.Text = "Specify the task you want to make a change dates.";
@@ -196,7 +195,7 @@ namespace Comp213002SchedulerApplication
 
                 if (this.cBoxDayOff.Checked || !(sDateStr.Equals(this.txtSdateValue.Text)) || !(eDateStr.Equals(this.txtEdateValue.Text)))
                 {
-                    this.lbErrorMsg.Text = "Change confirmed!";
+                    this.lbErrorMsg.Text = "Change has been made!";
                 }
                 else
                 {
@@ -263,6 +262,7 @@ namespace Comp213002SchedulerApplication
                 ad.SelectCommand.ExecuteNonQuery();
 
                 myConnection.Close();
+                this.lbErrorMsg.Text = "request sent successfully!";
             }
             catch(Exception ex)
             {
