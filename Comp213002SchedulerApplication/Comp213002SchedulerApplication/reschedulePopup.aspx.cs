@@ -8,6 +8,7 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+
 using System.Web.UI.WebControls;
 
 namespace Comp213002SchedulerApplication
@@ -162,7 +163,7 @@ namespace Comp213002SchedulerApplication
 
         protected void ButtonRequest_Click(object sender, EventArgs e)
         {
-            string format = "yyyy-MM-dd";
+            string format = "yyyy/MM/dd";
             CultureInfo provider = CultureInfo.InvariantCulture;
             DateTime sDate;
             DateTime eDate;
