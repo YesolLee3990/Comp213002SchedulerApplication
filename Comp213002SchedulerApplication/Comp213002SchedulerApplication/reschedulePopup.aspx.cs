@@ -67,8 +67,9 @@ namespace Comp213002SchedulerApplication
                     dth.assignor = (string)row["userName"];
                     dth.priority = (string)row["Priority"];
                     dth.status = (string)row["Status"];
-                    dth.startDate = ((System.DateTime)row["ScheduleStart"]).ToShortDateString();
-                    dth.endDate = ((System.DateTime)row["ScheduleEnd"]).ToShortDateString();
+                    dth.startDate = ((System.DateTime)row["ScheduleStart"]).ToString("yyyy/MM/dd").Replace('-', '/');
+                    dth.endDate = ((System.DateTime)row["ScheduleEnd"]).ToString("yyyy/MM/dd").Replace('-', '/');
+                    //dth.endDate = ((System.DateTime)row["ScheduleEnd"]).ToShortDateString();
 
                     taskList.Add(dth);
                 }
