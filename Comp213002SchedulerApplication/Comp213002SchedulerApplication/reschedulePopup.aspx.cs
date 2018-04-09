@@ -204,6 +204,12 @@ namespace Comp213002SchedulerApplication
                 }
             }
 
+            if (this.cBoxDayOff.Checked && this.txtComment.Text.Trim().Equals(""))
+            {
+                this.lbErrorMsg.Text = "For day-off, you must write the reason..";
+                return;
+            }
+
             insertX();
 
 
