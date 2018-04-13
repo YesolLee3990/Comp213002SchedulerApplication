@@ -63,6 +63,11 @@ td {
     float:left;
     padding:10px 0px 0px 5px;
 }
+.searchError{
+    width:360px;
+    padding:10px 0px 0px 5px;
+    position:relative;
+}
 .searchRightCol{
     padding:10px 0px 0px 5px;
 }

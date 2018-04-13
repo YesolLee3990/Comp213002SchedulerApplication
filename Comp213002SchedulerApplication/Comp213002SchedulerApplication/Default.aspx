@@ -72,6 +72,10 @@
         function showManageTask() {
             window.open('/ManageTasks.aspx', 'mt', 'width=900,height=600,scrollbars=1,resizable');
         }
+
+        function showErrorList() {
+            window.open('/ErrorList.aspx', 'el', 'width=900,height=600,scrollbars=1,resizable');
+        }
     </script>
     <div id="mySidenav1" class="sidenav1">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav1()">&times;</a>
@@ -80,6 +84,13 @@
         if (Comp213002SchedulerApplication.AppCode.controls.util.UserInfoUtil.isManager()) {
         %>
         <a href="#" onclick="javascript:showManageTask();">Manage Tasks</a>
+        <%
+        }
+        %>
+        <%
+        if (Comp213002SchedulerApplication.AppCode.controls.util.UserInfoUtil.isManager()) {
+        %>
+        <a href="#" onclick="javascript:showErrorList();">Show Errors</a>
         <%
         }
         %>

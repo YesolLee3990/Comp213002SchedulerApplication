@@ -39,36 +39,20 @@ namespace Comp213002SchedulerApplication {
         }
 
         void Application_Error(object sender, EventArgs e) {
-            //// Code that runs when an unhandled error occurs
 
-            //// Get the exception object.
-            //Exception exc = Server.GetLastError();
+            try { 
+                int loginUserId = UserInfoUtil.getLoginUserId();
+                if (loginUserId == 0) loginUserId = 1;
 
-            //// Handle HTTP errors
-            //if (exc.GetType() == typeof(HttpException))
-            //{
-            //    // The Complete Error Handling Example generates
-            //    // some errors using URLs with "NoCatch" in them;
-            //    // ignore these here to simulate what would happen
-            //    // if a global.asax handler were not implemented.
-            //    if (exc.Message.Contains("NoCatch") || exc.Message.Contains("maxUrlLength"))
-            //        return;
+                Exception ex = Server.GetLastError();
+                string msg = ex.Message + "\n" + ex.InnerException.StackTrace.Replace('\'', '"');
+                if (msg.Length > 1000) msg = msg.Substring(0, 1000);
 
-            //    //Redirect HTTP errors to HttpError page
-            //    Server.Transfer("HttpErrorPage.aspx");
-            //}
-
-            //// For other kinds of errors give the user some information
-            //// but stay on the default page
-            //Response.Write("<h2>Global Page Error</h2>\n");
-            //Response.Write(
-            //    "<p>" + exc.Message + "</p>\n");
-            //Response.Write("Return to the <a href='Default.aspx'>" +
-            //    "Default Page</a>\n");
-
-            //// Log the exception and notify system operators
-            ////ExceptionUtility.LogException(exc, "DefaultPage");
-            ////ExceptionUtility.NotifySystemOps(exc);
+                DBUtil.Execute("INSERT INTO ERROR (USERID, ERRORMSG) VALUES ('" + loginUserId + "', '" + msg + "')");
+            }
+            catch (Exception err) {
+                Console.WriteLine(err);
+            }
 
             //// Clear the error from the server
             //Server.ClearError();
