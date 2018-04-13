@@ -1,0 +1,56 @@
+﻿body {
+}
+
+table {  
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif;
+    width: 800px;
+    margin:auto;
+    table-layout:fixed;
+    border-spacing: 0; 
+}
+
+td, thead {  
+    border: 1px solid; /* No more visible border */
+    height: 30px; 
+    transition: all 0.3s;  /* Simple transition for hover effect */
+}
+
+thead {  
+    background: #DFDFDF;  /* Darken header a bit */
+    font-weight: bold;
+}
+
+td {  
+    background: #FAFAFA;
+    /*white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width:150px;*/
+    font-size:13px;
+}
+
+.button {
+    background-color: midnightblue; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px 1px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2s;
+    float:right;
+    position:relative;
+    right:50px;
+}
+.button:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.searchRightCol{
+    padding:10px 0px 0px 5px;
+}

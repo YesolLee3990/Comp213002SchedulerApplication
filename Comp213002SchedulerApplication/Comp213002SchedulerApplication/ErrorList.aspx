@@ -38,15 +38,15 @@
                 <thead>
                     <tr>
                         <th style="width:50px;">ID</th>
-                        <th>Date</th>
-                        <th>User</th>
+                        <th style="width:100px;">Date</th>
+                        <th style="width:100px;">User</th>
                         <th>ErrorMsg</th>
                     </tr>
                 </thead>
                 <%
                     foreach (System.Data.DataRow dr in dt.Rows) {
                 %>
-                <tr onclick="javascript:showTaskInfo('<%=dr["ID"] %>');">
+                <tr onclick="javascript:showErrorInfo('<%=dr["ID"] %>');">
                     <td><%=dr["ID"] %></td>
                     <td><%=dr["CREATEDATE"] %></td>
                     <td><%=dr["USERNAME"] %></td>
@@ -65,9 +65,8 @@
         form1.submit();
     }
 
-    function showTaskInfo(id) {
-        alert('Not yet');
-        //window.open('/angular/task?id=' + id +'&mode=managerUpdate', '', 'width=900,height=600,scrollbars=1,resizable');
+    function showErrorInfo(id) {
+        window.open('ErrorDetail.aspx?id=' + id, '', 'width=900,height=600,scrollbars=1,resizable');
     }
 
     $('#contentTable td').each(function () {

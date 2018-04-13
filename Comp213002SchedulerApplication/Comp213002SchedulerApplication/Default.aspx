@@ -90,7 +90,7 @@
         <%
         if (Comp213002SchedulerApplication.AppCode.controls.util.UserInfoUtil.isManager()) {
         %>
-        <a href="#" onclick="javascript:showErrorList();">Show Errors</a>
+        <a href="#" onclick="javascript:showErrorList();">Error List</a>
         <%
         }
         %>

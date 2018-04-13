@@ -24,7 +24,7 @@ namespace Comp213002SchedulerApplication.AppCode.controls.util {
         }
 
         public static bool isManager() {
-            return GetLoginUserType() == 'M';
+            return GetLoginUserType() == 'M' || GetLoginUserType() == 'A';
         }
 
         public static bool isAdmin() {

@@ -221,6 +221,13 @@
     <Content Include="angular\update-task\systemjs.config.extras.js" />
     <Content Include="angular\update-task\systemjs.config2.js" />
     <Content Include="App_Code\controls\task\TaskController.cs" />
+    <Compile Include="ErrorDetail.aspx.cs">
+      <DependentUpon>ErrorDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorDetail.aspx.designer.cs">
+      <DependentUpon>ErrorDetail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ErrorList.aspx.cs">
       <DependentUpon>ErrorList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -242,7 +249,9 @@
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\jquery-ui.theme.css" />
     <Content Include="Content\Login.css" />
+    <Content Include="Content\ErrorDetail.css" />
     <Content Include="Content\ManageTask.css" />
+    <Content Include="ErrorDetail.aspx" />
     <Content Include="ErrorList.aspx" />
     <Content Include="Http404ErrorPage.aspx" />
     <Content Include="img\Background1.jpg" />
