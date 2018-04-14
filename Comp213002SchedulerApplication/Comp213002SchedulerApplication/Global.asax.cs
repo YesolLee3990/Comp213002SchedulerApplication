@@ -45,8 +45,8 @@ namespace Comp213002SchedulerApplication {
                 if (loginUserId == 0) loginUserId = 1;
 
                 Exception ex = Server.GetLastError();
-                string msg = ex.Message + "\n" + ex.InnerException.StackTrace.Replace('\'', '"');
-                if (msg.Length > 1000) msg = msg.Substring(0, 1000);
+                string msg = ex.Message + "\n" + ex.InnerException.StackTrace;
+                if (msg.Length > 1000) msg = msg.Replace("'", "").Substring(0, 1000);
 
                 DBUtil.Execute("INSERT INTO ERROR (USERID, ERRORMSG) VALUES ('" + loginUserId + "', '" + msg + "')");
             }

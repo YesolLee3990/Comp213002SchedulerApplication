@@ -242,6 +242,13 @@
     <Compile Include="ManageTasks.aspx.designer.cs">
       <DependentUpon>ManageTasks.aspx</DependentUpon>
     </Compile>
+    <Compile Include="RequestDetail.aspx.cs">
+      <DependentUpon>RequestDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RequestDetail.aspx.designer.cs">
+      <DependentUpon>RequestDetail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SharedCode\controls\util\DBUtil.cs" />
     <Compile Include="SharedCode\controls\util\MUtil.cs" />
     <Compile Include="SharedCode\controls\util\SessionUtil.cs" />
@@ -267,6 +274,7 @@
     <Compile Include="SharedCode\controls\models\UserInfo.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Content Include="RequestDetail.aspx" />
     <Content Include="requestRescheduling.aspx" />
     <Content Include="reschedulePopup.aspx" />
     <Content Include="Scripts\jquery-ui.js" />

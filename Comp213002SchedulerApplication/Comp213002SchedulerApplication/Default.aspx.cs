@@ -30,7 +30,7 @@ namespace Comp213002SchedulerApplication
 
         private void GetRequestRescheduling() {
             if (UserInfoUtil.isManager()) {
-                DataTable results = DBUtil.Select("SELECT Z.ID, Z.SUBJECT, A.ID FROM TASK Z, REQUESTTRANSACTION A WHERE Z.ID = A.TASKID AND A.STATUS = 'R' AND A.assignor = '" + UserInfoUtil.getLoginUserId() + "' ");
+                DataTable results = DBUtil.Select("SELECT A.ID, Z.SUBJECT + ' by ' + U.USERNAME FROM TASK Z, REQUESTTRANSACTION A, USERINFO U WHERE Z.ID = A.TASKID AND A.STATUS = 'R' AND U.ID = A.ASSIGNEE AND A.assignor = '" + UserInfoUtil.getLoginUserId() + "' ");
                 GridView2.DataSource = results;
                 GridView2.ShowHeader = false;
                 GridView2.ShowFooter = false;
