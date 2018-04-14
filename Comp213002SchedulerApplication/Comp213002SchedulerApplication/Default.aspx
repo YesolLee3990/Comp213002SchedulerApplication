@@ -76,6 +76,10 @@
         function showErrorList() {
             window.open('/ErrorList.aspx', 'el', 'width=900,height=600,scrollbars=1,resizable');
         }
+
+        function showRequest(id) {
+            window.open('/RequestDetail.aspx?id=' + id, 'rd', 'width=900,height=600,scrollbars=1,resizable');
+        }
     </script>
     <div id="mySidenav1" class="sidenav1">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav1()">&times;</a>
@@ -153,7 +157,10 @@
         <div style="background-color: #fff9e6; border-radius: 10px; margin: 10px; padding: 5px; height: 50%">
             <asp:GridView ID="GridView1" runat="server" Width="100%"></asp:GridView>
         </div>
-        <div style="background-color: #fff9e6; border-radius: 10px; margin: 10px; padding: 5px; height: 30%">Date</div>
+        <a>Request Change</a>
+        <div style="background-color: #fff9e6; border-radius: 10px; margin: 10px; padding: 5px; height: 30%">
+            <asp:GridView ID="GridView2" runat="server" Width="100%"></asp:GridView>
+        </div>
         <div style="background-color: #fff9e6; border-radius: 10px; margin: 10px; padding: 5px; height: 20%">Date</div>
     </div>
 </asp:Content>

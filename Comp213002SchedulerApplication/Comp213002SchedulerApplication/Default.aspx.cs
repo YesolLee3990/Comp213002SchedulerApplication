@@ -17,6 +17,7 @@ namespace Comp213002SchedulerApplication
     public partial class _Default : Page
     {
         DataTable dt = null;
+        DataTable rt = null;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,6 +25,46 @@ namespace Comp213002SchedulerApplication
             AuthProcess();
             SetCalendarDate();
             SetDailyTasks();
+            GetRequestRescheduling();
+        }
+
+        private void GetRequestRescheduling() {
+            if (UserInfoUtil.isManager()) {
+                DataTable results = DBUtil.Select("SELECT Z.ID, Z.SUBJECT, A.ID FROM TASK Z, REQUESTTRANSACTION A WHERE Z.ID = A.TASKID AND A.STATUS = 'R' AND A.assignor = '" + UserInfoUtil.getLoginUserId() + "' ");
+                GridView2.DataSource = results;
+                GridView2.ShowHeader = false;
+                GridView2.ShowFooter = false;
+                GridView2.Style["TABLE-LAYOUT"] = "fixed";
+                GridView2.GridLines = GridLines.None;
+                GridView2.BorderStyle = BorderStyle.None;
+                GridView2.RowDataBound += GridView2_RowDataBound; ;
+                GridView2.DataBind();
+            }
+        }
+
+        private void GridView2_RowDataBound(object sender, GridViewRowEventArgs e) {
+            if (e.Row.RowType == DataControlRowType.DataRow) {
+                e.Row.Attributes["onmouseover"] = "this.originalstyle=this.style.backgroundColor;this.style.cursor='pointer';this.style.backgroundColor='#ffccff';";
+                e.Row.Attributes["onmouseout"] = "this.style.textDecoration='none';this.style.backgroundColor=this.originalstyle;";
+                e.Row.Cells[0].Visible = false;
+                e.Row.Cells[1].Wrap = false;
+                e.Row.Cells[1].Style["overflow"] = "hidden";
+                e.Row.Cells[1].Style["text-overflow"] = "ellipsis";
+                e.Row.Cells[1].ToolTip = e.Row.Cells[1].Text;
+                e.Row.Attributes["onclick"] = "javascript:showRequest('" + e.Row.Cells[0].Text + "');";
+            }
+        }
+
+        private void SetRequestTasks() {
+            DataTable results = DBUtil.Select("SELECT ID, CONVERT(VARCHAR, ROW_NUMBER() OVER(ORDER BY SUBJECT)) +'. ' + SUBJECT AS NUM FROM TASK WHERE UserInfo_ID = 1 AND CONVERT(DATETIME, '" + DateTime.Now.ToString("yyyy-MM-dd") + "', 102) BETWEEN SCHEDULESTART AND SCHEDULEEND ");
+            GridView1.DataSource = results;
+            GridView1.ShowHeader = false;
+            GridView1.ShowFooter = false;
+            GridView1.Style["TABLE-LAYOUT"] = "fixed";
+            GridView1.GridLines = GridLines.None;
+            GridView1.BorderStyle = BorderStyle.None;
+            GridView1.RowDataBound += GridView1_RowDataBound;
+            GridView1.DataBind();
         }
 
         private void SetDailyTasks() {
