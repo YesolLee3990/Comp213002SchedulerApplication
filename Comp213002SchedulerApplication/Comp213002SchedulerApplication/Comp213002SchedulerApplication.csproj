@@ -86,6 +86,7 @@
       <HintPath>..\packages\System.Net.Http.2.0.20126.16343\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
@@ -277,7 +278,9 @@
     <Content Include="RequestDetail.aspx" />
     <Content Include="requestRescheduling.aspx" />
     <Content Include="reschedulePopup.aspx" />
+    <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\WebForms\Chart.js" />
     <Content Include="Setting.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
