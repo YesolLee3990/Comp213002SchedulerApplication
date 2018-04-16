@@ -25,7 +25,7 @@ namespace Comp213002SchedulerApplication
         {
             
             theme = (string)Session["theme"];
-            if(theme==null || theme.Equals("Normal"))
+            if(theme==null || theme.Equals("Normal") || theme.Equals("none"))
             {
                 Page.Theme = null;
             }
@@ -69,6 +69,10 @@ namespace Comp213002SchedulerApplication
                 case "Pink":
                     this.Calendar1.BackColor = System.Drawing.Color.LightPink;
                     this.Calendar1.BorderColor = System.Drawing.Color.DarkRed;
+                    break;
+                default:
+                    this.Calendar1.BackColor = System.Drawing.Color.White;
+                    this.Calendar1.BorderColor = System.Drawing.Color.White;
                     break;
             }
 
