@@ -104,7 +104,7 @@
 
     <div id="main" style="margin:auto;">
         <div style="float:right;position:relative;top:-25px;">
-            Welcome <asp:Label ID="loginInfoLabel" runat="server"></asp:Label>
+            <asp:Label ID="lbWelcome" runat="server" Text="Welcome "></asp:Label> <asp:Label ID="loginInfoLabel" runat="server"></asp:Label>
             <asp:Button ID="logoutBtn" runat="server" Text="Logout" BorderStyle="None" BorderWidth="0px" CausesValidation="False" CssClas="assignBtn"/>
         </div>
         <asp:Button ID="btnCustomizing" runat="server" Text="Settings" OnClientClick="window.open('CustomizingPage.aspx', 'newWindow', 'width=400,height=500');returnfalse;" />
