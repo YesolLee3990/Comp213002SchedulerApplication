@@ -25,7 +25,7 @@ namespace Comp213002SchedulerApplication
         {
             
             theme = (string)Session["theme"];
-            if(theme==null || theme.Equals("Normal") || theme.Equals("none"))
+            if(theme==null || theme.Equals("Normal"))
             {
                 Page.Theme = null;
             }
