@@ -18,16 +18,63 @@ namespace Comp213002SchedulerApplication
     {
         DataTable dt = null;
         DataTable rt = null;
+        
+        string theme;
 
-        protected void Page_Load(object sender, EventArgs e)
+        private void Page_PreInit(object sender, EventArgs e)
         {
+            
+            theme = (string)Session["theme"];
+            if(theme==null || theme.Equals("Normal"))
+            {
+                Page.Theme = null;
+            }
+            else
+            {
+                Page.Theme = theme;
+            }
+            
+        }
+
+
+
+         protected void Page_Load(object sender, EventArgs e){
             dt = GetData();
             AuthProcess();
             SetCalendarDate();
             SetDailyTasks();
             GetRequestRescheduling();
+
+            changeSettings();
         }
 
+        public void changeSettings()
+        {
+
+            //change calendar
+            switch (theme)
+            {
+                case "Normal":
+                    this.Calendar1.BackColor = System.Drawing.Color.White;
+                    this.Calendar1.BorderColor = System.Drawing.Color.White;
+                    break;
+                case "Dark":
+                    this.Calendar1.BackColor = System.Drawing.Color.LightGray;
+                    this.Calendar1.BorderColor = System.Drawing.Color.Black;
+                    break;
+                case "Blue":
+                    this.Calendar1.BackColor = System.Drawing.Color.LightBlue;
+                    this.Calendar1.BorderColor = System.Drawing.Color.BlueViolet;
+                    break;
+                case "Pink":
+                    this.Calendar1.BackColor = System.Drawing.Color.LightPink;
+                    this.Calendar1.BorderColor = System.Drawing.Color.DarkRed;
+                    break;
+            }
+
+        }
+
+        
         private void GetRequestRescheduling() {
             if (UserInfoUtil.isManager()) {
                 DataTable results = DBUtil.Select("SELECT A.ID, Z.SUBJECT + ' by ' + U.USERNAME FROM TASK Z, REQUESTTRANSACTION A, USERINFO U WHERE Z.ID = A.TASKID AND A.STATUS = 'R' AND U.ID = A.ASSIGNEE AND A.assignor = '" + UserInfoUtil.getLoginUserId() + "' ");
@@ -137,6 +184,8 @@ namespace Comp213002SchedulerApplication
                     AddTaskButtonOnCalendar(e, row);
                 }
             }
+
+            
         }
 
         private static void AddTaskButtonOnCalendar(DayRenderEventArgs e, DataRow row) {
@@ -173,5 +222,7 @@ namespace Comp213002SchedulerApplication
             //send login-information later.
             Session.Add("selectedDate", dt);
         }
+
+        
     }
 }

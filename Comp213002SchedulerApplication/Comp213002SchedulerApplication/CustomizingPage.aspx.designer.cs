@@ -10,114 +10,114 @@
 namespace Comp213002SchedulerApplication {
     
     
-    public partial class _Default {
+    public partial class CustomizingPage {
         
         /// <summary>
-        /// loginInfoLabel control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label loginInfoLabel;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// logoutBtn control.
+        /// title control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button logoutBtn;
+        protected global::System.Web.UI.WebControls.Label title;
         
         /// <summary>
-        /// btnCustomizing control.
+        /// lbTheme control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCustomizing;
+        protected global::System.Web.UI.WebControls.Label lbTheme;
         
         /// <summary>
-        /// assignTaskBtn control.
+        /// ddTheme control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button assignTaskBtn;
+        protected global::System.Web.UI.WebControls.DropDownList ddTheme;
         
         /// <summary>
-        /// Calendar1 control.
+        /// lbFont control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar Calendar1;
+        protected global::System.Web.UI.WebControls.Label lbFont;
         
         /// <summary>
-        /// x control.
+        /// ddFont control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton x;
+        protected global::System.Web.UI.WebControls.DropDownList ddFont;
         
         /// <summary>
-        /// ModalPopupExtender1 control.
+        /// lbFontSize control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender ModalPopupExtender1;
+        protected global::System.Web.UI.WebControls.Label lbFontSize;
         
         /// <summary>
-        /// Panel1 control.
+        /// ddFontSize control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.DropDownList ddFontSize;
         
         /// <summary>
-        /// btnRequest control.
+        /// lbFontColor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRequest;
+        protected global::System.Web.UI.WebControls.Label lbFontColor;
         
         /// <summary>
-        /// btnClose control.
+        /// ddFontColor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnClose;
+        protected global::System.Web.UI.WebControls.DropDownList ddFontColor;
         
         /// <summary>
-        /// GridView1 control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.Button btnSave;
         
         /// <summary>
-        /// GridView2 control.
+        /// btnCancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView2;
+        protected global::System.Web.UI.WebControls.Button btnCancel;
     }
 }

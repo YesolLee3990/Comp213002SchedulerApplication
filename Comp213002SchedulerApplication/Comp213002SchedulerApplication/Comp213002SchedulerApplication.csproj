@@ -222,6 +222,13 @@
     <Content Include="angular\update-task\systemjs.config.extras.js" />
     <Content Include="angular\update-task\systemjs.config2.js" />
     <Content Include="App_Code\controls\task\TaskController.cs" />
+    <Compile Include="CustomizingPage.aspx.cs">
+      <DependentUpon>CustomizingPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomizingPage.aspx.designer.cs">
+      <DependentUpon>CustomizingPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ErrorDetail.aspx.cs">
       <DependentUpon>ErrorDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -254,11 +261,15 @@
     <Compile Include="SharedCode\controls\util\MUtil.cs" />
     <Compile Include="SharedCode\controls\util\SessionUtil.cs" />
     <Compile Include="SharedCode\controls\util\UserInfoUtil.cs" />
+    <Content Include="App_Themes\Blue\blueCss.css" />
+    <Content Include="App_Themes\Dark\darkCss.css" />
+    <Content Include="App_Themes\Pink\pinkCss.css" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\jquery-ui.theme.css" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\ErrorDetail.css" />
     <Content Include="Content\ManageTask.css" />
+    <Content Include="CustomizingPage.aspx" />
     <Content Include="ErrorDetail.aspx" />
     <Content Include="ErrorList.aspx" />
     <Content Include="Http404ErrorPage.aspx" />
@@ -299,6 +310,8 @@
     <Content Include="img\logo.png" />
     <Content Include="package.json" />
     <Content Include="package-lock.json" />
+    <Content Include="App_Themes\Blue\Blue.skin" />
+    <Content Include="App_Themes\Pink\Pink.skin" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
