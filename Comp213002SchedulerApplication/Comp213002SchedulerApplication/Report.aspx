@@ -73,7 +73,7 @@
         <div class="box">
             <h3>Excel</h3>
             <!--Dropdown list for table-->
-            Table: 
+            <asp:Label ID="lbTable" runat="server" Text="Table : "></asp:Label>
             <asp:DropDownList ID="drpList1" runat="server" AutoPostBack="True">
                 <asp:ListItem>...</asp:ListItem>
                 <asp:ListItem Value="1">UserInfo</asp:ListItem>

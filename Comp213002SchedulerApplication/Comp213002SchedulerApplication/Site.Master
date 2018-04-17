@@ -46,7 +46,7 @@
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/Report">Report</a></li>
-                        <li><a runat="server" href="~/Setting">Setting</a></li>
+                        <li><a runat="server" href="" OnClick="window.open('CustomizingPage.aspx', 'newWindow', 'width=400,height=500');returnfalse;">Setting</a></li>
                         <li><a runat="server" href="~/Login">Test LoginPage</a></li>
                     </ul>
                 </div>

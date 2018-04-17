@@ -260,6 +260,7 @@
     <Compile Include="SharedCode\controls\util\DBUtil.cs" />
     <Compile Include="SharedCode\controls\util\MUtil.cs" />
     <Compile Include="SharedCode\controls\util\SessionUtil.cs" />
+    <Compile Include="SharedCode\controls\util\StyleMaker.cs" />
     <Compile Include="SharedCode\controls\util\UserInfoUtil.cs" />
     <Content Include="App_Themes\Blue\blueCss.css" />
     <Content Include="App_Themes\Dark\darkCss.css" />

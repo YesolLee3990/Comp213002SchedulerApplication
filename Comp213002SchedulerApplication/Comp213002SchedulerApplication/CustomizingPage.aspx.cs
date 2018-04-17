@@ -10,10 +10,10 @@ namespace Comp213002SchedulerApplication
     public partial class CustomizingPage : System.Web.UI.Page
     {
 
-        public string themeStr = "";
-        public string fontStr = "";
-        public string fontSizeStr = "";
-        public string fontColorStr = "";
+        public string themeStr = "No change";
+        public string fontStr = "No change";
+        public string fontSizeStr = "No change";
+        public string fontColorStr = "No change";
         List<String> themeSource = new List<String>();
         List<String> fontSource = new List<String>();
         List<String> fontSizeSource = new List<String>();
@@ -31,6 +31,7 @@ namespace Comp213002SchedulerApplication
 
         public void initSource()
         {
+            themeSource.Add("No change");
             themeSource.Add("Normal");
             themeSource.Add("Dark");
             themeSource.Add("Blue");
@@ -38,6 +39,7 @@ namespace Comp213002SchedulerApplication
             this.ddTheme.DataSource = themeSource;
             this.ddTheme.DataBind();
 
+            fontSource.Add("No change");
             fontSource.Add("Arial");
             fontSource.Add("Calibri");
             fontSource.Add("Algerian");
@@ -45,6 +47,7 @@ namespace Comp213002SchedulerApplication
             this.ddFont.DataSource = fontSource;
             this.ddFont.DataBind();
 
+            fontSizeSource.Add("No change");
             fontSizeSource.Add("Small");
             fontSizeSource.Add("Medium");
             fontSizeSource.Add("Large");
@@ -52,6 +55,7 @@ namespace Comp213002SchedulerApplication
             this.ddFontSize.DataSource = fontSizeSource;
             this.ddFontSize.DataBind();
 
+            fontCOlorSource.Add("No change");
             fontCOlorSource.Add("Black");
             fontCOlorSource.Add("Red");
             fontCOlorSource.Add("Blue");
@@ -69,17 +73,20 @@ namespace Comp213002SchedulerApplication
 
         protected void ddFont_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Session["Font"] = this.ddFont.SelectedValue;
+            fontStr = this.ddFont.SelectedValue;
+            //Session["Font"] = this.ddFont.SelectedValue;
         }
 
         protected void ddFontSize_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Session["FontSize"] = this.ddFontSize.SelectedValue;
+            fontSizeStr = this.ddFontSize.SelectedValue;
+            //Session["FontSize"] = this.ddFontSize.SelectedValue;
         }
 
         protected void ddFontColor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Session["FontColor"] = this.ddFontColor.SelectedValue;
+            fontColorStr = this.ddFontColor.SelectedValue;
+            //Session["FontColor"] = this.ddFontColor.SelectedValue;
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -95,12 +102,14 @@ namespace Comp213002SchedulerApplication
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Session["theme"] = "none";
-            Session["Font"] = "none";
-            Session["FontSize"] = "none";
-            Session["FontColor"] = "none";
+            Session["theme"] = "No change";
+            Session["Font"] = "No change";
+            Session["FontSize"] = "No change";
+            Session["FontColor"] = "No change";
             string script = @"window.opener.location.reload(true);self.close();";
             Page.ClientScript.RegisterStartupScript(this.GetType(), "myCloseScript", script, true);
         }
+
+        
     }
 }

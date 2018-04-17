@@ -1,5 +1,6 @@
 ﻿using Comp213002SchedulerApplication.AppCode.controls.models;
 using Comp213002SchedulerApplication.AppCode.controls.util;
+using Comp213002SchedulerApplication.SharedCode.controls.util;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -19,26 +20,34 @@ namespace Comp213002SchedulerApplication
         DataTable dt = null;
         DataTable rt = null;
         
-        string theme;
-        string font;
-        string fontSize;
-        string fontColor;
-        private Style primaryStyle = new Style();
 
         private void Page_PreInit(object sender, EventArgs e)
         {
-            font = (string)Session["font"];
-            fontSize = (string)Session["fontSize"];
-            fontColor = (string)Session["fontColor"];
-
-            theme = (string)Session["theme"];
-            if(theme==null || theme.Equals("Normal") || theme.Equals("none"))
+            
+            string temp = (string)Session["theme"];
+            if (StyleMaker.theme == null )
+            {
+                if(temp==null || temp.Equals("No change"))
+                {
+                    Page.Theme = null;
+                }else
+                {
+                    StyleMaker.theme = (string)Session["theme"];
+                }
+                
+            }
+            
+            if(StyleMaker.theme == null || StyleMaker.theme.Equals("Normal"))
             {
                 Page.Theme = null;
             }
             else
             {
-                Page.Theme = theme;
+                if (!temp.Equals("No change"))
+                {
+                    StyleMaker.theme = (string)Session["theme"];
+                }   
+                Page.Theme = StyleMaker.theme;
             }
             
         }
@@ -59,7 +68,7 @@ namespace Comp213002SchedulerApplication
         {
 
             //change calendar theme
-            switch (theme)
+            switch (StyleMaker.theme)
             {
                 case "Normal":
                     this.Calendar1.BackColor = System.Drawing.Color.White;
@@ -83,63 +92,17 @@ namespace Comp213002SchedulerApplication
                     break;
             }
             
-            if(font!=null)
+            Style primaryStyle = StyleMaker.makingStyle((string)Session["Font"], (string)Session["FontSize"], (string)Session["FontColor"]);
+            if(primaryStyle != null)
             {
-                if (!(font.Equals("none"))){
-                    primaryStyle.Font.Name = font;
-                }
-                primaryStyle.Font.Name = font;
+                this.btnCustomizing.ApplyStyle(primaryStyle);
+                this.logoutBtn.ApplyStyle(primaryStyle);
+                this.assignTaskBtn.ApplyStyle(primaryStyle);
+                this.lbWelcome.ApplyStyle(primaryStyle);
+                this.Calendar1.ApplyStyle(primaryStyle);
             }
+
             
-            switch (fontSize)
-            {
-                case "Small":
-                    primaryStyle.Font.Size = 8;
-                    break;
-                case "Medium":
-                    primaryStyle.Font.Size = 10;
-                    break;
-                case "Large":
-                    primaryStyle.Font.Size = 12;
-                    break;
-                case "XLarge":
-                    primaryStyle.Font.Size = 14;
-                    break;
-                default:
-                    break;
-            }
-
-            switch (fontColor)
-            {
-                case "Black":
-                    primaryStyle.ForeColor = System.Drawing.Color.Black;
-                    break;
-                case "Red":
-                    primaryStyle.ForeColor = System.Drawing.Color.Red;
-                    break;
-                case "Blue":
-                    primaryStyle.ForeColor = System.Drawing.Color.Blue;
-                    break;
-                case "Green":
-                    primaryStyle.ForeColor = System.Drawing.Color.Green;
-                    break;
-                case "White":
-                    primaryStyle.ForeColor = System.Drawing.Color.White;
-                    break;
-                case "Yellow":
-                    primaryStyle.ForeColor = System.Drawing.Color.Yellow;
-                    break;
-                default:
-                    break;
-            }
-
-            this.btnCustomizing.ApplyStyle(primaryStyle);
-            this.logoutBtn.ApplyStyle(primaryStyle);
-            this.assignTaskBtn.ApplyStyle(primaryStyle);
-            this.lbWelcome.ApplyStyle(primaryStyle);
-            this.Calendar1.ApplyStyle(primaryStyle);
-
-            Session["styleSetting"] = primaryStyle;
         }
 
         

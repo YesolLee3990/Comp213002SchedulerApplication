@@ -98,7 +98,7 @@
         <%
         }
         %>
-        <a href="/Setting.aspx">Setting</a>
+        <a href="" OnClick="window.open('CustomizingPage.aspx', 'newWindow', 'width=400,height=500');returnfalse;">Setting</a>
     </div>
 
 
