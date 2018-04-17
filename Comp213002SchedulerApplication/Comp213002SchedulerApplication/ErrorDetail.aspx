@@ -8,7 +8,7 @@
     <title></title>
 </head>
 <body>
-    <h3>Error Detail</h3>
+    <asp:Label ID="Label1" runat="server" Text="Error Detail"></asp:Label>
     <br />
         <%
             string id = Request["id"];
@@ -34,6 +34,6 @@
                 </tr>
             </table>
         </div>
-        <div class="searchRightCol"><input type="button" class="button" value="Close" onclick="window.close();" /></div>
+        <div class="searchRightCol"><input type="button" id="btnCLose" class="button" value="Close" onclick="window.close();" /></div>
 </body>
 </html>

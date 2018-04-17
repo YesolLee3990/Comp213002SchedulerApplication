@@ -16,12 +16,15 @@
             String userId = (qs["userId"]==null?"":qs["userId"]);
         %>
         <div>
-            <h3>Error List</h3>
+            <asp:Label ID="Label4" runat="server" Text="Error List"></asp:Label>
             <div id="searchConditionBox">
-                <div class="searchError">ErrorMsg :<input type="text" name="errorMsg" value="<%=errorMsg %>"/></div>
-                <div class="searchError">Date : <input type="date" name="errorDate" value="<%=errorDate %>"/> </div>
-                <div class="searchError">User Name:
-                    <select name="userId">
+                <div class="searchError">
+                    <asp:Label ID="Label1" runat="server" Text="ErrorMsg : "></asp:Label><input type="text" id="txtErrMsg" name="errorMsg" value="<%=errorMsg %>"/></div>
+                <div class="searchError">
+                    <asp:Label ID="Label2" runat="server" Text="Date : "></asp:Label><input type="date" id="txtErrDate" name="errorDate" value="<%=errorDate %>"/> </div>
+                <div class="searchError">
+                    <asp:Label ID="Label3" runat="server" Text="User Name : "></asp:Label>
+                    <select name="userId" id="selectUserID">
                         <option value="A" <%if ("A" == userId) Response.Write("selected"); %> >All</option>
                         <%
                             foreach(System.Data.DataRow dr in userList.Rows) {
@@ -32,7 +35,7 @@
                         %>
                     </select>
                 </div><br />
-                <div class="searchRightCol"><input type="button" class="button" style="top:-80px;" value="Search" onclick="javascript: search();" /></div>
+                <div class="searchRightCol"><input type="button" id="btnSearch" class="button" style="top:-80px;" value="Search" onclick="javascript: search();" /></div>
             </div><br />
             <table id="contentTable">
                 <thead>

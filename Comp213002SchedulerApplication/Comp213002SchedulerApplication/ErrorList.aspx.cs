@@ -1,4 +1,5 @@
 ﻿using Comp213002SchedulerApplication.AppCode.controls.util;
+using Comp213002SchedulerApplication.SharedCode.controls.util;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,10 +13,56 @@ namespace Comp213002SchedulerApplication {
         public DataTable dt;
         public DataTable userList;
 
+        private void Page_PreInit(object sender, EventArgs e)
+        {
+            string temp = (string)Session["theme"];
+            if (StyleMaker.theme == null)
+            {
+                if (StyleMaker.theme == null || StyleMaker.theme.Equals("No change"))
+                {
+                    Page.Theme = null;
+                }
+                else
+                {
+                    StyleMaker.theme = (string)Session["theme"];
+                }
+
+            }
+
+            if (StyleMaker.theme == null || StyleMaker.theme.Equals("Normal"))
+            {
+                Page.Theme = null;
+            }
+            else
+            {
+                if (!temp.Equals("No change"))
+                {
+                    StyleMaker.theme = (string)Session["theme"];
+                }
+                Page.Theme = StyleMaker.theme;
+            }
+
+        }
+
         protected void Page_Load(object sender, EventArgs e) {
             SetUserList();
             string sql = BuildSearchSql();
             dt = DBUtil.Select(sql);
+            changeSettings();
+        }
+
+        public void changeSettings()
+        {
+            Style primaryStyle = StyleMaker.makingStyle((string)Session["Font"], (string)Session["FontSize"], (string)Session["FontColor"]);
+
+            if (primaryStyle != null)
+            {
+                this.Label1.ApplyStyle(primaryStyle);
+                this.Label2.ApplyStyle(primaryStyle);
+                this.Label3.ApplyStyle(primaryStyle);
+                this.Label4.ApplyStyle(primaryStyle);
+                this.Label4.Font.Size = 16;
+            }
         }
 
         private void SetUserList() {
