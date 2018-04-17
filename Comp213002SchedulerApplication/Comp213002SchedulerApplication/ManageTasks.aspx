@@ -19,14 +19,19 @@
             String status = (qs["status"]==null?"":qs["status"]);
         %>
         <div>
-            <h3>Task Management</h3>
+            <asp:Label ID="Label1" runat="server" Text="Task Management"></asp:Label>
             <div id="searchConditionBox">
-                <div class="searchLeftCol">Subject :<input type="text" name="subject" value="<%=subject %>"/></div>
-                <div class="searchRightCol">Description : <input type="text" name="description"  value="<%=description %>"/></div>
-                <div class="searchLeftCol">Date : <input type="date" name="scheduleStart" value="<%=scheduleStart %>"/> 
+                <div class="searchLeftCol">
+                    <asp:Label ID="Label2" runat="server" Text="Subject : "></asp:Label><input type="text" name="subject" value="<%=subject %>"/></div>
+                <div class="searchRightCol">
+                    <asp:Label ID="Label3" runat="server" Text="Description : "></asp:Label><input type="text" name="description"  value="<%=description %>"/></div>
+                <div class="searchLeftCol">
+                    <asp:Label ID="Label4" runat="server" Text="Date : "></asp:Label><input type="date" name="scheduleStart" value="<%=scheduleStart %>"/> 
                     ~ <input type="date" name="scheduleEnd"  value="<%=scheduleEnd %>"/></div>
-                <div class="searchRightCol">Actor : <input type="text" name="actorName"  value="<%=actorName %>"/></div>
-                <div class="searchLeftCol" style="float:none;">Status :
+                <div class="searchRightCol">
+                    <asp:Label ID="Label5" runat="server" Text="Actor : "></asp:Label><input type="text" name="actorName"  value="<%=actorName %>"/></div>
+                <div class="searchLeftCol" style="float:none;">
+                    <asp:Label ID="Label6" runat="server" Text="Status : "></asp:Label>
                     <select name="status">
                         <option value="A" <%if ("A" == status) Response.Write("selected"); %> >All</option>
                         <option value="S" <%if ("S" == status) Response.Write("selected"); %> >Scheduled</option>

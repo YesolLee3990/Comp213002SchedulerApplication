@@ -13,6 +13,24 @@ namespace Comp213002SchedulerApplication {
     public partial class Report {
         
         /// <summary>
+        /// lbTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbTitle;
+        
+        /// <summary>
+        /// lbExcel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbExcel;
+        
+        /// <summary>
         /// lbTable control.
         /// </summary>
         /// <remarks>

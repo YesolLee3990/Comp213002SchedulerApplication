@@ -69,9 +69,9 @@
         }
     </style>
     <div align="center">
-        <h2><%: Title %></h2>
+        <asp:Label ID="lbTitle" runat="server" Text="Title"></asp:Label>
         <div class="box">
-            <h3>Excel</h3>
+            <asp:Label ID="lbExcel" runat="server" Text="Excel"></asp:Label>
             <!--Dropdown list for table-->
             <asp:Label ID="lbTable" runat="server" Text="Table : "></asp:Label>
             <asp:DropDownList ID="drpList1" runat="server" AutoPostBack="True">

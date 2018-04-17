@@ -87,6 +87,10 @@ namespace Comp213002SchedulerApplication
                 this.Button2.ApplyStyle(primaryStyle);
                 this.Chart1.ApplyStyle(primaryStyle);
                 this.lbTable.ApplyStyle(primaryStyle);
+                this.lbExcel.ApplyStyle(primaryStyle);
+                this.lbTitle.ApplyStyle(primaryStyle);
+                this.lbExcel.Font.Size = 14;
+                this.lbTitle.Font.Size = 18;
             }
         }
 
