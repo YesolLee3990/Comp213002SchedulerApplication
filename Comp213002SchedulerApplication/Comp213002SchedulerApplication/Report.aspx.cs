@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Comp213002SchedulerApplication.AppCode.controls.util;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -24,6 +25,10 @@ namespace Comp213002SchedulerApplication
             Panel1.Visible = false;
             Panel2.Visible = false;
             Panel5.Visible = true;
+
+            //Panel6.Visible = false;
+
+            //Panel6.Visible = 0;
 
             drpList.Visible = false;
 
@@ -98,6 +103,12 @@ namespace Comp213002SchedulerApplication
             GridView5.DataBind();
             con.Close();
         }
+
+        public void DisplayTaskNumber()
+        {
+            DataTable dt = DBUtil.Select("SELECT count(1) 'CNT', a.username from userinfo a, task b where a.id = b.userinfo_id group by a.id, a.username order by a.username");
+        }
+
         public void SelectedTable()
         {
             //Condition for table
@@ -114,6 +125,7 @@ namespace Comp213002SchedulerApplication
             {
                 GridView5.Visible = true;
                 Display("task");
+                //Panel6.Visible = true;
 
             }
             else if (drpList1.SelectedIndex == 3)

@@ -3,7 +3,7 @@
 <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
- 
+
     <!--Tried to use google chart but cannot use entity-->
 
     <%--            <script src="Scripts/jquery-1.7.1.js"></script>
@@ -74,7 +74,7 @@
             <h3>Excel</h3>
             <!--Dropdown list for table-->
             Table: 
-            <asp:DropDownList ID="drpList1" runat="server" AutoPostBack="True">
+            <asp:DropDownList ID="drpList1" runat="server" AutoPostBack="True" ClientIDMode="Static">
                 <asp:ListItem>...</asp:ListItem>
                 <asp:ListItem Value="1">UserInfo</asp:ListItem>
                 <asp:ListItem Value="2">Task</asp:ListItem>
@@ -144,50 +144,59 @@
             </asp:Panel>
         </div>
 
+        <asp:Panel ID="Panel6" runat="server" ClientIDMode="Static">
+            <div class="box">
+                <h3>Chart</h3>
 
-        <div class="box">
-            <h3>Chart</h3>
+                <!--Using Chart.js but don't know how to put our database...;-->
+                <canvas id="myChart"></canvas>
 
-            <!--Using Chart.js but don't know how to put our database...;-->
-            <canvas id="myChart"></canvas>
-
-            <!--Asp.net Chart. Connected to table, but looks not good-->
-            <asp:Chart ID="Chart1" runat="server" DataSourceID="ScheDatabase"  Palette="Pastel">
-               <Series>
-                    <asp:Series Name="Series1" XValueMember="UserId" YValueMembers="CreateDate"></asp:Series>
-                </Series>
-                <ChartAreas>
-                    <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
-                </ChartAreas>
-                <BorderSkin BackColor="SandyBrown" BorderColor="Goldenrod" />
-            </asp:Chart>
-
-        </div>
+            </div>
+        </asp:Panel>
     </div>
 
     <!--Using Chart.js but don't know how to put our database...;-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var chart = new Chart(ctx, {
-            // The type of chart we want to create
-            type: 'bar',
+        if (document.getElementById('drpList1').value == '2') {
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'bar',
 
+            <%
+        String nums = "", names = "";
+        System.Data.DataTable dt = Comp213002SchedulerApplication.AppCode.controls.util.DBUtil.Select("SELECT count(1) 'CNT', a.username from userinfo a, task b where a.id = b.userinfo_id group by a.id, a.username order by a.username");
+        foreach (System.Data.DataRow dr in dt.Rows)
+        {
+            names += "'" + dr["USERNAME"] + "',";
+            nums += dr["CNT"] + ",";
+        }
+        if (names.EndsWith(","))
+        {
+            names = names.Substring(0, names.Length - 1);
+            nums = nums.Substring(0, nums.Length - 1);
+        }
+            %>
 
-            // The data for our dataset
-            data: {
-                labels: ["Manager1", "Admin1", "Staff1", "Staff2", "Staff3", "Staff4", "Staff5"],
-                datasets: [{
-                    label: "My First dataset",
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: [0, 10, 5, 2, 20, 30, 45],
-                }]
-            },
+                // The data for our dataset
+                data: {
+                    labels: [<%=names%>],
+                    datasets: [{
+                        label: "My First dataset",
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: [<%=nums%>],
+                    }]
+                },
 
-            // Configuration options go here
-            options: {}
-        });
+                // Configuration options go here
+                options: {}
+            });
+        } else {
+            document.getElementById('Panel6').style.visibility = false;
+        }
+
     </script>
 
 </asp:Content>
