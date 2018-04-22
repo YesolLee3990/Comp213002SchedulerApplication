@@ -3,56 +3,70 @@
 <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
- 
-    <!--Tried to use google chart but cannot use entity-->
-
-    <%--            <script src="Scripts/jquery-1.7.1.js"></script>
-            <script type="text/javascript" src="https://www.google.com/jsapi"></script>
- 
-            <script>
-                var chartData; // globar variable for hold chart data
-                google.load("visualization", "1", { packages: ["corechart"] });
- 
-                // Here We will fill chartData
- 
-                $(document).ready(function () {
-           
-                    $.ajax({
-                        url: "GoogleChart.aspx/GetChartData",
-                        data: "",
-                        dataType: "json",
-                        type: "POST",
-                        contentType: "application/json; chartset=utf-8",
-                        success: function (data) {
-                            chartData = data.d;
-                        },
-                        error: function () {
-                            alert("Error loading data! Please try again.");
-                        }
-                    }).done(function () {
-                        // after complete loading data
-                        google.setOnLoadCallback(drawChart);
-                        drawChart();
-                    });
-                });
- 
- 
-                function drawChart() {
-                    var data = google.visualization.arrayToDataTable(chartData);
- 
-                    var options = {
-                        title: "Company Revenue",
-                        pointSize: 5
-                    };
- 
-                    var pieChart = new google.visualization.PieChart(document.getElementById('chart_div'));
-                    pieChart.draw(data, options);
- 
-                }
- 
-            </script>--%>
 
     <style>
+        /* Popup container - can be anything you want */
+        .popup {
+            cursor: pointer;
+        }
+
+            /* The actual popup */
+            .popup .popuptext {
+                visibility: hidden;
+                width: 40%;
+                height: 300px;
+                top:24%;
+                left: 29%;
+                background-color: white;
+                box-shadow: 1px 2px 10px grey;
+                color: #fff;
+                text-align: center;
+                border-radius: 6px;
+                position: absolute;
+                z-index: 1;
+            }
+
+                /* Popup arrow */
+                /* Popup arrow */
+                .popup .popuptext::after {
+                    content: "";
+                    position: absolute;
+                    top: -30px;
+                    margin-left: -5px;
+                    border-width: 15px;
+                    border-style: solid;
+                    border-color: transparent transparent grey transparent;
+                }
+
+
+            /* Toggle this class - hide and show the popup */
+            .popup .show {
+                visibility: visible;
+                -webkit-animation: fadeIn 1s;
+                animation: fadeIn 1s;
+            }
+
+        /* Add animation (fade in the popup) */
+        @-webkit-keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+        /*=-===============================================*/
         body {
             margin-top: 3%
         }
@@ -69,12 +83,23 @@
         }
     </style>
     <div align="center">
+
         <asp:Label ID="lbTitle" runat="server" Text="Title"></asp:Label>
+
+        <asp:Panel ID="Panel6" runat="server" ClientIDMode="Static" Width="300px">
+            <%-- <div class="box">
+                <h3>Chart</h3>
+               
+                <canvas id="myChart"></canvas>
+
+            </div>--%>
+        </asp:Panel>
+
         <div class="box">
             <asp:Label ID="lbExcel" runat="server" Text="Excel"></asp:Label>
             <!--Dropdown list for table-->
             <asp:Label ID="lbTable" runat="server" Text="Table : "></asp:Label>
-            <asp:DropDownList ID="drpList1" runat="server" AutoPostBack="True">
+            <asp:DropDownList ID="drpList1" runat="server" AutoPostBack="True" ClientIDMode="Static">
                 <asp:ListItem>...</asp:ListItem>
                 <asp:ListItem Value="1">UserInfo</asp:ListItem>
                 <asp:ListItem Value="2">Task</asp:ListItem>
@@ -89,6 +114,18 @@
 
             <!--Button for Export to Excel-->
             <asp:Button ID="Button2" CssClass="btn" runat="server" OnClick="Button2_Click" Text="Export to Excel" />
+            
+            <div class="popup" onclick="myFunction()">
+                <p id="btnPopup" class="btn" style="background-color: whitesmoke;">Chart</p>
+                <span class="popuptext" id="myPopup">
+
+                    <h3>Chart</h3>
+
+                    <canvas id="myChart" width="95%" ></canvas>
+
+
+                </span>
+            </div>
             <p></p>
 
 
@@ -145,49 +182,56 @@
         </div>
 
 
-        <div class="box">
-            <h3>Chart</h3>
 
-            <!--Using Chart.js but don't know how to put our database...;-->
-            <canvas id="myChart"></canvas>
-
-            <!--Asp.net Chart. Connected to table, but looks not good-->
-            <asp:Chart ID="Chart1" runat="server" DataSourceID="ScheDatabase"  Palette="Pastel">
-               <Series>
-                    <asp:Series Name="Series1" XValueMember="UserId" YValueMembers="CreateDate"></asp:Series>
-                </Series>
-                <ChartAreas>
-                    <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
-                </ChartAreas>
-                <BorderSkin BackColor="SandyBrown" BorderColor="Goldenrod" />
-            </asp:Chart>
-
-        </div>
     </div>
 
+
+    <script>
+        // When the user clicks on div, open the popup
+        function myFunction() {
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+        }
+    </script>
     <!--Using Chart.js but don't know how to put our database...;-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var chart = new Chart(ctx, {
-            // The type of chart we want to create
-            type: 'bar',
+        if (document.getElementById('btnPopup').click) {
 
-
-            // The data for our dataset
-            data: {
-                labels: ["Manager1", "Admin1", "Staff1", "Staff2", "Staff3", "Staff4", "Staff5"],
-                datasets: [{
-                    label: "My First dataset",
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: [0, 10, 5, 2, 20, 30, 45],
-                }]
-            },
-
-            // Configuration options go here
-            options: {}
-        });
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'bar',
+            <%
+        String nums = "", names = "";
+        System.Data.DataTable dt = Comp213002SchedulerApplication.AppCode.controls.util.DBUtil.Select("SELECT count(1) 'CNT', a.username from userinfo a, task b where a.id = b.userinfo_id group by a.id, a.username order by a.username");
+        foreach (System.Data.DataRow dr in dt.Rows)
+        {
+            names += "'" + dr["USERNAME"] + "',";
+            nums += dr["CNT"] + ",";
+        }
+        if (names.EndsWith(","))
+        {
+            names = names.Substring(0, names.Length - 1);
+            nums = nums.Substring(0, nums.Length - 1);
+        }
+            %>
+                // The data for our dataset
+                data: {
+                    labels: [<%=names%>],
+                    datasets: [{
+                        label: "Chart for Tasks",
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: [<%=nums%>],
+                    }]
+                },
+                // Configuration options go here
+                options: {}
+            });
+        } else {
+            document.getElementById('Panel6').style.visibility = false;
+        }
     </script>
 
 </asp:Content>

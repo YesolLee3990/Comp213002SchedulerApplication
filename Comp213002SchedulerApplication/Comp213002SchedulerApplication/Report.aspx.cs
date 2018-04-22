@@ -1,4 +1,5 @@
-﻿using Comp213002SchedulerApplication.SharedCode.controls.util;
+﻿using Comp213002SchedulerApplication.AppCode.controls.util;
+using Comp213002SchedulerApplication.SharedCode.controls.util;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -85,7 +86,7 @@ namespace Comp213002SchedulerApplication
                 this.drpList.ApplyStyle(primaryStyle);
                 this.drpList1.ApplyStyle(primaryStyle);
                 this.Button2.ApplyStyle(primaryStyle);
-                this.Chart1.ApplyStyle(primaryStyle);
+                //this.Chart1.ApplyStyle(primaryStyle);
                 this.lbTable.ApplyStyle(primaryStyle);
                 this.lbExcel.ApplyStyle(primaryStyle);
                 this.lbTitle.ApplyStyle(primaryStyle);
@@ -96,43 +97,10 @@ namespace Comp213002SchedulerApplication
 
 
 
-        //Tried to use google chart but cannot use entity
-
-
-        //[WebMethod]
-        //[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        //public static object[] GetChartData()
-        //{
-        //    SqlConnection con = new SqlConnection();
-        //    con.ConnectionString = ConfigurationManager.ConnectionStrings["esmsDbConnectionStr"].ConnectionString;
-        //    con.Open();
-        //    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM task", con);
-        //    DataTable dt = new DataTable();
-        //    da.Fill(dt);
-
-        //    List<task> data = new List<task>();
-        //    //Here MyDatabaseEntities  is our dbContext
-        //    using (DBSchedulerApplicationEntities1 dc = new DBSchedulerApplicationEntities1())
-        //    {
-        //        data = dc.tasks.ToList();
-        //    }
-
-        //    var chartData = new object[data.Count + 1];
-        //    chartData[0] = new object[]{
-        //            "Product Category",
-        //            "Revenue Amount"
-        //        };
-        //    int j = 0;
-        //    foreach (var i in data)
-        //    {
-        //        j++;
-        //        chartData[j] = new object[] { i.UserInfo_ID, i.UserInfo };
-        //    }
-
-        //    return chartData;
-        //}
-
-
+        public void DisplayTaskNumber()
+        {
+            DataTable dt = DBUtil.Select("SELECT count(1) 'CNT', a.username from userinfo a, task b where a.id = b.userinfo_id group by a.id, a.username order by a.username");
+        }
 
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -173,7 +141,6 @@ namespace Comp213002SchedulerApplication
             {
                 GridView5.Visible = true;
                 Display("task");
-
             }
             else if (drpList1.SelectedIndex == 3)
             {
