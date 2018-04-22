@@ -84,7 +84,7 @@
     </style>
     <div align="center">
 
-        <asp:Label ID="lbTitle" runat="server" Text="Title"></asp:Label>
+        <asp:Label ID="lbTitle" runat="server" Text="Report"></asp:Label>
 
         <asp:Panel ID="Panel6" runat="server" ClientIDMode="Static" Width="300px">
             <%-- <div class="box">
@@ -96,7 +96,7 @@
         </asp:Panel>
 
         <div class="box">
-            <asp:Label ID="lbExcel" runat="server" Text="Excel"></asp:Label>
+            <asp:Label ID="lbExcel" runat="server" Text="Excel"></asp:Label><br />
             <!--Dropdown list for table-->
             <asp:Label ID="lbTable" runat="server" Text="Table : "></asp:Label>
             <asp:DropDownList ID="drpList1" runat="server" AutoPostBack="True" ClientIDMode="Static">
