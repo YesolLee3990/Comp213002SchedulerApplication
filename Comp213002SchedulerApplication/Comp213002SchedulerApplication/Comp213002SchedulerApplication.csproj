@@ -243,6 +243,13 @@
     <Compile Include="ErrorList.aspx.designer.cs">
       <DependentUpon>ErrorList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FeedbackPage.aspx.cs">
+      <DependentUpon>FeedbackPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FeedbackPage.aspx.designer.cs">
+      <DependentUpon>FeedbackPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ManageTasks.aspx.cs">
       <DependentUpon>ManageTasks.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -273,6 +280,7 @@
     <Content Include="CustomizingPage.aspx" />
     <Content Include="ErrorDetail.aspx" />
     <Content Include="ErrorList.aspx" />
+    <Content Include="FeedbackPage.aspx" />
     <Content Include="Http404ErrorPage.aspx" />
     <Content Include="img\Background1.jpg" />
     <Content Include="img\calendar.gif" />
