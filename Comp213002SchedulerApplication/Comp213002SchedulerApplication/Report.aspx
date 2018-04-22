@@ -196,7 +196,7 @@
     <!--Using Chart.js but don't know how to put our database...;-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script>
-        if (document.getElementById('btnPopup').click) {
+        if (document.getElementById('btnPopup').click && document.getElementById('drpList1').value == '2') {
 
             var ctx = document.getElementById('myChart').getContext('2d');
             var chart = new Chart(ctx, {
