@@ -96,7 +96,7 @@
         </asp:Panel>
 
         <div class="box">
-            <asp:Label ID="lbExcel" runat="server" Text="Excel"></asp:Label><br />
+            <asp:Label ID="lbExcel" runat="server" Text=""></asp:Label><br />
             <!--Dropdown list for table-->
             <asp:Label ID="lbTable" runat="server" Text="Table : "></asp:Label>
             <asp:DropDownList ID="drpList1" runat="server" AutoPostBack="True" ClientIDMode="Static">
