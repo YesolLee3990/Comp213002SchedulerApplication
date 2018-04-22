@@ -108,6 +108,7 @@
             <asp:Button ID="logoutBtn" runat="server" Text="Logout" BorderStyle="None" BorderWidth="0px" CausesValidation="False" CssClas="assignBtn"/>
         </div>
         <asp:Button ID="btnCustomizing" runat="server" Text="Settings" OnClientClick="window.open('CustomizingPage.aspx', 'newWindow', 'width=400,height=500');returnfalse;" />
+        <asp:Button ID="btnFeedback" runat="server" Text="Feedback" OnClientClick="window.open('FeedbackPage.aspx', 'newWindow', 'width=600,height=700');returnfalse;" />
         <%--<div style="margin:auto;position:absolute;left:0px;right:0px;">
             <img src="img/logo.png" width="40" style="margin:auto;position:absolute;left:0px;right:0px;"/>
         </div>--%>
