@@ -15,7 +15,7 @@
                 visibility: hidden;
                 width: 40%;
                 height: 300px;
-                top:24%;
+                top:28%;
                 left: 29%;
                 background-color: white;
                 box-shadow: 1px 2px 10px grey;
