@@ -123,7 +123,6 @@
                     <td style="width:50%;">
                         <span id="rightMenu" style="font-size: 30px; cursor: pointer; float:right;width:30px;" onclick="openNav2()">&#9776;</span>
                         <asp:Button id="assignTaskBtn" CssClass="assignBtn" BorderStyle="None" OnClientClick="assignTask()" Text="Assign Task" runat="server" UseSubmitBehavior="false"/>
-                        <asp:Button ID="Button1" runat="server" Text="Feedback" OnClientClick="window.open('FeedbackPage.aspx', 'newWindow', 'width=600,height=700');returnfalse;" />
         
                     </td>
                 </tr>

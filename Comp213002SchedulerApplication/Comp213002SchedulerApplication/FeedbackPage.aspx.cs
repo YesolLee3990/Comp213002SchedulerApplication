@@ -32,9 +32,9 @@ namespace Comp213002SchedulerApplication
                 ad.InsertCommand.Parameters.Add("@Subject", SqlDbType.NChar).Value = txtSubject.Text;
                 ad.InsertCommand.Parameters.Add("@Comments", SqlDbType.NVarChar).Value = txtComments.Text;
 
-                manmeet.Open();
+                conn.Open();
                 ad.InsertCommand.ExecuteNonQuery();
-                manmeet.Close();
+                conn.Close();
                 lblMessage.Text = "Completed your feedback!";
             }
 
