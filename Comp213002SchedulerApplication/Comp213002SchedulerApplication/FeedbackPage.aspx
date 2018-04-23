@@ -138,6 +138,7 @@
                         runat="server" 
                         Text="Submit" OnClick="Button1_Click" 
                          />
+                    <asp:Button ID="btnList" runat="server" Text="List" OnClientClick="window.open('FeedbackList.aspx', 'newWindow', 'width=600,height=700');returnfalse;" />
                 </td>
             </tr>
            
