@@ -50,5 +50,10 @@ namespace Comp213002SchedulerApplication
                 txtComments.Text = "";
             }
         }
+
+        protected void btnList_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("FeedbackList.aspx");
+        }
     }
 }

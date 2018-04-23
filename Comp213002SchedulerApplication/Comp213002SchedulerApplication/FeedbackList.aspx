@@ -18,7 +18,7 @@
                 </Columns>
             </asp:GridView>
         </div>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:esmsDbConnectionStr %>" SelectCommand="SELECT * FROM [dbo].[Feedback]"></asp:SqlDataSource>
+        
     </form>
 </body>
 </html>
